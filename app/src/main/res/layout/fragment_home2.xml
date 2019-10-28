@@ -10,8 +10,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
         android:text="Mia san home"
-        android:textAlignment="center"
-        android:layout_centerInParent="true"/>
+        android:textAlignment="center
+"
+        android:layout_centerInParent="true"
+         />
 
 </RelativeLayout>
