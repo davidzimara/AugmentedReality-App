@@ -2,7 +2,11 @@ package com.example.lernapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
+import android.view.View
+import android.widget.EditText
 import android.widget.Toolbar
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -14,15 +18,85 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var homeFragment: HomeFragment
+    lateinit var subjectFragment: SubjectFragment
+    lateinit var createFragment: CreateFragment
+    lateinit var statisticFragment: StatisticFragment
+    lateinit var settingsFragment: SettingsFragment
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
+        val bottomNavigation : BottomNavigationView = findViewById(R.id.main_nav)
+
+        //to show always the home screen
+        homeFragment = HomeFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.main_frame, homeFragment)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
+
+        //Navigation between Fragments
+
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                //now create fragments
+
+                R.id.nav_home -> {
+
+                    homeFragment = HomeFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_frame, homeFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                }
+
+                R.id.nav_subjects -> {
+
+                    subjectFragment = SubjectFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_frame, subjectFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                }
+
+                R.id.nav_create -> {
+
+                    createFragment = CreateFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_frame, createFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                }
+
+                R.id.nav_statistics -> {
+
+                    statisticFragment = StatisticFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_frame, statisticFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                }
+
+                R.id.nav_settings -> {
+
+                    settingsFragment = SettingsFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_frame, settingsFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                }
+            }
+            true
+        }
     }
-
-
 
 }
