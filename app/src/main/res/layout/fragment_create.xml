@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".CreateFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/ErstelleKategorie"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="i am here to create"
-        android:textSize="80sp"/>
+        android:layout_height="wrap_content"
+        android:text="Erstelle Kategorie"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"/>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/ErstButton"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="Erstellen"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ErstelleKategorie"
+        />
+
+
+
+</RelativeLayout>

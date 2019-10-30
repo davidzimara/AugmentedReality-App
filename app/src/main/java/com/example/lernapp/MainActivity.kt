@@ -3,6 +3,7 @@ package com.example.lernapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.Toolbar
@@ -12,6 +13,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
         val bottomNavigation : BottomNavigationView = findViewById(R.id.main_nav)
 
@@ -87,12 +91,17 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_settings -> {
 
-                    settingsFragment = SettingsFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.main_frame, settingsFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
+                    val dialog = BottomSheetDialog(this)
+                    val view = layoutInflater.inflate(R.layout.dialog_layout, null)
+                    dialog.setContentView(view)
+                    dialog.show()
+
+                   // settingsFragment = SettingsFragment()
+                   // supportFragmentManager
+                   //     .beginTransaction()
+                  //      .replace(R.id.main_frame, settingsFragment)
+                   //     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                   //     .commit()
                 }
             }
             true
@@ -102,6 +111,10 @@ class MainActivity : AppCompatActivity() {
 
     fun setActionBarTitle(title:String) {
         getSupportActionBar()?.setTitle(title)
+    }
+
+    fun show_sheet(item: MenuItem) {
+
     }
 
 }
