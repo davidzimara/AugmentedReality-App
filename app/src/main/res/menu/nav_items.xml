@@ -12,8 +12,11 @@
         android:title="@string/nav_subjects" />
     <item
         android:id="@+id/nav_create"
+        />
+    <!--<item
+        android:id="@+id/nav_create"
         android:icon="@drawable/ic_add_circle_black_24dp"
-        android:title="@string/nav_create" />
+        android:title="@string/nav_create" />-->
     <item
         android:id="@+id/nav_statistics"
         android:icon="@drawable/ic_trending_up_black_24dp"

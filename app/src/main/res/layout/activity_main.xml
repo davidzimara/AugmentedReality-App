@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient1"
     tools:context=".MainActivity">
 
     <fragment
@@ -35,7 +36,22 @@
         app:itemTextColor="@color/nav_items_color"
         app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:menu="@menu/nav_items" />
+        app:menu="@menu/nav_items" >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nav_create1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="6dp"
+            android:backgroundTint="@color/colorLightGrey"
+            android:tint="@color/colorRot2"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="show_dialog"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <!--Frame Layout (above navbar) Settings-->
     <FrameLayout
@@ -45,6 +61,7 @@
         android:layout_above="@+id/main_nav"
         tools:layout_editor_absoluteX="93dp"
         tools:layout_editor_absoluteY="295dp">
+
     </FrameLayout>
 
 

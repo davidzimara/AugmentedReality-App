@@ -5,6 +5,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorWhiteTransparent">#80ffffff</color>
+    <!--FromColorPickerMaterial.io-->
+    <color name="colorLightRot">#f44336</color>
     <!--DHBW Colors-->
     <color name="colorRot">#cb2426</color>
     <color name="colorRot2">#d65a5c</color>

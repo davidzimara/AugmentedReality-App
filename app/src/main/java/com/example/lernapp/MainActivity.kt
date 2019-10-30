@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                 }
 
-                R.id.nav_create -> {
+                R.id.nav_create1 -> {
 
                     val dialog = BottomSheetDialog(this)
                     val view = layoutInflater.inflate(R.layout.dialog_layout, null)
@@ -114,8 +114,11 @@ class MainActivity : AppCompatActivity() {
         getSupportActionBar()?.setTitle(title)
     }
 
-    fun show_sheet(item: MenuItem) {
-
+    fun show_dialog(view: View) {
+        val dialog = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.dialog_layout, null)
+        dialog.setContentView(view)
+        dialog.show()
     }
 
 }
