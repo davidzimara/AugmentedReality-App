@@ -71,12 +71,17 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_create -> {
 
-                    createFragment = CreateFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.main_frame, createFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
+                    val dialog = BottomSheetDialog(this)
+                    val view = layoutInflater.inflate(R.layout.dialog_layout, null)
+                    dialog.setContentView(view)
+                    dialog.show()
+
+                    //createFragment = CreateFragment()
+                    //supportFragmentManager
+                        //.beginTransaction()
+                        //.replace(R.id.main_frame, createFragment)
+                        //.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        //.commit()
                 }
 
                 R.id.nav_statistics -> {
@@ -91,17 +96,13 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_settings -> {
 
-                    val dialog = BottomSheetDialog(this)
-                    val view = layoutInflater.inflate(R.layout.dialog_layout, null)
-                    dialog.setContentView(view)
-                    dialog.show()
 
-                   // settingsFragment = SettingsFragment()
-                   // supportFragmentManager
-                   //     .beginTransaction()
-                  //      .replace(R.id.main_frame, settingsFragment)
-                   //     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                   //     .commit()
+                    settingsFragment = SettingsFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_frame, settingsFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
                 }
             }
             true
