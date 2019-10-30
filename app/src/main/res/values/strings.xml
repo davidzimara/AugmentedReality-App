@@ -4,8 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav_home">Home</string>
-    <string name="nav_subjects">Subjects</string>
-    <string name="nav_create">Create</string>
-    <string name="nav_statistics">Statistics</string>
-    <string name="nav_settings">Settings</string>
+    <string name="nav_subjects">Kategorien</string>
+    <string name="nav_create">Erstellen</string>
+    <string name="nav_statistics">Statistiken</string>
+    <string name="nav_settings">Einstellungen</string>
 </resources>
