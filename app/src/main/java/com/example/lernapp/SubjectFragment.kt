@@ -16,6 +16,10 @@ class SubjectFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        (activity as MainActivity)
+            .setActionBarTitle("Kategorien")
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_subject, container, false)
     }

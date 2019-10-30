@@ -16,6 +16,10 @@ class StatisticFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        (activity as MainActivity)
+            .setActionBarTitle("Statistiken")
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_statistic, container, false)
     }

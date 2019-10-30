@@ -16,6 +16,9 @@ class CreateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        (activity as MainActivity)
+            .setActionBarTitle("Erstellen")
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_create, container, false)
     }

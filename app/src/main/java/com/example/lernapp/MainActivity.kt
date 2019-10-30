@@ -97,6 +97,11 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+    }
+
+    fun setActionBarTitle(title:String) {
+        getSupportActionBar()?.setTitle(title)
     }
 
 }
