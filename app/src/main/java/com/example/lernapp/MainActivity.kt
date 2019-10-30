@@ -69,12 +69,12 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                 }
 
-                R.id.nav_create1 -> {
+                //R.id.nav_create -> {
 
-                    val dialog = BottomSheetDialog(this)
-                    val view = layoutInflater.inflate(R.layout.dialog_layout, null)
-                    dialog.setContentView(view)
-                    dialog.show()
+                   // val dialog = BottomSheetDialog(this)
+                   // val view = layoutInflater.inflate(R.layout.dialog_layout, null)
+                   // dialog.setContentView(view)
+                   // dialog.show()
 
                     //createFragment = CreateFragment()
                     //supportFragmentManager
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                         //.replace(R.id.main_frame, createFragment)
                         //.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         //.commit()
-                }
+                //}
 
                 R.id.nav_statistics -> {
 

@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_dialog_layout">
+
+    <!--//TODO: Creating a Custom Button - "+ Neue Kategorie" "look into OneNote Video Nr. 5-->
+    <!--//TODO: Creating a Title with TextView "Für Welche kategorie"-->
+    <!--//TODO: ListView mit allen erstellen Kategorien-->
+    <!--//TODO: Exit Button -> Am ende von Tutorial 2 (Minute 3:10)-->
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:textSize="21sp"
-        android:text="One"/>
+        android:text="One"
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -23,4 +32,5 @@
         android:padding="16dp"
         android:textSize="21sp"
         android:text="Three"/>
+
 </LinearLayout>
