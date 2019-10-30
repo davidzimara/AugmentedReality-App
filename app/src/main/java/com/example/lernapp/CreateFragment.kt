@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 /**
  * A simple [Fragment] subclass.
@@ -27,6 +28,8 @@ class CreateFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_create, container, false)
     }
+
+
 
 
 }

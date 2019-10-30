@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
@@ -16,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.dialog_layout.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,8 +33,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
         val bottomNavigation : BottomNavigationView = findViewById(R.id.main_nav)
 
@@ -114,11 +115,25 @@ class MainActivity : AppCompatActivity() {
         getSupportActionBar()?.setTitle(title)
     }
 
+    //show bottom sheet (layout) "dialog_layout"
+
+
     fun show_dialog(view: View) {
         val dialog = BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.dialog_layout, null)
         dialog.setContentView(view)
         dialog.show()
+
+    }
+
+    //open the Fragment "fragment_create"
+    fun show_create_category (view: View) {
+        createFragment = CreateFragment()
+        supportFragmentManager
+        .beginTransaction()
+        .replace(R.id.main_frame, createFragment)
+        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        .commit()
     }
 
 }

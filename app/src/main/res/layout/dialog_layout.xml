@@ -4,33 +4,53 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="8dp"
     android:background="@drawable/gradient_dialog_layout">
 
     <!--//TODO: Creating a Custom Button - "+ Neue Kategorie" "look into OneNote Video Nr. 5-->
-    <!--//TODO: Creating a Title with TextView "Für Welche kategorie"-->
+    <!--//TODO: 1 Creating a Title with TextView "Für Welche kategorie"-->
     <!--//TODO: ListView mit allen erstellen Kategorien-->
-    <!--//TODO: Exit Button -> Am ende von Tutorial 2 (Minute 3:10)-->
+    <!--//TODO: Exit Button "X" -> Am ende von Tutorial 2 (Minute 3:10)-->
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:textSize="21sp"
-        android:text="One"
+        android:text="Für welche Kategorie?"
+        android:textAlignment="center"
         />
 
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/newCategory"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="21sp"
-        android:text="Two"/>
+        android:text=" Neue Kategorie"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/gradient_button"
+        android:textAlignment="center"
+        android:paddingHorizontal="15dp"
+        android:layout_gravity="center"
+        android:drawableTint="@color/colorWhite"
+        android:drawableLeft="@drawable/ic_add_circle_black_24dp"
+        android:onClick="show_create_category"/>
+
 
     <TextView
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="21sp"
-        android:text="Three"/>
+        android:textAlignment="center"
+        android:text="Ihre Kategorien:"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </LinearLayout>
