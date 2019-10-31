@@ -134,6 +134,10 @@ class MainActivity : AppCompatActivity() {
             dialog.dismiss()
         }
 
+        view.iv_close.setOnClickListener {
+            dialog.dismiss()
+        }
+
     }
 
 
