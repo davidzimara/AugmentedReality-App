@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.Toolbar
+import android.widget.*
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -16,9 +13,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_layout.*
+import kotlinx.android.synthetic.main.dialog_layout.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -108,7 +107,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
     }
 
     fun setActionBarTitle(title:String) {
@@ -119,21 +117,37 @@ class MainActivity : AppCompatActivity() {
 
 
     fun show_dialog(view: View) {
+
         val dialog = BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.dialog_layout, null)
         dialog.setContentView(view)
         dialog.show()
 
+
+        view.newCategory.setOnClickListener {
+            createFragment = CreateFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.main_frame, createFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit()
+            dialog.dismiss()
+        }
+
     }
+
+
 
     //open the Fragment "fragment_create"
     fun show_create_category (view: View) {
+
         createFragment = CreateFragment()
         supportFragmentManager
         .beginTransaction()
         .replace(R.id.main_frame, createFragment)
         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         .commit()
+
     }
 
 }
