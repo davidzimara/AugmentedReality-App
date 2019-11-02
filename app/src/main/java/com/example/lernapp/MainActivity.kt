@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                 }
 
-                //R.id.nav_create -> {
+                R.id.nav_create -> {
 
                    // val dialog = BottomSheetDialog(this)
                    // val view = layoutInflater.inflate(R.layout.dialog_layout, null)
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                         //.replace(R.id.main_frame, createFragment)
                         //.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         //.commit()
-                //}
+                }
 
                 R.id.nav_statistics -> {
 
@@ -151,6 +151,7 @@ class MainActivity : AppCompatActivity() {
         .replace(R.id.main_frame, createFragment)
         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         .commit()
+
 
     }
 
