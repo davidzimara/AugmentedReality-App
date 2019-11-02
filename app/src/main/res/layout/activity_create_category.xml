@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".CreateCategory"
     >
 
@@ -23,8 +23,16 @@
         android:layout_margin="10dp"
         android:tint="@color/colorWhite"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp"
-        android:onClick="back_to_subject"
+        android:onClick="back_to_subject"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Neue Kategorie"
+        android:padding="12dp"
+        android:gravity="center_horizontal"
+        android:textSize="16dp"
+        android:textColor="@color/colorWhite"
         />
 
     <ImageView
@@ -40,9 +48,16 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="60dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gebe deiner Kategorie einen Namen"
+            android:paddingBottom="10dp"
+            android:textSize="16sp"/>
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -65,7 +80,23 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hallo ich bin der neue Screen"/>
+            android:text="Wähle eine Farbe aus"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/saveCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Erstelle Kategorie"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/gradient_button"
+            android:textAlignment="center"
+            android:paddingHorizontal="15dp"
+
+            android:layout_marginTop="10dp"
+            android:onClick="save_category"/>
+
 
     </LinearLayout>
 
