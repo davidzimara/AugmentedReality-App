@@ -1,5 +1,6 @@
 package com.example.lernapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
@@ -15,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_create_category.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_layout.*
 import kotlinx.android.synthetic.main.dialog_layout.view.*
@@ -36,12 +38,14 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigation : BottomNavigationView = findViewById(R.id.main_nav)
 
         //to show always the home screen
-        homeFragment = HomeFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.main_frame, homeFragment)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .commit()
+
+            homeFragment = HomeFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.main_frame, homeFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit()
+
 
         //Navigation between Fragments
 
@@ -125,16 +129,18 @@ class MainActivity : AppCompatActivity() {
 
 
         view.newCategory.setOnClickListener {
-            createFragment = CreateFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_frame, createFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+
+            val intent = Intent(this, CreateCategory::class.java)
+            // To pass any data to next activity
+            intent.putExtra("keyIdentifier", 2)
+            // start your next activity
+            startActivity(intent)
+            //close the bottom sheet (dialog) automatically
             dialog.dismiss()
         }
-
+            //close the bottom sheet (dialog) per click
         view.iv_close.setOnClickListener {
+
             dialog.dismiss()
         }
 
@@ -142,7 +148,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    //open the Fragment "fragment_create"
+    //open the Fragment "fragment_create" not necessary anymore, can be deleted
     fun show_create_category (view: View) {
 
         createFragment = CreateFragment()

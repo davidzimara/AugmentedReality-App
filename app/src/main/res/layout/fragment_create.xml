@@ -7,7 +7,9 @@
     tools:context=".CreateFragment"
     android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Hide Navbar (Fullscreen -> Show only this fragment without nav) -->
+    <!-- TODO: Implement back button (in the bottom left corner) -> Back to nav "Subject"-->
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
