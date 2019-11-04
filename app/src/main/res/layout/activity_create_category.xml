@@ -93,11 +93,8 @@
             android:background="@drawable/gradient_button"
             android:textAlignment="center"
             android:paddingHorizontal="15dp"
-
             android:layout_marginTop="10dp"
             android:onClick="save_category"/>
-
-
     </LinearLayout>
 
 </RelativeLayout>
