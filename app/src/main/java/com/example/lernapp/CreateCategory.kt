@@ -25,10 +25,12 @@ class CreateCategory : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         // To pass any data to next activity
         intent.putExtra("keyIdentifier", 2)
+        // set which fragment should be loaded
+        intent.putExtra("frgToLoad", "subjectFragment")
+
         // start your next activity
         startActivity(intent)
 
-        //TODO: Aufruf Kategorien Fragment "fragment_subject" (momentan Home)
 
     }
 

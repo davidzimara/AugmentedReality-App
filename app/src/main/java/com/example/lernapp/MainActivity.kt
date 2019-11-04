@@ -20,6 +20,9 @@ import kotlinx.android.synthetic.main.activity_create_category.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_layout.*
 import kotlinx.android.synthetic.main.dialog_layout.view.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,16 +38,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bottomNavigation : BottomNavigationView = findViewById(R.id.main_nav)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.main_nav)
 
         //to show always the home screen
 
-            homeFragment = HomeFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_frame, homeFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+        homeFragment = HomeFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.main_frame, homeFragment)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
 
 
         //Navigation between Fragments
@@ -75,17 +78,17 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_create -> {
 
-                   // val dialog = BottomSheetDialog(this)
-                   // val view = layoutInflater.inflate(R.layout.dialog_layout, null)
-                   // dialog.setContentView(view)
-                   // dialog.show()
+                    // val dialog = BottomSheetDialog(this)
+                    // val view = layoutInflater.inflate(R.layout.dialog_layout, null)
+                    // dialog.setContentView(view)
+                    // dialog.show()
 
                     //createFragment = CreateFragment()
                     //supportFragmentManager
-                        //.beginTransaction()
-                        //.replace(R.id.main_frame, createFragment)
-                        //.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        //.commit()
+                    //.beginTransaction()
+                    //.replace(R.id.main_frame, createFragment)
+                    //.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    //.commit()
                 }
 
                 R.id.nav_statistics -> {
@@ -111,9 +114,26 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+
+        // TODO: set Bottom Nav selected on the selected fragment
+        val intentFragment =
+            if (intent.extras != null) intent.extras!!.getString("frgToLoad") else ""
+        if (intentFragment!!.isNotEmpty()) {
+            when (intentFragment) {
+                "subjectFragment" -> {
+                    subjectFragment = SubjectFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_frame, subjectFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                }
+            }
+        }
     }
 
-    fun setActionBarTitle(title:String) {
+    fun setActionBarTitle(title: String) {
         getSupportActionBar()?.setTitle(title)
     }
 
@@ -138,7 +158,7 @@ class MainActivity : AppCompatActivity() {
             //close the bottom sheet (dialog) automatically
             dialog.dismiss()
         }
-            //close the bottom sheet (dialog) per click
+        //close the bottom sheet (dialog) per click
         view.iv_close.setOnClickListener {
 
             dialog.dismiss()
@@ -147,16 +167,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     //open the Fragment "fragment_create" not necessary anymore, can be deleted
-    fun show_create_category (view: View) {
+    fun show_create_category(view: View) {
 
         createFragment = CreateFragment()
         supportFragmentManager
-        .beginTransaction()
-        .replace(R.id.main_frame, createFragment)
-        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-        .commit()
+            .beginTransaction()
+            .replace(R.id.main_frame, createFragment)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
 
 
     }
