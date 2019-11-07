@@ -45,9 +45,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         auth = FirebaseAuth.getInstance()
 
-        Toast.makeText(this, "Firebase connected succesfully",Toast.LENGTH_LONG).show()
-
-
         val bottomNavigation: BottomNavigationView = findViewById(R.id.main_nav)
 
         //to show always the home screen
