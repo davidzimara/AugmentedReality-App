@@ -1,14 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/backgroundBar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/gradient_layout"
+        />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="settings here" />
+        android:layout_height="wrap_content"
+        android:text="Einstellungen"
+        android:padding="12dp"
+        android:gravity="center_horizontal"
+        android:textSize="16dp"
+        android:textColor="@color/colorWhite"
+        />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/bottomstroke"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/gradient_stroke"
+        android:layout_below="@+id/backgroundBar"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@+id/bottomstroke"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name: test123@web.de"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/saveCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abmelden"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/gradient_button"
+        android:textAlignment="center"
+        android:paddingHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:onClick="doLogout"/>
+
+</LinearLayout>
+
+
+</RelativeLayout>

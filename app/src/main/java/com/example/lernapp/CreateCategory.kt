@@ -26,12 +26,10 @@ class CreateCategory : AppCompatActivity() {
         // To pass any data to next activity
         intent.putExtra("keyIdentifier", 2)
         // set which fragment should be loaded
-        intent.putExtra("frgToLoad", "subjectFragment")
+        intent.putExtra("FrgToLoad", "SubjectFr")
 
         // start your next activity
         startActivity(intent)
-
-
     }
 
 

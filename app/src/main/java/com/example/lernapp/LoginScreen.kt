@@ -4,11 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login_screen.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 class LoginScreen : AppCompatActivity() {
 
@@ -18,6 +20,7 @@ class LoginScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
         auth = FirebaseAuth.getInstance()
+
 
         Registrieren.setOnClickListener {
          startActivity(Intent(this, SignUp::class.java))
@@ -82,4 +85,7 @@ class LoginScreen : AppCompatActivity() {
         }
 
     }
+
 }
+
+

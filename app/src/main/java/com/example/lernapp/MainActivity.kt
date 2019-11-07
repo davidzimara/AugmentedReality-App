@@ -26,6 +26,7 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,12 +36,17 @@ class MainActivity : AppCompatActivity() {
     lateinit var createFragment: CreateFragment
     lateinit var statisticFragment: StatisticFragment
     lateinit var settingsFragment: SettingsFragment
+    lateinit var auth: FirebaseAuth
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        auth = FirebaseAuth.getInstance()
 
         Toast.makeText(this, "Firebase connected succesfully",Toast.LENGTH_LONG).show()
+
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.main_nav)
 
@@ -117,23 +123,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
-
-        // TODO: set Bottom Nav selected on the selected fragment
-        /**val intentFragment =
-            if (intent.extras != null) intent.extras!!.getString("frgToLoad") else ""
-        if (intentFragment!!.isNotEmpty()) {
-            when (intentFragment) {
-                "subjectFragment" -> {
-                    subjectFragment = SubjectFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.main_frame, subjectFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-            }
-        }*/
     }
 
     fun setActionBarTitle(title: String) {
@@ -166,17 +155,29 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    //open the Fragment "fragment_create" not necessary anymore, can be deleted
-    fun show_create_category(view: View) {
-
-        createFragment = CreateFragment()
+    fun show_settings(view: View) {
+        settingsFragment = SettingsFragment()
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.main_frame, createFragment)
+            .replace(R.id.main_frame, settingsFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
-
     }
 
-    fun alert(view: View) {}
+    //Logout User Method is called by onClick Button in SettingsFragment
+    fun doLogout(view: View) {
+        Toast.makeText(baseContext,"Sie wurden abgemeldet.",Toast.LENGTH_LONG).show()
+        logout()
+
+        auth.addAuthStateListener {
+            if(auth.currentUser==null) {
+                startActivity(Intent(this, LoginScreen::class.java))
+                finish()
+            }
+        }
+    }
+
+    fun logout() {
+        auth.signOut()
+    }
 }
