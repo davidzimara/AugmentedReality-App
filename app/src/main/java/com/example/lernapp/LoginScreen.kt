@@ -30,25 +30,25 @@ class LoginScreen : AppCompatActivity() {
     }
 
     private fun doLogin() {
-        if(tv_username.text.toString().isEmpty()) {
-            tv_username.error = "Bitte geben Sie eine Email Adresse an."
-            tv_username.requestFocus()
+        if(stv_username.text.toString().isEmpty()) {
+            stv_username.error = "Bitte geben Sie eine Email Adresse an."
+            stv_username.requestFocus()
             return
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(tv_username.text.toString()).matches()) {
-            tv_username.error = "Bitte geben Sie eine gültige Email Adresse an."
-            tv_username.requestFocus()
+        if(!Patterns.EMAIL_ADDRESS.matcher(stv_username.text.toString()).matches()) {
+            stv_username.error = "Bitte geben Sie eine gültige Email Adresse an."
+            stv_username.requestFocus()
             return
         }
 
-        if(tv_password.text.toString().isEmpty()) {
-            tv_password.error = "Bitte Passwort angeben."
-            tv_password.requestFocus()
+        if(stv_password.text.toString().isEmpty()) {
+            stv_password.error = "Bitte Passwort angeben."
+            stv_password.requestFocus()
             return
         }
 
-        auth.signInWithEmailAndPassword(tv_username.text.toString(), tv_password.text.toString())
+        auth.signInWithEmailAndPassword(stv_username.text.toString(), stv_password.text.toString())
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
@@ -62,20 +62,23 @@ class LoginScreen : AppCompatActivity() {
             }
     }
 
-    public override fun onStart() {
+    //Single SIGN-ON current problem: after registration the app is running onStart
+    /*public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)
-    }
+    }*/
 
     private fun updateUI(currentUser: FirebaseUser?) {
         if(currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         } else {
-            Toast.makeText(baseContext, "Anmeldung fehlgeschlagen.",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                baseContext, "Anmeldung fehlgeschlagen.",
+                Toast.LENGTH_SHORT)
+                .show()
         }
 
     }

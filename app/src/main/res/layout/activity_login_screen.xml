@@ -23,6 +23,7 @@
             />
 
         <EditText
+            android:id="@+id/stv_username"
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +34,7 @@
             />
 
         <EditText
+            android:id="@+id/stv_password"
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:drawablePadding="10dp"
