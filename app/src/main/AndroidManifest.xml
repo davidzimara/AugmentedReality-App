@@ -28,7 +28,9 @@
         <activity
             android:name=".CreateCategory"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SignUp"></activity>
+        <activity
+            android:name=".SignUp"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
