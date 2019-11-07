@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".CreateCategory"
+        <activity android:name=".LoginScreen"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".LoadingScreen"
@@ -24,7 +23,10 @@
         <activity
             android:name=".MainActivity"
             android:label="LernApp"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateCategory"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

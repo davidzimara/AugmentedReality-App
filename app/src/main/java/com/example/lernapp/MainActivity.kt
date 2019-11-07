@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.dialog_layout.view.*
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,10 +34,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var statisticFragment: StatisticFragment
     lateinit var settingsFragment: SettingsFragment
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Toast.makeText(this, "Firebase connected succesfully",Toast.LENGTH_LONG).show()
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.main_nav)
 
@@ -48,7 +50,6 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.main_frame, homeFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
-
 
         //Navigation between Fragments
 
@@ -91,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                     //.commit()
                 }
 
-                R.id.nav_statistics -> {
+                /** R.id.nav_statistics -> {
 
                     statisticFragment = StatisticFragment()
                     supportFragmentManager
@@ -110,14 +111,14 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.main_frame, settingsFragment)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
-                }
+                } */
             }
             true
         }
 
 
         // TODO: set Bottom Nav selected on the selected fragment
-        val intentFragment =
+        /**val intentFragment =
             if (intent.extras != null) intent.extras!!.getString("frgToLoad") else ""
         if (intentFragment!!.isNotEmpty()) {
             when (intentFragment) {
@@ -130,7 +131,7 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                 }
             }
-        }
+        }*/
     }
 
     fun setActionBarTitle(title: String) {
@@ -138,8 +139,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     //show bottom sheet (layout) "dialog_layout"
-
-
     fun show_dialog(view: View) {
 
         val dialog = BottomSheetDialog(this)
@@ -151,16 +150,14 @@ class MainActivity : AppCompatActivity() {
         view.newCategory.setOnClickListener {
 
             val intent = Intent(this, CreateCategory::class.java)
-            // To pass any data to next activity
             intent.putExtra("keyIdentifier", 2)
-            // start your next activity
             startActivity(intent)
-            //close the bottom sheet (dialog) automatically
+            //close the bottom sheet (dialog) per click on "Neue Kategorie" Button
             dialog.dismiss()
         }
-        //close the bottom sheet (dialog) per click
-        view.iv_close.setOnClickListener {
 
+        view.iv_close.setOnClickListener {
+            //close the bottom sheet (dialog) per click on "iv_close" Button
             dialog.dismiss()
         }
 
@@ -177,7 +174,7 @@ class MainActivity : AppCompatActivity() {
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
 
-
     }
 
+    fun alert(view: View) {}
 }

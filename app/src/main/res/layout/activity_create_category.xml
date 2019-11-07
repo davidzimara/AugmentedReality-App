@@ -66,8 +66,8 @@
             android:hint="Name der Kategorie"
             app:boxStrokeColor="@color/colorRot"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:outlineAmbientShadowColor="@color/colorLightRot"
-            android:outlineSpotShadowColor="@color/colorLightRot"
+            android:outlineSpotShadowColor="@color/colorRot"
+            android:outlineAmbientShadowColor="@color/colorRot"
             tools:ignore="MissingConstraints"
             >
 
