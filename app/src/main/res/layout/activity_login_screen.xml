@@ -27,10 +27,11 @@
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Benutzername"
+            android:hint="E-Mail-Adresse"
             android:background="@drawable/gradient_editbutton"
             android:drawableStart="@drawable/ic_account_circle_24px"
             android:drawablePadding="10dp"
+            android:inputType="textEmailAddress"
             />
 
         <EditText
@@ -64,8 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Registrieren"
-            android:textColor="@color/colorLightGrey"
-            android:background="@drawable/gradient_editbutton"
+            android:textColor="@color/colorOrange"
+            android:background="@drawable/gradient_editbutton_stroke"
             android:textAlignment="center"
             android:paddingHorizontal="15dp"
             android:layout_marginTop="10dp" />

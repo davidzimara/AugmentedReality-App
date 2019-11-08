@@ -20,8 +20,17 @@ class SignUp : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         btn_sign_up.setOnClickListener {
-        signUpUser()
+            signUpUser()
         }
+
+        btn_back_login.setOnClickListener {
+            backLogin()
+        }
+    }
+
+    private fun backLogin() {
+        startActivity(Intent(this, LoginScreen::class.java))
+        finish()
     }
 
     private fun signUpUser() {
