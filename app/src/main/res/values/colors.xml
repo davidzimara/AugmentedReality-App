@@ -8,10 +8,18 @@
     <!--FromColorPickerMaterial.io-->
     <color name="colorLightRot">#f44336</color>
     <color name="colorOrange">#ff8a50</color>
+
     <!--DHBW Colors-->
     <color name="colorRot">#cb2426</color>
     <color name="colorRot2">#d65a5c</color>
     <color name="colorLightGrey">#e1e0e2</color>
     <color name="colorDarkGrey">#78727b</color>
     <color name="colorMiddleGrey">#7e8790</color>
+
+    <array name="demo_colors">
+        <item>@color/colorLightGrey</item>
+        <item>@color/colorOrange</item>
+        <item>@color/colorDarkGrey</item>
+        <item>@color/colorLightRot</item>
+    </array>
 </resources>

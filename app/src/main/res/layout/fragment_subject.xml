@@ -50,11 +50,19 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <TextView
+        <!--<ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="subjects liste: 1, 2 ,3 "/>
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+
+        </ScrollView>-->
     </LinearLayout>
 
 
