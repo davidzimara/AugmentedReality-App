@@ -7,19 +7,20 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 
-class CategoriesAdapter(val mCtx: Context,val layoutResId: Int,val categoriesList: List<Categories>)
- : ArrayAdapter<Categories>(mCtx, layoutResId, categoriesList) {
+class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)
+    : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList){
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val layoutInflater : LayoutInflater = LayoutInflater.from(mCtx)
+        val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
         val view: View = layoutInflater.inflate(layoutResId, null)
 
         val textViewName = view.findViewById<TextView>(R.id.textViewName)
 
-        val categories = categoriesList[position]
+        val category = categoryList[position]
 
-        textViewName.text = categories.name
+        textViewName.text = category.name
 
         return view
     }
+
 }

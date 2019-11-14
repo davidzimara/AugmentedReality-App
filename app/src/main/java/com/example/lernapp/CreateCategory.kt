@@ -18,8 +18,8 @@ class CreateCategory : AppCompatActivity() {
     lateinit var nameCategory: EditText
     lateinit var saveCategory: Button
     private lateinit var database: DatabaseReference
-    //lateinit var categoriesList: MutableList<Categories>
-    //lateinit var listView: ListView
+    lateinit var categoryList: MutableList<Categories>
+    lateinit var listView: ListView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,37 +27,35 @@ class CreateCategory : AppCompatActivity() {
         setContentView(R.layout.activity_create_category)
 
         database = FirebaseDatabase.getInstance().getReference("Categorys")
-        //categoriesList = mutableListOf()
+
 
         saveCategory = findViewById(R.id.saveCategory)
         nameCategory = findViewById(R.id.nameCategory)
-        //TODO: Fehler da R.id. sagt suche in dem setContentVIEW XML, das ist das falsche! categories.xml wäre richtig
-        //listView = findViewById(R.id.listView)
 
         saveCategory.setOnClickListener {
             savesCategory()
         }
 
-        /*database.addValueEventListener(object: ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
+        categoryList = mutableListOf()
+        database = FirebaseDatabase.getInstance().getReference("Categorys")
 
+        database.addValueEventListener(object: ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                //If there is some data it will loop all the data
                 if (p0!!.exists()) {
                     for (h in p0.children) {
-                        val categories = h.getValue(Categories::class.java)
-                        categoriesList.add(categories!!)
+                        val category = h.getValue(Categories::class.java)
+                        categoryList.add(category!!)
                     }
-
-                    val adapter = CategoriesAdapter(applicationContext, R.layout.categories, categoriesList)
+                    listView = findViewById(R.id.listView)
+                    val adapter = CategoryAdapter(applicationContext, R.layout.categories,  categoryList)
                     listView.adapter = adapter
-
                 }
             }
-
-        })*/
+        })
 
     }
 
@@ -80,6 +78,9 @@ class CreateCategory : AppCompatActivity() {
             .addOnCanceledListener {
                 Toast.makeText(baseContext, kategorie + " wurde nicht gespeichert.", Toast.LENGTH_LONG).show()
             }
+
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
 
