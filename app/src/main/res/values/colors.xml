@@ -8,6 +8,8 @@
     <!--FromColorPickerMaterial.io-->
     <color name="colorLightRot">#f44336</color>
     <color name="colorOrange">#ff8a50</color>
+    <color name="colorGreen">#4caf50</color>
+    <color name="colorLigtGreen">#80e27e</color>
 
     <!--DHBW Colors-->
     <color name="colorRot">#cb2426</color>

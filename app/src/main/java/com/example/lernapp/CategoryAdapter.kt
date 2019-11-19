@@ -1,14 +1,19 @@
 package com.example.lernapp
 
 import android.app.AlertDialog
+import android.app.Application
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.icu.util.ULocale
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat.startActivities
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.IntentCompat
 import androidx.core.view.inputmethod.EditorInfoCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.FirebaseDatabase
@@ -16,6 +21,8 @@ import java.util.*
 
 class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)
     : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList){
+
+    lateinit var ctx: Context
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
@@ -38,7 +45,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         }
 
         textViewName.setOnClickListener {
-            showQuestions()
+            showQuestions(category)
         }
 
         return view
@@ -98,7 +105,29 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
     }
 
-    private fun showQuestions() {
-        //TODO: open acitivity questions
+    private fun showQuestions(category: Categories) {
+
+        val builder = AlertDialog.Builder(mCtx)
+
+        val inflater = LayoutInflater.from(mCtx)
+
+        val view = inflater.inflate(R.layout.activity_create_question, null)
+
+        builder.setView(view)
+
+        // startActivity(Intent(, CreateQuestion::class.java))
+
+        builder.setPositiveButton("Speichern") {p0, p1 ->
+            Toast.makeText(mCtx, "ändern", Toast.LENGTH_LONG).show()
+
+        }
+
+        builder.setNegativeButton("Abbrechen") { p0, p1 ->
+            Toast.makeText(mCtx, "nicht", Toast.LENGTH_LONG).show()
+
+        }
+
+        val alert = builder.create()
+        alert.show()
     }
 }
