@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SubjectFragment">
+    android:layout_height="wrap_content"
+    tools:context=".CreateCategory"
+    >
+
 
     <ImageView
         android:id="@+id/backgroundBar"
@@ -13,20 +16,19 @@
         android:background="@drawable/gradient_layout"
         />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/iv_back_to_subject"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_margin="10dp"
         android:tint="@color/colorWhite"
-        android:layout_alignEnd="@id/backgroundBar"
-        app:srcCompat="@drawable/ic_add_circle_black_24dp"
-        />
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+        android:onClick="back_to_home"/>-->
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kategorien"
+        android:text="Kategorie ändern"
         android:padding="12dp"
         android:gravity="center_horizontal"
         android:textSize="16dp"
@@ -34,42 +36,49 @@
         />
 
     <ImageView
-        android:id="@+id/bottomstroke"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@drawable/gradient_stroke"
         android:layout_below="@+id/backgroundBar"/>
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_below="@id/bottomstroke"
+        android:layout_marginTop="60dp"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <ListView
-            android:id="@+id/listViewSubject"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
-
-        <!--<ScrollView
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true">
+            android:layout_height="wrap_content"
+            android:text="Gebe deiner Kategorie einen Namen"
+            android:paddingBottom="10dp"
+            android:textSize="16sp"/>
 
-            <LinearLayout
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Neuer Name der Kategorie"
+            app:boxStrokeColor="@color/colorRot"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:outlineSpotShadowColor="@color/colorRot"
+            android:outlineAmbientShadowColor="@color/colorRot"
+            tools:ignore="MissingConstraints"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:id="@+id/nameCategory"/>
 
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </ScrollView>-->
     </LinearLayout>
-
-
 
 </RelativeLayout>

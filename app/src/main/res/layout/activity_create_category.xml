@@ -23,7 +23,7 @@
         android:layout_margin="10dp"
         android:tint="@color/colorWhite"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp"
-        android:onClick="back_to_subject"/>
+        android:onClick="back_to_home"/>
 
     <TextView
         android:layout_width="match_parent"

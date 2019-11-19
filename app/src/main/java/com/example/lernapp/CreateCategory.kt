@@ -28,7 +28,6 @@ class CreateCategory : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().getReference("Categorys")
 
-
         saveCategory = findViewById(R.id.saveCategory)
         nameCategory = findViewById(R.id.nameCategory)
 
@@ -37,7 +36,7 @@ class CreateCategory : AppCompatActivity() {
         }
 
         categoryList = mutableListOf()
-        database = FirebaseDatabase.getInstance().getReference("Categorys")
+        listView = findViewById(R.id.listView)
 
         database.addValueEventListener(object: ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -46,12 +45,12 @@ class CreateCategory : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0!!.exists()) {
+                    categoryList.clear() // have to be, otherwise it will duplicate the list item and attach them below
                     for (h in p0.children) {
                         val category = h.getValue(Categories::class.java)
                         categoryList.add(category!!)
                     }
-                    listView = findViewById(R.id.listView)
-                    val adapter = CategoryAdapter(applicationContext, R.layout.categories,  categoryList)
+                    val adapter = CategoryAdapter(this@CreateCategory, R.layout.categories,  categoryList)
                     listView.adapter = adapter
                 }
             }
@@ -79,12 +78,12 @@ class CreateCategory : AppCompatActivity() {
                 Toast.makeText(baseContext, kategorie + " wurde nicht gespeichert.", Toast.LENGTH_LONG).show()
             }
 
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
+        //startActivity(Intent(this, MainActivity::class.java))
+        //finish()
     }
 
 
-    fun back_to_subject(view: View) {
+    fun back_to_home(view: View) {
 
         val intent = Intent(this, MainActivity::class.java)
         // To pass any data to next activity
@@ -95,6 +94,4 @@ class CreateCategory : AppCompatActivity() {
         // start your next activity
         startActivity(intent)
     }
-
-
 }

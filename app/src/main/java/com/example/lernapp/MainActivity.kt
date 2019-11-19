@@ -38,16 +38,12 @@ class MainActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         auth = FirebaseAuth.getInstance()
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.main_nav)
-
-
 
         //to show always the home screen
 
@@ -122,6 +118,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
     }
 
     fun setActionBarTitle(title: String) {
@@ -154,6 +151,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     fun show_settings(view: View) {
         settingsFragment = SettingsFragment()
         supportFragmentManager
@@ -179,4 +177,5 @@ class MainActivity : AppCompatActivity() {
     fun logout() {
         auth.signOut()
     }
+
 }

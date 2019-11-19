@@ -14,7 +14,7 @@ class LoadingScreen: AppCompatActivity() {
 
         Handler().postDelayed({
 
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginScreen::class.java))
 
             finish()
 

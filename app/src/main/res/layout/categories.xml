@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:id="@+id/textViewName"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        />
+
+    <!--<TextView
+        android:id="@+id/textViewUpdate"
+        android:text="Ändern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />-->
+
+    <ImageView
+        android:layout_marginTop="4dp"
+        android:id="@+id/textViewUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_edit_black_24dp"
+        android:paddingRight="15dp"/>
+
+    <ImageView
+        android:layout_marginTop="4dp"
+        android:id="@+id/textViewDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_delete_black_24dp" />
 
 </LinearLayout>
