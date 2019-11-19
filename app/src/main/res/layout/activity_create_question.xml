@@ -104,7 +104,7 @@
                     tools:ignore="MissingConstraints">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/antwort1"
+                        android:id="@+id/answer1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -123,7 +123,7 @@
                     tools:ignore="MissingConstraints">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/antwort3"
+                        android:id="@+id/answer2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -142,7 +142,7 @@
                     tools:ignore="MissingConstraints">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/antwort4"
+                        android:id="@+id/answer3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -160,7 +160,7 @@
                     tools:ignore="MissingConstraints">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/antwort2"
+                        android:id="@+id/answer4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 

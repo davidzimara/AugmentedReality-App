@@ -9,17 +9,11 @@
         android:paddingLeft="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:id="@+id/textViewName"
-        android:layout_width="300dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="@color/colorDarkGrey"
         />
-
-    <!--<TextView
-        android:id="@+id/textViewUpdate"
-        android:text="Ändern"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />-->
 
     <ImageView
         android:layout_marginTop="4dp"
@@ -36,6 +30,15 @@
         android:id="@+id/textViewDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingRight="20dp"
         app:srcCompat="@drawable/ic_delete_black_24dp" />
+
+    <ImageView
+        android:tint="@color/colorOrange"
+        android:layout_marginTop="4dp"
+        android:id="@+id/textViewQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_question_answer_black_24dp" />
 
 </LinearLayout>

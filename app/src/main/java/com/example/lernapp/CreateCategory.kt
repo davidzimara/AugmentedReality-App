@@ -55,7 +55,6 @@ class CreateCategory : AppCompatActivity() {
                 }
             }
         })
-
     }
 
     fun savesCategory() {

@@ -23,6 +23,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
     : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList){
 
     lateinit var ctx: Context
+    var extra_category = "com.example.lernapp"
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
@@ -31,10 +32,12 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         val textViewName = view.findViewById<TextView>(R.id.textViewName)
         val imageViewUpdate = view.findViewById<ImageView>(R.id.textViewUpdate)
         val imageViewDelete = view.findViewById<ImageView>(R.id.textViewDelete)
+        val textViewQuestions = view.findViewById<ImageView>(R.id.textViewQuestion)
 
         val category = categoryList[position]
 
         textViewName.text = category.name
+        ctx = this.context!!
 
         imageViewUpdate.setOnClickListener {
             showUpdateDialog(category)
@@ -45,6 +48,11 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         }
 
         textViewName.setOnClickListener {
+            Toast.makeText(mCtx, "name: " +  category, Toast.LENGTH_LONG).show()
+            createQuestions(category)
+        }
+
+        textViewQuestions.setOnClickListener {
             showQuestions(category)
         }
 
@@ -105,7 +113,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
     }
 
-    private fun showQuestions(category: Categories) {
+    private fun createQuestions(category: Categories) {
 
         val builder = AlertDialog.Builder(mCtx)
 
@@ -118,16 +126,53 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         // startActivity(Intent(, CreateQuestion::class.java))
 
         builder.setPositiveButton("Speichern") {p0, p1 ->
-            Toast.makeText(mCtx, "ändern", Toast.LENGTH_LONG).show()
 
+            val dbCategories = FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
+
+            val editTextQuestion = view.findViewById<EditText>(R.id.nameQuestion)
+            val editTextAnswer1 = view.findViewById<EditText>(R.id.answer1)
+            val editTextAnswer2 = view.findViewById<EditText>(R.id.answer2)
+            val editTextAnswer3 = view.findViewById<EditText>(R.id.answer3)
+            val editTextAnswer4 = view.findViewById<EditText>(R.id.answer4)
+
+            val id = dbCategories.push().key.toString()
+            val ques = editTextQuestion.text.toString().trim()
+            val answ1 = editTextAnswer1.text.toString().trim()
+            val answ2 = editTextAnswer2.text.toString().trim()
+            val answ3 = editTextAnswer3.text.toString().trim()
+            val answ4 = editTextAnswer4.text.toString().trim()
+
+            val question = Questions(id, ques, answ1, answ2, answ3, answ4)
+
+            dbCategories.child("questions").child(id).setValue(question)
+                .addOnCompleteListener {
+                    Toast.makeText(mCtx, " Ihre Frage wurde in die Datenbank abgelegt.", Toast.LENGTH_LONG).show()
+                }
+                .addOnCanceledListener {
+                    Toast.makeText(mCtx, "Ihre Frage konnte nicht in die Datenbank abgelegt werden.", Toast.LENGTH_LONG).show()
+                }
         }
 
         builder.setNegativeButton("Abbrechen") { p0, p1 ->
-            Toast.makeText(mCtx, "nicht", Toast.LENGTH_LONG).show()
+            Toast.makeText(mCtx, "Ihre Frage wurde verworfen.", Toast.LENGTH_LONG).show()
 
         }
 
         val alert = builder.create()
         alert.show()
+    }
+
+    private fun showQuestions (category: Categories) {
+
+        //val intent = Intent(context, QuestionOverview::class.java)
+
+        val kategorie = category.toString()
+
+        Toast.makeText(mCtx, kategorie, Toast.LENGTH_LONG).show()
+
+        //To pass any data to next activity
+        //intent.putExtra(extra_category, category)
+
+        //context.startActivity(intent)
     }
 }
