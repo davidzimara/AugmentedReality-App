@@ -13,6 +13,7 @@
         android:background="@drawable/gradient_layout"
         />
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,27 +36,117 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_below="@+id/bottomstroke"
+    android:layout_marginTop="10dp"
     android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:paddingRight="10dp"
+   >
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/studylogo"
+        android:layout_gravity="center_horizontal"
+        />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name: test123@web.de"
-        android:layout_marginTop="10dp"
-        android:textSize="16sp"/>
+        android:text="Sie sind angemeldet als: "/>
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="textView"
+        android:paddingBottom="10dp"/>
 
     <Button
-        android:id="@+id/saveCategory"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Abmelden"
         android:textColor="@color/colorWhite"
         android:background="@drawable/gradient_button"
         android:textAlignment="center"
-        android:paddingHorizontal="15dp"
+        android:onClick="doLogout"
+        android:paddingHorizontal="15dp"/>
+
+    <ImageView
         android:layout_marginTop="10dp"
-        android:onClick="doLogout"/>
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/gradient_stroke"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Möchten Sie ihre E-Mail-Adresse ändern?"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/nameEmail"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-Mail-Adresse"
+        android:background="@drawable/gradient_editbutton"
+        android:drawableStart="@drawable/ic_account_circle_24px"
+        android:drawablePadding="10dp"
+        android:inputType="textEmailAddress"
+        />
+
+    <Button
+        android:id="@+id/updateEmailButton"
+        android:paddingHorizontal="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="E-Mail ändern"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/gradient_button"
+        android:textAlignment="center"/>
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/gradient_stroke"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Möchten Sie ihr Passwort ändern?"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/namePassword"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:drawablePadding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Passwort"
+        android:background="@drawable/gradient_editbutton"
+        android:drawableStart="@drawable/ic_lock_outline_black_24dp"
+        android:inputType="textPassword"
+        />
+
+    <Button
+        android:id="@+id/updatePasswordButton"
+        android:paddingHorizontal="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Passwort ändern"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/gradient_button"
+        android:textAlignment="center"/>
+
+
 
 </LinearLayout>
 

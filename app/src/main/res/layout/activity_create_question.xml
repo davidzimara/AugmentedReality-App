@@ -41,31 +41,42 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <TextView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Gebe eine Frage ein"
-            android:paddingBottom="10dp"
-            android:textSize="16sp"/>
+            android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Frage?"
-        app:boxStrokeColor="@color/colorRot"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:outlineSpotShadowColor="@color/colorRot"
-        android:outlineAmbientShadowColor="@color/colorRot"
-        tools:ignore="MissingConstraints"
-        >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gebe eine Frage ein"
+                    android:paddingBottom="10dp"
+                    android:textSize="16sp"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/nameQuestion"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Frage?"
+                    app:boxStrokeColor="@color/colorRot"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:outlineSpotShadowColor="@color/colorRot"
+                    android:outlineAmbientShadowColor="@color/colorRot"
+                    tools:ignore="MissingConstraints"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/nameQuestion"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
 
         <ImageView
             android:layout_marginTop="10dp"
@@ -79,82 +90,86 @@
             android:layout_height="wrap_content"
             android:text="Multiple Choice: Ihre Antworten"/>
 
-        <com.google.android.material.textfield.TextInputLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Richtige Antwort"
-            app:boxStrokeColor="@color/colorGreen"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:outlineSpotShadowColor="@color/colorGreen"
-            android:outlineAmbientShadowColor="@color/colorGreen"
-            android:textColorHint="@color/colorGreen"
-            tools:ignore="MissingConstraints"
-            >
+                <com.google.android.material.textfield.TextInputLayout
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/antwort1"/>
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Richtige Antwort"
+                    android:outlineAmbientShadowColor="@color/colorGreen"
+                    android:outlineSpotShadowColor="@color/colorGreen"
+                    android:textColorHint="@color/colorGreen"
+                    app:boxStrokeColor="@color/colorGreen"
+                    tools:ignore="MissingConstraints">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/antwort1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-        <com.google.android.material.textfield.TextInputLayout
+                </com.google.android.material.textfield.TextInputLayout>
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Falsche Antwort"
-            app:boxStrokeColor="@color/colorRot"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:outlineSpotShadowColor="@color/colorRot"
-            android:outlineAmbientShadowColor="@color/colorRot"
-            tools:ignore="MissingConstraints"
-            >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/antwort2"/>
+                <com.google.android.material.textfield.TextInputLayout
 
-        </com.google.android.material.textfield.TextInputLayout>
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Falsche Antwort"
+                    android:outlineAmbientShadowColor="@color/colorRot"
+                    android:outlineSpotShadowColor="@color/colorRot"
+                    app:boxStrokeColor="@color/colorRot"
+                    tools:ignore="MissingConstraints">
 
-        <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/antwort3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Falsche Antwort"
-            app:boxStrokeColor="@color/colorRot"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:outlineSpotShadowColor="@color/colorRot"
-            android:outlineAmbientShadowColor="@color/colorRot"
-            tools:ignore="MissingConstraints"
-            >
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/antwort3"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
 
-        <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Falsche Antwort"
+                    android:outlineAmbientShadowColor="@color/colorRot"
+                    android:outlineSpotShadowColor="@color/colorRot"
+                    app:boxStrokeColor="@color/colorRot"
+                    tools:ignore="MissingConstraints">
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Falsche Antwort"
-            app:boxStrokeColor="@color/colorRot"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:outlineSpotShadowColor="@color/colorRot"
-            android:outlineAmbientShadowColor="@color/colorRot"
-            tools:ignore="MissingConstraints"
-            >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/antwort4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/antwort4"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Falsche Antwort"
+                    android:outlineAmbientShadowColor="@color/colorRot"
+                    android:outlineSpotShadowColor="@color/colorRot"
+                    app:boxStrokeColor="@color/colorRot"
+                    tools:ignore="MissingConstraints">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/antwort2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
 
     </LinearLayout>
 
