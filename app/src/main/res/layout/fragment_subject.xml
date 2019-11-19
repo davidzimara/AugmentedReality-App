@@ -53,7 +53,7 @@
         <ListView
             android:id="@+id/listViewSubject"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <!--<ScrollView
             android:layout_width="match_parent"

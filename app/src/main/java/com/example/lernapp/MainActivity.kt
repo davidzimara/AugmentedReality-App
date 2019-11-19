@@ -1,5 +1,6 @@
 package com.example.lernapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -36,6 +37,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var statisticFragment: StatisticFragment
     lateinit var settingsFragment: SettingsFragment
     lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+    lateinit var categoryList: MutableList<Categories>
+    lateinit var listView: ListView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -148,6 +152,30 @@ class MainActivity : AppCompatActivity() {
             dialog.dismiss()
         }
 
+        database = FirebaseDatabase.getInstance().getReference("Categorys")
+
+        categoryList = mutableListOf()
+        database = FirebaseDatabase.getInstance().getReference("Categorys")
+        listView = view.findViewById(R.id.listViewDialog)
+
+
+        database.addValueEventListener(object: ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0!!.exists()) {
+                    categoryList.clear() // have to be, otherwise it will duplicate the list item and attach them below
+                    for (h in p0.children) {
+                        val category = h.getValue(Categories::class.java)
+                        categoryList.add(category!!)
+                    }
+                    val adapter = CategoryAdapter(this@MainActivity, R.layout.categories,  categoryList)
+                    listView.adapter = adapter
+                }
+            }
+        })
     }
 
 

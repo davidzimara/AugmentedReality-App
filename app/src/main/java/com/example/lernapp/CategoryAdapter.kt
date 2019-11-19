@@ -37,6 +37,10 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
             deleteCategory(category)
         }
 
+        textViewName.setOnClickListener {
+            showQuestions()
+        }
+
         return view
     }
 
@@ -94,4 +98,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
     }
 
+    private fun showQuestions() {
+        //TODO: open acitivity questions
+    }
 }
