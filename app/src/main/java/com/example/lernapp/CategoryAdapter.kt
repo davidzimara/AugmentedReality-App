@@ -142,13 +142,27 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
             val question = Questions(id, ques, answ1, answ2, answ3, answ4)
 
-            dbCategories.child("questions").child(id).setValue(question)
-                .addOnCompleteListener {
-                    Toast.makeText(mCtx, " Ihre Frage wurde in die Datenbank abgelegt.", Toast.LENGTH_LONG).show()
-                }
-                .addOnCanceledListener {
-                    Toast.makeText(mCtx, "Ihre Frage konnte nicht in die Datenbank abgelegt werden.", Toast.LENGTH_LONG).show()
-                }
+            if (ques == "" || answ1 == "" || answ2 =="" || answ3 == "" || answ4 == "") {
+                Toast.makeText(this.context, "Bitte füllen Sie alle Felder aus.", Toast.LENGTH_LONG).show()
+                return@setPositiveButton
+            } else {
+
+                dbCategories.child("questions").child(id).setValue(question)
+                    .addOnCompleteListener {
+                        Toast.makeText(
+                            mCtx,
+                            " Ihre Frage wurde in die Datenbank abgelegt.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    .addOnCanceledListener {
+                        Toast.makeText(
+                            mCtx,
+                            "Ihre Frage konnte nicht in die Datenbank abgelegt werden.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+            }
         }
 
         builder.setNegativeButton("Abbrechen") { p0, p1 ->
