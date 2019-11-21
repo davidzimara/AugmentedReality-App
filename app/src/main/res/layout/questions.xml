@@ -7,49 +7,51 @@
 
     <!--Question-->
 
-    <LinearLayout
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/backgroundBar"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/gradient_layout"
+            />
+
     <TextView
         android:paddingLeft="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:id="@+id/textViewName"
+        android:id="@+id/textViewQuestion1"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/colorDarkGrey"
-        />
+        android:padding="10dp"
+        android:textSize="18dp"
+        android:textColor="@color/colorWhite"
+        android:text="TextView" />
 
     <ImageView
-        android:layout_marginTop="4dp"
+        android:layout_alignEnd="@id/backgroundBar"
+        android:layout_marginTop="10dp"
         android:id="@+id/textViewUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_edit_black_24dp"
-        android:paddingRight="20dp"
-        android:tint="@color/colorDarkGrey"/>
+        android:paddingRight="85dp"
+        android:tint="@color/colorWhite"/>
 
     <ImageView
-        android:tint="@color/colorLightRot"
-        android:layout_marginTop="4dp"
+        android:layout_alignEnd="@id/backgroundBar"
+        android:tint="@color/colorWhite"
+        android:layout_marginTop="10dp"
         android:id="@+id/textViewDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="20dp"
+        android:paddingRight="40dp"
         app:srcCompat="@drawable/ic_delete_black_24dp" />
 
-
-    </LinearLayout>
-
-    <ImageView
-        android:layout_marginTop="5dp"
-        android:id="@+id/bottomstrokeU"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/gradient_stroke" />
-
+    </RelativeLayout>
 
     <!--Answer 1-->
 
@@ -60,7 +62,7 @@
 
         <TextView
             android:paddingLeft="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18dp"
             android:id="@+id/textViewName1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -69,7 +71,6 @@
             />
 
         <ImageView
-            android:layout_marginTop="4dp"
             android:id="@+id/textViewUpdate1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,7 +89,7 @@
 
         <TextView
             android:paddingLeft="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18dp"
             android:id="@+id/textViewName2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -97,7 +98,6 @@
             />
 
         <ImageView
-            android:layout_marginTop="4dp"
             android:id="@+id/textViewUpdate2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
 
         <TextView
             android:paddingLeft="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18dp"
             android:id="@+id/textViewName3"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -125,7 +125,6 @@
             />
 
         <ImageView
-            android:layout_marginTop="4dp"
             android:id="@+id/textViewUpdate3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,7 +144,7 @@
 
         <TextView
             android:paddingLeft="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18dp"
             android:id="@+id/textViewName4"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -154,7 +153,6 @@
             />
 
         <ImageView
-            android:layout_marginTop="4dp"
             android:id="@+id/textViewUpdate4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -164,13 +162,6 @@
 
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_marginTop="5dp"
-        android:id="@+id/bottomstrokeU"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/gradient_stroke" />
 
 
 

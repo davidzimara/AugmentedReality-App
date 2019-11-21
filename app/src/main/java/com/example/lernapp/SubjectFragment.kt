@@ -1,6 +1,7 @@
 package com.example.lernapp
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_subject.*
 
 
 class SubjectFragment : Fragment() {
@@ -56,7 +58,12 @@ class SubjectFragment : Fragment() {
             }
         })
 
+        create_category.setOnClickListener {
+            openCreateCategory()
+        }
     }
 
-
+    private fun openCreateCategory() {
+        startActivity(Intent(this.context, CreateCategory::class.java))
+    }
 }

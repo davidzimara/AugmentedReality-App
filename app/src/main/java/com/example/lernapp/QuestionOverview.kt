@@ -39,17 +39,32 @@ class QuestionOverview : AppCompatActivity() {
         val category = intent.getStringExtra("extra_category_id")
         val categoryName = intent.getStringExtra("extra_category_name")
 
-        kategorieId = findViewById<TextView>(R.id.categoryId)
         kategorieName = findViewById<TextView>(R.id.categoryName)
 
-        kategorieId.setText(category)
         kategorieName.setText(categoryName)
 
-        val dbCategories = FirebaseDatabase.getInstance().getReference("Categorys").child(category).child("questions")
+        val database = FirebaseDatabase.getInstance().getReference("Categorys").child(category).child("questions")
 
         questionList = mutableListOf()
         listView = findViewById(R.id.listViewQuestion)
 
+        database.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0!!.exists()) {
+                    questionList.clear()
+                    for(h in p0.children) {
+                        val question = h.getValue(Questions::class.java)
+                        questionList.add(question!!)
+                    }
+
+                    val adapter = QuestionAdapter(applicationContext, R.layout.questions, questionList)
+                    listView.adapter = adapter
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        })
 
 
 

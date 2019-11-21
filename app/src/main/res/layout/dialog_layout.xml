@@ -8,20 +8,33 @@
     android:background="@drawable/gradient_dialog_layout"
     android:id="@+id/bottom_sheet">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
     <ImageView
         android:id="@+id/iv_close"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_margin="10dp"
-        android:layout_gravity="end"
+        android:layout_alignParentEnd="true"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
         android:onClick="close_dialog"
         />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Erstellen sie eine Karteikarte"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="4dp"
         android:textSize="21sp"
         android:text="Für welche Kategorie?"
         android:textAlignment="center"
