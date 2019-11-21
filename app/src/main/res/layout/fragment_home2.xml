@@ -7,8 +7,6 @@
     android:background="#fcfcfc"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
 
     <ImageView
         android:id="@+id/backgroundBar"

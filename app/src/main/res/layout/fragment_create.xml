@@ -9,6 +9,7 @@
 
     <!-- TODO: Hide Navbar (Fullscreen -> Show only this fragment without nav) -->
     <!-- TODO: Implement back button (in the bottom left corner) -> Back to nav "Subject"-->
+    <!--TODO: Delete this page-->
 
 
     <com.google.android.material.textfield.TextInputLayout

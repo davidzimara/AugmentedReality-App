@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Question-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:paddingLeft="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/textViewName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/colorDarkGrey"
+        />
+
+    <ImageView
+        android:layout_marginTop="4dp"
+        android:id="@+id/textViewUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_edit_black_24dp"
+        android:paddingRight="20dp"
+        android:tint="@color/colorDarkGrey"/>
+
+    <ImageView
+        android:tint="@color/colorLightRot"
+        android:layout_marginTop="4dp"
+        android:id="@+id/textViewDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        app:srcCompat="@drawable/ic_delete_black_24dp" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:id="@+id/bottomstrokeU"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/gradient_stroke" />
+
+
+    <!--Answer 1-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/textViewName1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/colorGreen"
+            />
+
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:id="@+id/textViewUpdate1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_edit_black_24dp"
+            android:paddingRight="20dp"
+            android:tint="@color/colorDarkGrey"/>
+
+    </LinearLayout>
+
+    <!--Answer 2-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/textViewName2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/colorDarkGrey"
+            />
+
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:id="@+id/textViewUpdate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_edit_black_24dp"
+            android:paddingRight="20dp"
+            android:tint="@color/colorDarkGrey"/>
+
+    </LinearLayout>
+
+    <!--Answer 3-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/textViewName3"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/colorDarkGrey"
+            />
+
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:id="@+id/textViewUpdate3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_edit_black_24dp"
+            android:paddingRight="20dp"
+            android:tint="@color/colorDarkGrey"/>
+
+
+    </LinearLayout>
+
+    <!--Answer 4-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/textViewName4"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/colorDarkGrey"
+            />
+
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:id="@+id/textViewUpdate4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_edit_black_24dp"
+            android:paddingRight="20dp"
+            android:tint="@color/colorDarkGrey"/>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:id="@+id/bottomstrokeU"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/gradient_stroke" />
+
+
+
+</LinearLayout>

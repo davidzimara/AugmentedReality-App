@@ -8,11 +8,6 @@
     android:background="@drawable/gradient_dialog_layout"
     android:id="@+id/bottom_sheet">
 
-    <!--//TODO: Creating a Custom Button - "+ Neue Kategorie" "look into OneNote Video Nr. 5-->
-    <!--//TODO: 1 Creating a Title with TextView "Für Welche kategorie"-->
-    <!--//TODO: ListView mit allen erstellen Kategorien-->
-    <!--//TODO: Exit Button "X" -> Am ende von Tutorial 2 (Minute 3:10)-->
-
     <ImageView
         android:id="@+id/iv_close"
         android:layout_width="24dp"

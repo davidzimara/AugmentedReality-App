@@ -23,7 +23,6 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
     : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList){
 
     lateinit var ctx: Context
-    var extra_category = "com.example.lernapp"
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
@@ -48,7 +47,6 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         }
 
         textViewName.setOnClickListener {
-            Toast.makeText(mCtx, "name: " +  category, Toast.LENGTH_LONG).show()
             createQuestions(category)
         }
 
@@ -164,15 +162,17 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
     private fun showQuestions (category: Categories) {
 
-        //val intent = Intent(context, QuestionOverview::class.java)
+        val intent = Intent(context, QuestionOverview::class.java)
 
-        val kategorie = category.toString()
+        val kategorieId = category.id
+        val kategorieName = category.name
 
-        Toast.makeText(mCtx, kategorie, Toast.LENGTH_LONG).show()
+        //Toast.makeText(mCtx, kategorie, Toast.LENGTH_LONG).show()
 
         //To pass any data to next activity
-        //intent.putExtra(extra_category, category)
+        intent.putExtra("extra_category_id", kategorieId)
+        intent.putExtra("extra_category_name", kategorieName)
 
-        //context.startActivity(intent)
+        context.startActivity(intent)
     }
 }

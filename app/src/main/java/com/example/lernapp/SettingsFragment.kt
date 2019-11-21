@@ -69,9 +69,6 @@ class SettingsFragment : Fragment() {
 
         val email = editText.text.toString().trim()
 
-
-        //TODO: Gültigkeitsprüfung kopieren
-
         if (email.isEmpty()) {
             editText.error ="Bitte geben sie eine E-Mail-Adresse an."
             return
@@ -89,6 +86,7 @@ class SettingsFragment : Fragment() {
                         Toast.makeText(this.context, "E-Mail wurde geändert.", Toast.LENGTH_LONG).show()
                         //to refresh the email on the fragment screen, otherwise it`ll be the old email
                         user_name.setText(email)
+                        editText.text.clear()
                     }
         }
     }
@@ -110,6 +108,10 @@ class SettingsFragment : Fragment() {
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this.context, "Passowrt wurde geändert.", Toast.LENGTH_LONG).show()
+                    editText.text.clear()
+                } else {
+                    Toast.makeText(this.context, "Verwende mindestens 6 Zeichen.",
+                        Toast.LENGTH_SHORT).show()
                 }
             }
     }

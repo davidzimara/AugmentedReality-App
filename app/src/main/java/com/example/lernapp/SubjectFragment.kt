@@ -35,7 +35,6 @@ class SubjectFragment : Fragment() {
         database = FirebaseDatabase.getInstance().getReference("Categorys")
 
         categoryList = mutableListOf()
-        database = FirebaseDatabase.getInstance().getReference("Categorys")
         listView = view.findViewById(R.id.listViewSubject)
         ctx = this.context!!
 

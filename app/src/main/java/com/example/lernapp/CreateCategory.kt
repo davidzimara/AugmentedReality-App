@@ -72,6 +72,7 @@ class CreateCategory : AppCompatActivity() {
         database.child(id).setValue(kat)
             .addOnCompleteListener {
                 Toast.makeText(baseContext, kategorie + " wurde gespeichert.", Toast.LENGTH_LONG).show()
+                nameCategory.text.clear()
             }
             .addOnCanceledListener {
                 Toast.makeText(baseContext, kategorie + " wurde nicht gespeichert.", Toast.LENGTH_LONG).show()
