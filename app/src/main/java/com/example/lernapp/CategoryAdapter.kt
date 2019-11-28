@@ -83,6 +83,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
             val category = Categories(category.id, kategorieName)
 
+
             dbCategories.child(category.id).setValue(category)
 
             Toast.makeText(mCtx, "Wurde zu " + kategorieName + " geändert.", Toast.LENGTH_LONG).show()
@@ -139,8 +140,9 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
             val answ2 = editTextAnswer2.text.toString().trim()
             val answ3 = editTextAnswer3.text.toString().trim()
             val answ4 = editTextAnswer4.text.toString().trim()
+            val categoryId = category.id
 
-            val question = Questions(id, ques, answ1, answ2, answ3, answ4)
+            val question = Questions(id, ques, answ1, answ2, answ3, answ4, categoryId)
 
             if (ques == "" || answ1 == "" || answ2 =="" || answ3 == "" || answ4 == "") {
                 Toast.makeText(this.context, "Bitte füllen Sie alle Felder aus.", Toast.LENGTH_LONG).show()
@@ -151,7 +153,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
                     .addOnCompleteListener {
                         Toast.makeText(
                             mCtx,
-                            " Ihre Frage wurde in die Datenbank abgelegt.",
+                            " Ihre Frage wurde in der Kategorie " + category.name + " abgelegt.",
                             Toast.LENGTH_LONG
                         ).show()
                     }

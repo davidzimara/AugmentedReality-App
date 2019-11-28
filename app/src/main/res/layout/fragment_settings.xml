@@ -89,6 +89,7 @@
     <EditText
         android:id="@+id/nameEmail"
         android:padding="10dp"
+        android:backgroundTint="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="E-Mail-Adresse"
@@ -106,6 +107,7 @@
         android:layout_marginTop="10dp"
         android:text="E-Mail ändern"
         android:textColor="@color/colorWhite"
+
         android:background="@drawable/gradient_button"
         android:textAlignment="center"/>
 
@@ -123,6 +125,7 @@
         />
 
     <EditText
+        android:backgroundTint="@color/colorWhite"
         android:id="@+id/namePassword"
         android:layout_marginTop="10dp"
         android:padding="10dp"

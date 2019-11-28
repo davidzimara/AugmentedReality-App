@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.update_categories.*
 
@@ -18,12 +15,14 @@ class QuestionOverview : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     lateinit var questionList: MutableList<Questions>
     lateinit var listView: ListView
+    lateinit var delete: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_overview)
 
         //TODO: EDIT BUTTON
+        //TODO: Delete Button
 
         val category = intent.getStringExtra("extra_category_id")
         val categoryName = intent.getStringExtra("extra_category_name")
@@ -45,25 +44,20 @@ class QuestionOverview : AppCompatActivity() {
                         val question = h.getValue(Questions::class.java)
                         questionList.add(question!!)
                     }
-
                     val adapter = QuestionAdapter(applicationContext, R.layout.questions, questionList)
                     listView.adapter = adapter
                 }
             }
 
             override fun onCancelled(p0: DatabaseError) {
+
             }
         })
-
-
-
-
-
-
     }
 
     fun back_to_home(view: View) {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
+
 }

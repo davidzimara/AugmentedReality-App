@@ -23,6 +23,7 @@
         android:tint="@color/colorWhite"
         android:layout_alignEnd="@id/backgroundBar"
         app:srcCompat="@drawable/ic_settings_black_24dp"
+        android:onClick="show_settings"
         />
 
     <TextView
@@ -33,7 +34,6 @@
         android:gravity="center_horizontal"
         android:textSize="16dp"
         android:textColor="@color/colorWhite"
-        android:onClick="show_settings"
         />
 
     <ImageView

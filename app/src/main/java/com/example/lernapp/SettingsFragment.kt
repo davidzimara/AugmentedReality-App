@@ -38,6 +38,9 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val ud = 12030440
+        val farbe = "rot"
+
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
             // Name, email address, and profile photo Url

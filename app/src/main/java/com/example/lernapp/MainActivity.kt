@@ -26,6 +26,8 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_create_category.view.*
+import kotlinx.android.synthetic.main.activity_question_overview.view.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     lateinit var categoryList: MutableList<Categories>
     lateinit var listView: ListView
-
+    lateinit var dialog: BottomSheetDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.main_nav)
+
 
         //to show always the home screen
 
@@ -132,7 +135,7 @@ class MainActivity : AppCompatActivity() {
     //show bottom sheet (layout) "dialog_layout"
     fun show_dialog(view: View) {
 
-        val dialog = BottomSheetDialog(this)
+        dialog = BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.dialog_layout, null)
         dialog.setContentView(view)
         dialog.show()
@@ -178,7 +181,10 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        dialog.dismiss()
+    }
 
     fun show_settings(view: View) {
         settingsFragment = SettingsFragment()

@@ -8,9 +8,11 @@
     android:background="@drawable/gradient_dialog_layout"
     android:id="@+id/bottom_sheet">
 
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
 
     <ImageView
         android:id="@+id/iv_close"

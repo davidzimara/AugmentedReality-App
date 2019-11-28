@@ -14,7 +14,6 @@ import com.google.firebase.database.*
 
 class CreateCategory : AppCompatActivity() {
 
-    lateinit var subjectFragment: SubjectFragment
     lateinit var nameCategory: EditText
     lateinit var saveCategory: Button
     private lateinit var database: DatabaseReference
@@ -84,14 +83,7 @@ class CreateCategory : AppCompatActivity() {
 
 
     fun back_to_home(view: View) {
-
         val intent = Intent(this, MainActivity::class.java)
-        // To pass any data to next activity
-        intent.putExtra("keyIdentifier", 2)
-        // set which fragment should be loaded
-        intent.putExtra("FrgToLoad", "SubjectFr")
-
-        // start your next activity
         startActivity(intent)
     }
 }
