@@ -38,6 +38,10 @@ class QuestionOverview : AppCompatActivity() {
         listView = findViewById(R.id.listViewQuestion)
 
         database.addValueEventListener(object: ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0!!.exists()) {
                     questionList.clear()
@@ -48,10 +52,6 @@ class QuestionOverview : AppCompatActivity() {
                     val adapter = QuestionAdapter(this@QuestionOverview, R.layout.questions, questionList)
                     listView.adapter = adapter
                 }
-            }
-
-            override fun onCancelled(p0: DatabaseError) {
-
             }
         })
     }

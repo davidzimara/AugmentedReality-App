@@ -72,8 +72,17 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
         val view = inflater.inflate(R.layout.update_questions, null)
 
         val editText = view.findViewById<EditText>(R.id.nameUpdateQuestion)
+        val answer1 = view.findViewById<EditText>(R.id.answer1)
+        val answer2 = view.findViewById<EditText>(R.id.answer2)
+        val answer3 = view.findViewById<EditText>(R.id.answer3)
+        val answer4 = view.findViewById<EditText>(R.id.answer4)
+
 
         editText.setText(question.question)
+        answer1.setText(question.answer1)
+        answer2.setText(question.answer2)
+        answer3.setText(question.answer3)
+        answer4.setText(question.answer4)
 
         builder.setView(view)
 
@@ -81,18 +90,23 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
             val dbQuestions = FirebaseDatabase.getInstance().getReference("Categorys").child(question.categoryId).child("questions")
 
             val questionName = editText.text.toString().trim()
+            val answer1 = answer1.text.toString().trim()
+            val answer2 = answer2.text.toString().trim()
+            val answer3 = answer3.text.toString().trim()
+            val answer4 = answer4.text.toString().trim()
 
-            if(questionName.isEmpty()) {
-                editText.error = "Bitte gebe eine Frage an."
-                editText.requestFocus()
+            if (questionName == "" || answer1 == "" || answer2 == "" ||answer3 == "" ||answer4 == "" ) {
+                Toast.makeText(this.context, "Bitte füllen Sie alle Felder aus.", Toast.LENGTH_LONG).show()
                 return@setPositiveButton
+            } else {
+
+                val question = Questions(question.id, questionName, answer1, answer2, answer3, answer4, question.categoryId)
+
+                dbQuestions.child(question.id).setValue(question)
+
+                Toast.makeText(mCtx, "Wurde zu " + questionName + " geändert.", Toast.LENGTH_LONG)
+                    .show()
             }
-
-            val question = Questions(question.id, questionName, question.answer1, question.answer2, question.answer3, question.answer4, question.categoryId)
-
-            dbQuestions.child(question.id).setValue(question)
-
-            Toast.makeText(mCtx, "Wurde zu " + questionName + " geändert.", Toast.LENGTH_LONG).show()
         }
 
         builder.setNegativeButton("Zurück") { p0, p1 ->

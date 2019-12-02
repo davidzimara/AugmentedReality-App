@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_create" />
     <fragment
         android:id="@+id/statisticFragment"
-        android:name="com.example.lernapp.StatisticFragment"
+        android:name="com.example.lernapp.ChooseCategory"
         android:label="fragment_statistic"
         tools:layout="@layout/fragment_statistic" />
     <fragment

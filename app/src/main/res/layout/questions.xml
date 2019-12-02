@@ -63,15 +63,6 @@
             android:textColor="@color/colorGreen"
             />
 
-        <ImageView
-            android:padding="10dp"
-            android:id="@+id/textViewUpdate1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingRight="20dp"
-            android:tint="@color/colorDarkGrey"
-            android:src="@drawable/ic_edit_black_24dp" />
-
     </LinearLayout>
 
     <!--Answer 2-->
@@ -91,15 +82,6 @@
             android:text="TextView"
             android:textColor="@color/colorDarkGrey"
             />
-
-        <ImageView
-            android:padding="10dp"
-            android:id="@+id/textViewUpdate2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit_black_24dp"
-            android:paddingRight="20dp"
-            android:tint="@color/colorDarkGrey"/>
 
     </LinearLayout>
 
@@ -121,14 +103,6 @@
             android:textColor="@color/colorDarkGrey"
             />
 
-        <ImageView
-            android:padding="10dp"
-            android:id="@+id/textViewUpdate3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingRight="20dp"
-            android:tint="@color/colorDarkGrey"
-            android:src="@drawable/ic_edit_black_24dp" />
 
 
     </LinearLayout>
@@ -150,15 +124,6 @@
             android:text="TextView"
             android:textColor="@color/colorDarkGrey"
             />
-
-        <ImageView
-            android:padding="10dp"
-            android:id="@+id/textViewUpdate4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit_black_24dp"
-            android:paddingRight="20dp"
-            android:tint="@color/colorDarkGrey"/>
 
 
     </LinearLayout>

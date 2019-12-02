@@ -65,7 +65,7 @@ class LoginScreen : AppCompatActivity() {
             }
     }
 
-    //Single SIGN-ON current problem: after registration the app is running onStart
+    //Single SIGN-ON
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.

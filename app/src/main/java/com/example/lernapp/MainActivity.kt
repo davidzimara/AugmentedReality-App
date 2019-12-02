@@ -1,34 +1,17 @@
 package com.example.lernapp
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
-import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_create_category.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.dialog_layout.*
 import kotlinx.android.synthetic.main.dialog_layout.view.*
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_create_category.view.*
-import kotlinx.android.synthetic.main.activity_question_overview.view.*
-import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlinx.android.synthetic.main.fragment_home2.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var homeFragment: HomeFragment
     lateinit var subjectFragment: SubjectFragment
     lateinit var createFragment: CreateFragment
-    lateinit var statisticFragment: StatisticFragment
+    lateinit var chooseCategory: ChooseCategory
     lateinit var settingsFragment: SettingsFragment
     lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
@@ -50,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.main_nav)
-
 
         //to show always the home screen
 
@@ -104,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
                 /** R.id.nav_statistics -> {
 
-                    statisticFragment = StatisticFragment()
+                    statisticFragment = ChooseCategory()
                     supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.main_frame, statisticFragment)
@@ -181,16 +163,22 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        dialog.dismiss()
-    }
+
 
     fun show_settings(view: View) {
         settingsFragment = SettingsFragment()
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.main_frame, settingsFragment)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
+    }
+
+    fun showChooseCategory(view: View) {
+        chooseCategory = ChooseCategory()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.main_frame, chooseCategory)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
     }

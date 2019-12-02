@@ -1,7 +1,7 @@
 package com.example.lernapp
 
+
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,8 +11,10 @@ import android.widget.ListView
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_subject.*
 
-
-class SubjectFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ */
+class ChooseCategory : Fragment() {
 
     private lateinit var database: DatabaseReference
     lateinit var categoryList: MutableList<Categories>
@@ -25,10 +27,10 @@ class SubjectFragment : Fragment() {
     ): View? {
 
         (activity as MainActivity)
-            .setActionBarTitle("Kategorien")
+            .setActionBarTitle("Statistiken")
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_subject, container, false)
+        return inflater.inflate(R.layout.fragment_statistic, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,7 +39,7 @@ class SubjectFragment : Fragment() {
         database = FirebaseDatabase.getInstance().getReference("Categorys")
 
         categoryList = mutableListOf()
-        listView = view.findViewById(R.id.listViewSubject)
+        listView = view.findViewById(R.id.listViewCategory)
         ctx = this.context!!
 
         database.addValueEventListener(object: ValueEventListener {
@@ -52,18 +54,13 @@ class SubjectFragment : Fragment() {
                         val category = h.getValue(Categories::class.java)
                         categoryList.add(category!!)
                     }
-                    val adapter = CategoryAdapter(ctx, R.layout.categories,  categoryList)
+                    val adapter = ChooseCategoryAdapter(ctx, R.layout.choose_category,  categoryList)
                     listView.adapter = adapter
                 }
             }
         })
-
-        create_category.setOnClickListener {
-            openCreateCategory()
-        }
     }
 
-    private fun openCreateCategory() {
-        startActivity(Intent(this.context, CreateCategory::class.java))
-    }
+
+
 }
