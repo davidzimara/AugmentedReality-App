@@ -49,6 +49,8 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
         return view
     }
 
+
+
     private fun deleteQuestion(question: Questions) {
 
         //TODO implement the path -> child(category.id)
@@ -70,6 +72,8 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
         val view = inflater.inflate(R.layout.update_questions, null)
 
         val editText = view.findViewById<EditText>(R.id.nameUpdateQuestion)
+
+        editText.setText(question.question)
 
         builder.setView(view)
 
@@ -98,6 +102,5 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
         val alert = builder.create()
         alert.show()
 
-        editText.setText(question.question)
     }
 }

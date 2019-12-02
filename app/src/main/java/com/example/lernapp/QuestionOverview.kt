@@ -1,5 +1,6 @@
 package com.example.lernapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -44,7 +45,7 @@ class QuestionOverview : AppCompatActivity() {
                         val question = h.getValue(Questions::class.java)
                         questionList.add(question!!)
                     }
-                    val adapter = QuestionAdapter(applicationContext, R.layout.questions, questionList)
+                    val adapter = QuestionAdapter(this@QuestionOverview, R.layout.questions, questionList)
                     listView.adapter = adapter
                 }
             }
