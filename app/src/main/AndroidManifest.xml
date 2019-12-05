@@ -9,11 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Game"></activity>
+        <activity
+            android:name=".Game"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".QuestionOverview"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CreateQuestion" />
+        <activity
+            android:name=".CreateQuestion" />
         <activity
             android:name=".LoadingScreen"
             android:theme="@style/AppTheme.NoActionBar">

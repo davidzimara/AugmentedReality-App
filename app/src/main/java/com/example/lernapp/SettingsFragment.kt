@@ -113,8 +113,7 @@ class SettingsFragment : Fragment() {
                     Toast.makeText(this.context, "Passowrt wurde geändert.", Toast.LENGTH_LONG).show()
                     editText.text.clear()
                 } else {
-                    Toast.makeText(this.context, "Verwende mindestens 6 Zeichen.",
-                        Toast.LENGTH_SHORT).show()
+                    editText.error="Verwenden Sie bitte mehr als 6 Zeichen."
                 }
             }
     }
