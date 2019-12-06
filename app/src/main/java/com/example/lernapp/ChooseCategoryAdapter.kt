@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_question_overview.view.*
 
 class ChooseCategoryAdapter (val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)
     : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList) {
-
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 

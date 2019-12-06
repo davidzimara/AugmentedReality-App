@@ -185,7 +185,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
         //Toast.makeText(mCtx, kategorie, Toast.LENGTH_LONG).show()
 
-        //To pass any data to next activity
+        //To pass any data to the activity Question Overview.kt
         intent.putExtra("extra_category_id", kategorieId)
         intent.putExtra("extra_category_name", kategorieName)
 

@@ -138,7 +138,6 @@ class Game : AppCompatActivity() {
                     }
                 }
             })
-
         }
     }
 
@@ -161,4 +160,6 @@ class Game : AppCompatActivity() {
             }
         })
     }
+
+
 }

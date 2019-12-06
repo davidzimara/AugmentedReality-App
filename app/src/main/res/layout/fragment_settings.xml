@@ -107,7 +107,6 @@
         android:layout_marginTop="10dp"
         android:text="E-Mail ändern"
         android:textColor="@color/colorWhite"
-
         android:background="@drawable/gradient_button"
         android:textAlignment="center"/>
 
