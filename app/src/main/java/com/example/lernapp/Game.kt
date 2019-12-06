@@ -38,7 +38,7 @@ class Game : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item!!.itemId
-        if(id == R.id.refresh)
+        if(id == R.id.answer1)
         {
             isMaxData = false
             last_node = adapter.lastItemId

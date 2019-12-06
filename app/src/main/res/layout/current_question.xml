@@ -11,10 +11,13 @@
         android:id="@+id/question"/>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:background="@color/colorGreen"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:text="Answer1"
-        android:textColor="@color/colorGreen"
+        android:textColor="@color/colorWhite"
         android:id="@+id/answer1"/>
 
 </LinearLayout>
