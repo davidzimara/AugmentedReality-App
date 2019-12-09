@@ -8,16 +8,58 @@
     tools:context=".Game">
 
     <TextView
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:id="@+id/categoryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kategorie Name"/>
-
-    <ListView
-        android:id="@+id/listViewGame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Question"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/question"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="Answer1"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/answer1"/>
+
+        <TextView
+            android:layout_marginTop="100dp"
+            android:textAlignment="center"
+            android:background="@color/colorGreen"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="Answer3"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/answer3"/>
+
+        <TextView
+            android:layout_marginLeft="100dp"
+            android:textAlignment="center"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="Answer2"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/answer2"/>
+
+        <TextView
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:background="@color/colorGreen"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="Answer4"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/answer4"/>
+
+    </RelativeLayout>
 
 
     <Button

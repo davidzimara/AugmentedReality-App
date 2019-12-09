@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_question_overview.view.*
 
 class ChooseCategoryAdapter (val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)

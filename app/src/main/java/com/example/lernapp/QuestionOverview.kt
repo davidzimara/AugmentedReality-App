@@ -43,15 +43,15 @@ class QuestionOverview : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
+                questionList.clear() // have to be, otherwise it will duplicate the list item and attach them below
                 if (p0!!.exists()) {
-                    questionList.clear()
                     for(h in p0.children) {
                         val question = h.getValue(Questions::class.java)
                         questionList.add(question!!)
                     }
-                    val adapter = QuestionAdapter(this@QuestionOverview, R.layout.questions, questionList)
-                    listView.adapter = adapter
                 }
+                val adapter = QuestionAdapter(this@QuestionOverview, R.layout.questions, questionList)
+                listView.adapter = adapter
             }
         })
     }
