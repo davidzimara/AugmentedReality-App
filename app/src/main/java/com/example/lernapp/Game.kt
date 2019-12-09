@@ -3,8 +3,10 @@ package com.example.lernapp
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
@@ -66,6 +68,8 @@ class Game : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance().getReference("Categorys").child(category)
             .child("questions")
 
+        val buttonNext = findViewById<Button>(R.id.nextQuestion)
+        val buttonEnd = findViewById<Button>(R.id.endGame)
         val questiontext = findViewById<TextView>(R.id.question)
         val answer1text = findViewById<TextView>(R.id.answer1)
         val answer2text = findViewById<TextView>(R.id.answer2)
@@ -85,16 +89,22 @@ class Game : AppCompatActivity() {
                 }
 
                 var listSize = questionList.size
+                var listSizeMax = listSize - 1
 
-                if (listSize > index) {
+                if (listSizeMax >= index) {
                     setBackgroundColor()
+
                     questiontext.setText(questionList[index].question)
                     answer1text.setText(questionList[index].answer1)
                     answer2text.setText(questionList[index].answer2)
                     answer3text.setText(questionList[index].answer3)
                     answer4text.setText(questionList[index].answer4)
-                } else {
 
+                    buttonEnd.visibility = View.INVISIBLE
+                } else if (listSize == index) {
+                    buttonNext.visibility = View.INVISIBLE
+                }
+                else {
                     //TODO: HIDE NEXT BUTTON AND SHOW END BUTTON
                     Toast.makeText(applicationContext, "Es gibt keine weiteren Fragen.", Toast.LENGTH_LONG).show()
                 }
