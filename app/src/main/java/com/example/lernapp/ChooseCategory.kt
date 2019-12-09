@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_subject.*
 
 /**
  * A simple [Fragment] subclass.
@@ -26,11 +25,7 @@ class ChooseCategory : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        (activity as MainActivity)
-            .setActionBarTitle("Statistiken")
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistic, container, false)
+        return inflater.inflate(R.layout.fragment_choose_category, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

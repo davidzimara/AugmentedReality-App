@@ -7,14 +7,24 @@
     android:orientation="vertical"
     tools:context=".Game">
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/grid_answer"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <TextView
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/categoryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kategorie Name"/>
 
-</androidx.recyclerview.widget.RecyclerView>
+    <ListView
+        android:id="@+id/listViewGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/nextQuestion"
+        android:text="Nächste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

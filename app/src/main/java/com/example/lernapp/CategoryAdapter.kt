@@ -18,6 +18,7 @@ import androidx.core.view.inputmethod.EditorInfoCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
+import kotlin.collections.HashMap
 
 class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)
     : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList){
@@ -72,7 +73,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
         builder.setPositiveButton("Ändern") {p0, p1 ->
             val dbCategories = FirebaseDatabase.getInstance().getReference("Categorys")
-
+            val key = dbCategories.child("Categorys").push().key
             val kategorieName = editText.text.toString().trim()
 
             if(kategorieName.isEmpty()) {
@@ -82,9 +83,13 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
             }
 
             val category = Categories(category.id, kategorieName)
+            val categoryValues = category.toMap()
 
+            val childUpdates = HashMap<String, Any>()
 
-            dbCategories.child(category.id).setValue(category)
+            childUpdates["/$key"] = categoryValues
+
+            dbCategories.updateChildren(childUpdates)
 
             Toast.makeText(mCtx, "Wurde zu " + kategorieName + " geändert.", Toast.LENGTH_LONG).show()
 

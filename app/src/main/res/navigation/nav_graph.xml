@@ -8,7 +8,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.lernapp.HomeFragment"
         android:label="fragment_home2"
-        tools:layout="@layout/fragment_home2" />
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/subjectFragment"
         android:name="com.example.lernapp.SubjectFragment"
@@ -23,7 +23,7 @@
         android:id="@+id/statisticFragment"
         android:name="com.example.lernapp.ChooseCategory"
         android:label="fragment_statistic"
-        tools:layout="@layout/fragment_statistic" />
+        tools:layout="@layout/fragment_choose_category" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.lernapp.SettingsFragment"
