@@ -11,12 +11,9 @@ import kotlinx.android.synthetic.main.update_categories.*
 
 class QuestionOverview : AppCompatActivity() {
 
-    lateinit var kategorieId : TextView
     lateinit var kategorieName: TextView
-    private lateinit var database: DatabaseReference
     lateinit var questionList: MutableList<Questions>
     lateinit var listView: ListView
-    lateinit var delete: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

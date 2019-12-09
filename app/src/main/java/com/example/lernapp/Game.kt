@@ -27,13 +27,11 @@ class Game : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        val category = intent.getStringExtra("extra_category_id")
+        //handed over from ChooseCategoryAdapter
+        val categoryNameFromAdapter = intent.getStringExtra("extra_category_name")
+        val kategorieName = findViewById<TextView>(R.id.categoryName)
 
-        Toast.makeText(baseContext, category, Toast.LENGTH_LONG).show()
-
-        val database = FirebaseDatabase.getInstance().getReference("Categorys").child(category)
-            .child("questions")
-
+        kategorieName.setText(categoryNameFromAdapter)
 
         val buttonNext = findViewById<Button>(R.id.nextQuestion)
         val questiontext = findViewById<TextView>(R.id.question)
@@ -62,8 +60,7 @@ class Game : AppCompatActivity() {
 
     private fun addQuestion() {
 
-        setBackgroundColor()
-
+        //handed over from the ChooseCategoryAdapter
         val category = intent.getStringExtra("extra_category_id")
 
         val database = FirebaseDatabase.getInstance().getReference("Categorys").child(category)
@@ -90,6 +87,7 @@ class Game : AppCompatActivity() {
                 var listSize = questionList.size
 
                 if (listSize > index) {
+                    setBackgroundColor()
                     questiontext.setText(questionList[index].question)
                     answer1text.setText(questionList[index].answer1)
                     answer2text.setText(questionList[index].answer2)
@@ -98,7 +96,7 @@ class Game : AppCompatActivity() {
                 } else {
 
                     //TODO: HIDE NEXT BUTTON AND SHOW END BUTTON
-                    Toast.makeText(applicationContext, "Bitte erstellen sie zuerst eine Frage.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Es gibt keine weiteren Fragen.", Toast.LENGTH_LONG).show()
                 }
 
             }

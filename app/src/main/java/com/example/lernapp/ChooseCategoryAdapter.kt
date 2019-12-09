@@ -28,13 +28,13 @@ class ChooseCategoryAdapter (val mCtx: Context, val layoutResId: Int, val catego
         categoryName.setOnClickListener(){
 
             val kategorieId = category.id
-
-            //Toast.makeText(mCtx, kategorie, Toast.LENGTH_LONG).show()
+            val kategorieName = category.name
 
             val intent = Intent(context, Game::class.java)
 
-            //To pass any data to activity Game.kt
+            //To pass the name and if of the choosed category to activity Game.kt
             intent.putExtra("extra_category_id", kategorieId)
+            intent.putExtra("extra_category_name", kategorieName)
 
             context.startActivity(intent)
         }
