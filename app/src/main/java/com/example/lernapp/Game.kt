@@ -2,10 +2,12 @@ package com.example.lernapp
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ListView
@@ -24,7 +26,6 @@ class Game : AppCompatActivity() {
     lateinit var questionList: MutableList<Questions>
     var index: Int = 0
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -36,6 +37,7 @@ class Game : AppCompatActivity() {
         kategorieName.setText(categoryNameFromAdapter)
 
         val buttonNext = findViewById<Button>(R.id.nextQuestion)
+        val buttonEnd = findViewById<Button>(R.id.endGame)
         val questiontext = findViewById<TextView>(R.id.question)
         val answer1text = findViewById<TextView>(R.id.answer1)
         val answer2text = findViewById<TextView>(R.id.answer2)
@@ -52,6 +54,10 @@ class Game : AppCompatActivity() {
         buttonNext.setOnClickListener(){
             index = index + 1
             addQuestion()
+        }
+
+        buttonEnd.setOnClickListener(){
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
         questionList = mutableListOf()
@@ -91,6 +97,7 @@ class Game : AppCompatActivity() {
                 var listSize = questionList.size
                 var listSizeMax = listSize - 1
 
+
                 if (listSizeMax >= index) {
                     setBackgroundColor()
 
@@ -101,10 +108,11 @@ class Game : AppCompatActivity() {
                     answer4text.setText(questionList[index].answer4)
 
                     buttonEnd.visibility = View.INVISIBLE
-                } else if (listSize == index) {
-                    buttonNext.visibility = View.INVISIBLE
+                    buttonNext.visibility = View.VISIBLE
                 }
                 else {
+                    buttonNext.visibility = View.INVISIBLE
+                    buttonEnd.visibility = View.VISIBLE
                     //TODO: HIDE NEXT BUTTON AND SHOW END BUTTON
                     Toast.makeText(applicationContext, "Es gibt keine weiteren Fragen.", Toast.LENGTH_LONG).show()
                 }
