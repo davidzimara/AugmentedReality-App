@@ -78,10 +78,6 @@ class LoginScreen : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         } else {
-            Toast.makeText(
-                baseContext, "Anmeldung fehlgeschlagen.",
-                Toast.LENGTH_SHORT)
-                .show()
         }
 
     }

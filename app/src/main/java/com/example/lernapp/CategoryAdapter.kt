@@ -83,15 +83,16 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
             }
 
             val category = Categories(category.id, kategorieName)
-            //val categoryValues = category.toMap()
 
-            //val childUpdates = HashMap<String, Any>()
+            val categoryValues = category.toMap()
 
-            //childUpdates["/$key"] = categoryValues
+            val childUpdates = HashMap<String, Any>()
+
+            childUpdates["/${category.id}"] = categoryValues
 
             //dbCategories.updateChildren(childUpdates)
 
-            dbCategories.child(category.id).setValue(category)
+            dbCategories.updateChildren(childUpdates)
 
             Toast.makeText(mCtx, "Wurde zu " + kategorieName + " geändert.", Toast.LENGTH_LONG).show()
 

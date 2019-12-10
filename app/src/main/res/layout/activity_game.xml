@@ -37,6 +37,17 @@
         android:textColor="@color/colorWhite"
         />
 
+        <TextView
+            android:visibility="invisible"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="10dp"
+            android:layout_alignEnd="@id/backgroundBar"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="0"
+            android:id="@+id/questionIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -45,19 +56,35 @@
 
     </RelativeLayout>
 
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/gradient_button"/>
 
     <TextView
-        android:layout_marginTop="10dp"
-        android:background="@color/colorOrange"
-        android:paddingRight="10dp"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorOrange"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ops, es scheint wohl, dass Sie noch keine Frage erstelllt haben."
         style="@style/TextAppearance.AppCompat.Large"
         android:id="@+id/question"/>
 
-    <RelativeLayout
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/gradient_button"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginTop="10dp"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
@@ -65,44 +92,52 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:gravity="center|center"
+            android:textSize="18sp"
+            android:id="@+id/answer1"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:text="Answer1"
             android:textColor="@color/colorWhite"
-            android:id="@+id/answer1"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/answer4" />
 
         <TextView
-            android:layout_marginTop="100dp"
-            android:textAlignment="center"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:gravity="center|center"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:id="@+id/answer3"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:text="Answer3"
             android:textColor="@color/colorWhite"
-            android:id="@+id/answer3"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer1" />
 
         <TextView
-            android:layout_marginLeft="100dp"
-            android:textAlignment="center"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:gravity="center|center"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:id="@+id/answer2"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:text="Answer2"
             android:textColor="@color/colorWhite"
-            android:id="@+id/answer2"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer4" />
 
         <TextView
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:textSize="18sp"
+            android:id="@+id/answer4"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:text="Answer4"
+            android:gravity="center|center"
             android:textColor="@color/colorWhite"
-            android:id="@+id/answer4"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:paddingRight="10dp"
@@ -112,34 +147,43 @@
         android:orientation="horizontal">
 
         <Button
-            android:visibility="invisible"
             android:id="@+id/nextQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nächste Frage"
-            android:textColor="@color/colorWhite"
+            android:layout_marginTop="20dp"
             android:background="@drawable/gradient_button"
-            android:textAlignment="center"
             android:paddingHorizontal="15dp"
-            android:layout_marginTop="10dp"
-            />
+            android:text="Nächste Frage"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:visibility="invisible" />
 
         <Button
-            android:visibility="invisible"
-            android:layout_marginLeft="100dp"
+            android:id="@+id/lastQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/gradient_button"
+            android:paddingHorizontal="15dp"
+            android:text="Letzte Frage"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:visibility="invisible" />
+
+        <Button
             android:id="@+id/endGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Beenden"
-            android:textColor="@color/colorWhite"
+            android:layout_marginTop="20dp"
             android:background="@drawable/gradient_button"
-            android:textAlignment="center"
+            android:layout_marginLeft="10dp"
             android:paddingHorizontal="15dp"
-            android:layout_marginTop="10dp"
-            tools:ignore="NotSibling" />
+            android:text="Beenden"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:visibility="invisible" />
 
     </LinearLayout>
-
-
 
 </LinearLayout>
