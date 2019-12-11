@@ -92,6 +92,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:visibility="invisible"
             android:gravity="center|center"
             android:textSize="18sp"
             android:id="@+id/answer1"
@@ -103,6 +104,7 @@
             app:layout_constraintTop_toTopOf="@+id/answer4" />
 
         <TextView
+            android:visibility="invisible"
             android:gravity="center|center"
             android:layout_marginTop="20dp"
             android:textSize="18sp"
@@ -115,6 +117,7 @@
             app:layout_constraintTop_toBottomOf="@+id/answer1" />
 
         <TextView
+            android:visibility="invisible"
             android:gravity="center|center"
             android:layout_marginTop="20dp"
             android:textSize="18sp"
@@ -127,6 +130,8 @@
             app:layout_constraintTop_toBottomOf="@+id/answer4" />
 
         <TextView
+            android:paddingLeft="10dp"
+            android:visibility="invisible"
             android:textSize="18sp"
             android:id="@+id/answer4"
             android:layout_width="160dp"
@@ -138,6 +143,16 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/yourAnswer"
+        android:visibility="invisible"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ihre Antwort:"/>
 
     <LinearLayout
         android:paddingRight="10dp"
@@ -178,7 +193,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/gradient_button"
             android:layout_marginLeft="10dp"
-            android:paddingHorizontal="15dp"
+            android:paddingHorizontal="10dp"
             android:text="Beenden"
             android:textAlignment="center"
             android:textColor="@color/colorWhite"

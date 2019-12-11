@@ -110,13 +110,36 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
     private fun deleteCategory(category: Categories) {
 
-        val dbCategories = FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
+        val builder = AlertDialog.Builder(mCtx)
+
+        val inflater = LayoutInflater.from(mCtx)
+
+        val view = inflater.inflate(R.layout.delete_categories, null)
 
         val kategorieName = category.name.toString().trim()
 
-        dbCategories.removeValue()
+        builder.setView(view)
 
-        Toast.makeText(mCtx, kategorieName + " wurde gelöscht.", Toast.LENGTH_LONG).show()
+        val deleteText = view.findViewById<TextView>(R.id.deleteCategory)
+
+        deleteText.text = "Möchten Sie die Kategorie " + kategorieName + " wirklick Löschen?"
+
+        builder.setPositiveButton("Löschen"){p0, p1 ->
+
+            val dbCategories = FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
+
+            dbCategories.removeValue()
+
+            Toast.makeText(mCtx, kategorieName + " wurde gelöscht.", Toast.LENGTH_LONG).show()
+        }
+
+        builder.setNegativeButton("Zurück"){p0 , p1->
+
+            Toast.makeText(mCtx, "Löschen wurde abgebrochen", Toast.LENGTH_LONG).show()
+        }
+
+        val alert = builder.create()
+        alert.show()
 
     }
 

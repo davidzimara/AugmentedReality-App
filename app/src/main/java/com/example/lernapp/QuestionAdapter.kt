@@ -53,14 +53,36 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
 
     private fun deleteQuestion(question: Questions) {
 
-        //TODO implement the path -> child(category.id)
-        val dbQuestions = FirebaseDatabase.getInstance().getReference("Categorys").child(question.categoryId).child("questions").child(question.id)
+        val builder = AlertDialog.Builder(mCtx)
+
+        val inflater = LayoutInflater.from(mCtx)
+
+        val view = inflater.inflate(R.layout.delete_categories, null)
 
         val questionName = question.question.toString().trim()
 
-        dbQuestions.removeValue()
+        builder.setView(view)
 
-        Toast.makeText(mCtx, "Die Frage: " + questionName + " wurde gelöscht.", Toast.LENGTH_LONG).show()
+        val deleteText = view.findViewById<TextView>(R.id.deleteCategory)
+
+        deleteText.text = "Möchten Sie die Frage: " + questionName + " wirklick Löschen?"
+
+        builder.setPositiveButton("Löschen"){p0, p1 ->
+
+            val dbQuestions = FirebaseDatabase.getInstance().getReference("Categorys").child(question.categoryId).child("questions").child(question.id)
+
+            dbQuestions.removeValue()
+
+            Toast.makeText(mCtx, "Die Frage: " + questionName + " wurde gelöscht.", Toast.LENGTH_LONG).show()
+        }
+
+        builder.setNegativeButton("Zurück"){p0, p1 ->
+            Toast.makeText(mCtx, "Löschen wurde abgebrochen", Toast.LENGTH_LONG).show()
+        }
+
+        val alert = builder.create()
+        alert.show()
+
     }
 
     private fun showUpdateQuestion(question: Questions) {

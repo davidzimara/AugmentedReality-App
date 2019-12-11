@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_margin="10dp"
         android:paddingLeft="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:id="@+id/textViewName"
@@ -16,26 +17,26 @@
         />
 
     <ImageView
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/textViewUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_edit_black_24dp"
-        android:paddingRight="20dp"
+        android:layout_marginRight="20dp"
         android:tint="@color/colorDarkGrey"/>
 
     <ImageView
+        android:layout_marginTop="10dp"
         android:tint="@color/colorLightRot"
-        android:layout_marginTop="4dp"
         android:id="@+id/textViewDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="20dp"
+        android:layout_marginRight="20dp"
         app:srcCompat="@drawable/ic_delete_black_24dp" />
 
     <ImageView
+        android:layout_marginTop="10dp"
         android:tint="@color/colorOrange"
-        android:layout_marginTop="4dp"
         android:id="@+id/textViewQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

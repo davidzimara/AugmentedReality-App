@@ -90,6 +90,8 @@ class SettingsFragment : Fragment() {
                         //to refresh the email on the fragment screen, otherwise it`ll be the old email
                         user_name.setText(email)
                         editText.text.clear()
+                    } else {
+                        editText.error="Änderung der Email fehlgeschlagen."
                     }
         }
     }

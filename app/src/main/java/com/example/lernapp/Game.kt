@@ -43,6 +43,7 @@ class Game : AppCompatActivity() {
         val answer2text = findViewById<TextView>(R.id.answer2)
         val answer3text = findViewById<TextView>(R.id.answer3)
         val answer4text = findViewById<TextView>(R.id.answer4)
+        val yourAnswer = findViewById<TextView>(R.id.yourAnswer)
 
         back_to_main.setOnClickListener(){
             startActivity(Intent(this, MainActivity::class.java))
@@ -56,6 +57,7 @@ class Game : AppCompatActivity() {
             }
 
             setAnswerColor()
+            showAnswer(answer)
         }
 
         answer2text.setOnClickListener() {
@@ -65,6 +67,8 @@ class Game : AppCompatActivity() {
             if (answer == questionList[index].answer1){
                 correctAnswer += 1
             }
+
+            showAnswer(answer)
         }
 
         answer3text.setOnClickListener() {
@@ -75,6 +79,8 @@ class Game : AppCompatActivity() {
             }
 
             setAnswerColor()
+
+            showAnswer(answer)
         }
 
         answer4text.setOnClickListener() {
@@ -85,18 +91,25 @@ class Game : AppCompatActivity() {
             }
 
             setAnswerColor()
+
+            showAnswer(answer)
         }
 
         buttonNext.setOnClickListener(){
             index += 1
             addQuestion()
             showQuestionIndex()
+
+            buttonNext.visibility = View.INVISIBLE
+            yourAnswer.visibility = View.INVISIBLE
         }
 
         buttonBack.setOnClickListener(){
             index -= 1
             addQuestion()
             showQuestionIndex()
+
+            yourAnswer.visibility = View.INVISIBLE
         }
 
         buttonEnd.setOnClickListener(){
@@ -114,6 +127,17 @@ class Game : AppCompatActivity() {
         questionList = mutableListOf()
 
         addQuestion()
+
+        setBackgroundColor()
+    }
+
+    private fun showAnswer(answer: String) {
+        val yourAnswer = findViewById<TextView>(R.id.yourAnswer)
+
+        yourAnswer.visibility = View.VISIBLE
+
+        yourAnswer.text = "Ihre Antwort: " + answer
+
     }
 
     private fun showQuestionIndex() {
@@ -165,6 +189,17 @@ class Game : AppCompatActivity() {
             answer2text.setBackgroundColor(Color.parseColor("#cb2426"))
             answer3text.setBackgroundColor(Color.parseColor("#cb2426"))
             answer4text.setBackgroundColor(Color.parseColor("#4caf50"))
+        }
+
+        val buttonNext = findViewById<Button>(R.id.nextQuestion)
+
+        var listSize = questionList.size
+        var listSizeMax = listSize - 1
+
+        if(listSizeMax == index) {
+            buttonNext.visibility = View.INVISIBLE
+        } else {
+            buttonNext.visibility = View.VISIBLE
         }
     }
 
@@ -225,7 +260,7 @@ class Game : AppCompatActivity() {
                     answer4text.setText(answerList[3].answer)
 
                     buttonEnd.visibility = View.INVISIBLE
-                    buttonNext.visibility = View.VISIBLE
+
                     buttonBack.visibility = View.INVISIBLE
 
                     if (index > 0) {
@@ -253,6 +288,14 @@ class Game : AppCompatActivity() {
         val answer2text = findViewById<TextView>(R.id.answer2)
         val answer3text = findViewById<TextView>(R.id.answer3)
         val answer4text = findViewById<TextView>(R.id.answer4)
+
+        //to hide the answer textviews when inside the questionList are no elements otherwise it`ll crash
+        if (questionList.size != 0) {
+            answer1text.visibility = View.VISIBLE
+            answer2text.visibility = View.VISIBLE
+            answer3text.visibility = View.VISIBLE
+            answer4text.visibility = View.VISIBLE
+        }
 
         answer1text.setBackgroundColor(Color.parseColor("#ff8a50"))
         answer2text.setBackgroundColor(Color.parseColor("#ff8a50"))
