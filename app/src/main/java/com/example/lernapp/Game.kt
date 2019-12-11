@@ -194,6 +194,13 @@ class Game : AppCompatActivity() {
             answer4text.setBackgroundColor(Color.parseColor("#4caf50"))
         }
 
+        //for the statistic in the home fragment that you can`t click multiple times on a TextView to increment var correct Answer
+        //the selected Answer from the function showAnswer() can`t be changed by click on the TextView
+        answer1text.isClickable = false
+        answer2text.isClickable = false
+        answer3text.isClickable = false
+        answer4text.isClickable = false
+
         val buttonNext = findViewById<Button>(R.id.nextQuestion)
 
         var listSize = questionList.size
@@ -304,5 +311,12 @@ class Game : AppCompatActivity() {
         answer2text.setBackgroundColor(Color.parseColor("#ff8a50"))
         answer3text.setBackgroundColor(Color.parseColor("#ff8a50"))
         answer4text.setBackgroundColor(Color.parseColor("#ff8a50"))
+
+        //for the statistic in the home fragment that you can`t click multiple times on a TextView to increment var correctAnswer
+        //the selected Answer from showAnswer() can`t be changed
+        answer1text.isClickable = true
+        answer2text.isClickable = true
+        answer3text.isClickable = true
+        answer4text.isClickable = true
         }
     }
