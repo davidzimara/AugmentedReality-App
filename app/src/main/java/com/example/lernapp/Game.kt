@@ -4,29 +4,25 @@ package com.example.lernapp
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
-import com.example.lernapp.R.color
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.collection.LLRBNode
 import kotlinx.android.synthetic.main.activity_game.*
-import java.lang.StrictMath.random
-import kotlin.math.nextTowards
-import kotlin.math.nextUp
-import kotlin.random.Random
+import java.util.*
 
 class Game : AppCompatActivity() {
 
     lateinit var questionList: MutableList<Questions>
+    lateinit var answerList: ArrayList<Answers>
     var index: Int = 0
     var correctAnswer: Int = 0
+    var answer1: String = ""
+
 
     //TODO: https://www.youtube.com/watch?v=KRDJXKt4bTk
 
@@ -53,19 +49,31 @@ class Game : AppCompatActivity() {
         }
 
         answer1text.setOnClickListener() {
-            setAnswerColor()
+
+            /*val iscorrect1 = answerList[0].iscorrect
+            val iscorrect2 = answerList[1].iscorrect
+            val iscorrect3 = answerList[2].iscorrect
+            val iscorrect4 = answerList[3].iscorrect
+
+            setAnswerColor(iscorrect1, iscorrect2, iscorrect3, iscorrect4)*/
+
             correctAnswer += 1
         }
 
         answer2text.setOnClickListener() {
+            val iscorrect = answerList[1].iscorrect
             setAnswerColor()
         }
 
         answer3text.setOnClickListener() {
+            val iscorrect = answerList[2].iscorrect
+            val answer: String = answer3text.text.toString()
             setAnswerColor()
         }
 
         answer4text.setOnClickListener() {
+            val iscorrect = answerList[3].iscorrect
+            val answer: String = answer4text.text.toString()
             setAnswerColor()
         }
 
@@ -116,14 +124,38 @@ class Game : AppCompatActivity() {
     }
 
     private fun setAnswerColor() {
+
         val answer1text = findViewById<TextView>(R.id.answer1)
         val answer2text = findViewById<TextView>(R.id.answer2)
         val answer3text = findViewById<TextView>(R.id.answer3)
         val answer4text = findViewById<TextView>(R.id.answer4)
-        answer1text.setBackgroundColor(Color.parseColor("#4caf50"))
-        answer2text.setBackgroundColor(Color.parseColor("#cb2426"))
-        answer3text.setBackgroundColor(Color.parseColor("#cb2426"))
-        answer4text.setBackgroundColor(Color.parseColor("#cb2426"))
+
+        answer1 = answer1text.text.toString()
+        val answer2 = answer2text.text.toString()
+        val answer3 = answer3text.text.toString()
+        val answer4 = answer4text.text.toString()
+
+        if (answer1 == questionList[index].answer1) {
+            answer1text.setBackgroundColor(Color.parseColor("#4caf50"))
+            answer2text.setBackgroundColor(Color.parseColor("#cb2426"))
+            answer3text.setBackgroundColor(Color.parseColor("#cb2426"))
+            answer4text.setBackgroundColor(Color.parseColor("#cb2426"))
+        } else if (answer2 == questionList[index].answer1) {
+            answer1text.setBackgroundColor(Color.parseColor("#cb2426"))
+            answer2text.setBackgroundColor(Color.parseColor("#4caf50"))
+            answer3text.setBackgroundColor(Color.parseColor("#cb2426"))
+            answer4text.setBackgroundColor(Color.parseColor("#cb2426"))
+        } else if (answer3 == questionList[index].answer1) {
+            answer1text.setBackgroundColor(Color.parseColor("#cb2426"))
+            answer2text.setBackgroundColor(Color.parseColor("#cb2426"))
+            answer3text.setBackgroundColor(Color.parseColor("#4caf50"))
+            answer4text.setBackgroundColor(Color.parseColor("#cb2426"))
+        } else if (answer4 == questionList[index].answer1) {
+            answer1text.setBackgroundColor(Color.parseColor("#cb2426"))
+            answer2text.setBackgroundColor(Color.parseColor("#cb2426"))
+            answer3text.setBackgroundColor(Color.parseColor("#cb2426"))
+            answer4text.setBackgroundColor(Color.parseColor("#4caf50"))
+        }
     }
 
     private fun addQuestion() {
@@ -165,23 +197,22 @@ class Game : AppCompatActivity() {
                 if (listSizeMax >= index) {
                     setBackgroundColor()
 
-                    /*val question = questionList[index]
-                    val answerList = arrayListOf(question.answer1, question.answer2, question.answer3, question.answer4)
+                    val question = questionList[index]
 
-                    val random = java.util.Random()
+                    val answer1 = Answers(question.answer1, true)
+                    val answer2 = Answers(question.answer2, false)
+                    val answer3 = Answers(question.answer3, false)
+                    val answer4 = Answers(question.answer4, false)
 
-                    val randomAnswers = random.nextInt(answerList.count())
-                    val incrementRandomAnswer = randomAnswers+1
+                    answerList = arrayListOf(answer1, answer2, answer3, answer4)
 
-                    val answer = "answer".plus(incrementRandomAnswer)
-
-                    Toast.makeText(applicationContext, answer, Toast.LENGTH_LONG).show()*/
+                    answerList.shuffle()
 
                     questiontext.setText(questionList[index].question)
-                    answer1text.setText(questionList[index].answer1)
-                    answer2text.setText(questionList[index].answer2)
-                    answer3text.setText(questionList[index].answer3)
-                    answer4text.setText(questionList[index].answer4)
+                    answer1text.setText(answerList[0].answer)
+                    answer2text.setText(answerList[1].answer)
+                    answer3text.setText(answerList[2].answer)
+                    answer4text.setText(answerList[3].answer)
 
                     buttonEnd.visibility = View.INVISIBLE
                     buttonNext.visibility = View.VISIBLE
@@ -217,6 +248,5 @@ class Game : AppCompatActivity() {
         answer2text.setBackgroundColor(Color.parseColor("#ff8a50"))
         answer3text.setBackgroundColor(Color.parseColor("#ff8a50"))
         answer4text.setBackgroundColor(Color.parseColor("#ff8a50"))
-
+        }
     }
-}

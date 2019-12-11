@@ -30,6 +30,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //TODO: aus der Main den code für home rauskopieren
         //from the Game.kt activity (last run)
         val correctAnswer = activity!!.intent.getStringExtra("extra_correct_answer")
 
