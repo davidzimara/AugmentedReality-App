@@ -49,31 +49,41 @@ class Game : AppCompatActivity() {
         }
 
         answer1text.setOnClickListener() {
+            val answer: String = answer1text.text.toString()
 
-            /*val iscorrect1 = answerList[0].iscorrect
-            val iscorrect2 = answerList[1].iscorrect
-            val iscorrect3 = answerList[2].iscorrect
-            val iscorrect4 = answerList[3].iscorrect
+            if (answer == questionList[index].answer1){
+                correctAnswer += 1
+            }
 
-            setAnswerColor(iscorrect1, iscorrect2, iscorrect3, iscorrect4)*/
-
-            correctAnswer += 1
-        }
-
-        answer2text.setOnClickListener() {
-            val iscorrect = answerList[1].iscorrect
             setAnswerColor()
         }
 
+        answer2text.setOnClickListener() {
+            setAnswerColor()
+            val answer: String = answer2text.text.toString()
+
+            if (answer == questionList[index].answer1){
+                correctAnswer += 1
+            }
+        }
+
         answer3text.setOnClickListener() {
-            val iscorrect = answerList[2].iscorrect
             val answer: String = answer3text.text.toString()
+
+            if (answer == questionList[index].answer1){
+                correctAnswer += 1
+            }
+
             setAnswerColor()
         }
 
         answer4text.setOnClickListener() {
-            val iscorrect = answerList[3].iscorrect
             val answer: String = answer4text.text.toString()
+
+            if (answer == questionList[index].answer1){
+                correctAnswer += 1
+            }
+
             setAnswerColor()
         }
 
