@@ -32,6 +32,9 @@ class Game : AppCompatActivity() {
 
         //handed over from ChooseCategoryAdapter
         val categoryNameFromAdapter = intent.getStringExtra("extra_category_name")
+        val amountFromAdapter = intent.getStringExtra("extra_list_size")
+
+        //Toast.makeText(applicationContext, amountFromAdapter, Toast.LENGTH_LONG).show()
         val kategorieName = findViewById<TextView>(R.id.categoryName)
 
         kategorieName.setText(categoryNameFromAdapter)

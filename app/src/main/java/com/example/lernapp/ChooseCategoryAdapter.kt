@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_question_overview.view.*
+import org.w3c.dom.Text
 
 class ChooseCategoryAdapter (val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)
     : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList) {
