@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fcfcfc"
     tools:context=".HomeFragment">
 
@@ -12,47 +12,44 @@
         android:id="@+id/backgroundBar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:background="@drawable/gradient_layout"
-        />
+        android:background="@drawable/gradient_layout" />
 
     <ImageView
         android:id="@+id/iv_back_to_subject"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_margin="10dp"
-        android:tint="@color/colorWhite"
         android:layout_alignEnd="@id/backgroundBar"
-        app:srcCompat="@drawable/ic_settings_black_24dp"
+        android:layout_margin="10dp"
         android:onClick="show_settings"
-        />
+        android:tint="@color/colorWhite"
+        app:srcCompat="@drawable/ic_settings_black_24dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Home"
-        android:padding="12dp"
         android:gravity="center_horizontal"
-        android:textSize="16dp"
+        android:padding="12dp"
+        android:text="Home"
         android:textColor="@color/colorWhite"
-        />
+        android:textSize="16dp" />
 
     <ImageView
         android:id="@+id/bottomstroke"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@drawable/gradient_stroke"
-        android:layout_below="@+id/backgroundBar"/>
+        android:layout_below="@+id/backgroundBar"
+        android:background="@drawable/gradient_stroke" />
 
     <!--Content-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="0dp"
         android:layout_below="@id/bottomstroke"
+        android:layout_marginStart="0dp"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:gravity="center">
+        android:paddingRight="10dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="160dp"
@@ -62,42 +59,41 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/playButton"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/oval_icons"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_play_arrow_black_24dp"
-                    android:tint="@color/colorWhite"
+                    android:background="@drawable/oval_icons"
                     android:onClick="showChooseCategory"
-                    />
+                    android:tint="@color/colorWhite"
+                    app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lernmodus"
-                    android:padding="10dp"
                     android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:text="Lernmodus"
                     android:textAlignment="center"
-                    android:textColor="@color/colorDarkGrey"/>
+                    android:textColor="@color/colorDarkGrey" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@drawable/gradient_stroke"
-                    android:layout_marginHorizontal="10dp"/>
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/gradient_stroke" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:text="Wähle eine Kategorie und lege los."
                     android:textAlignment="center"
-                    android:padding="5dp"
-                    android:textColor="@color/colorMiddleGrey"/>
+                    android:textColor="@color/colorMiddleGrey" />
 
 
             </LinearLayout>
@@ -111,41 +107,40 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/oval_icons"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_trending_up_black_24dp"
+                    android:background="@drawable/oval_icons"
                     android:tint="@color/colorWhite"
-                    />
+                    app:srcCompat="@drawable/ic_trending_up_black_24dp" />
 
                 <TextView
-                    android:text="Letzter Versuch: "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
                     android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:text="Letzter Versuch: "
                     android:textAlignment="center"
-                    android:textColor="@color/colorDarkGrey"/>
+                    android:textColor="@color/colorDarkGrey" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@drawable/gradient_stroke"
-                    android:layout_marginHorizontal="10dp"/>
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/gradient_stroke" />
 
                 <TextView
                     android:id="@+id/statistic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:text="Starten Sie zuerst den Lernmodus."
                     android:textAlignment="center"
-                    android:padding="5dp"
-                    android:textColor="@color/colorMiddleGrey"/>
+                    android:textColor="@color/colorMiddleGrey" />
 
 
             </LinearLayout>
@@ -153,7 +148,6 @@
 
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

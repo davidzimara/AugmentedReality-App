@@ -3,16 +3,13 @@ package com.example.lernapp
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import androidx.fragment.app.Fragment
 import com.google.firebase.database.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class ChooseCategory : Fragment() {
 
     private lateinit var database: DatabaseReference
@@ -37,7 +34,7 @@ class ChooseCategory : Fragment() {
         listView = view.findViewById(R.id.listViewCategory)
         ctx = this.context!!
 
-        database.addValueEventListener(object: ValueEventListener {
+        database.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
@@ -49,7 +46,7 @@ class ChooseCategory : Fragment() {
                         val category = h.getValue(Categories::class.java)
                         categoryList.add(category!!)
                     }
-                    val adapter = ChooseCategoryAdapter(ctx, R.layout.choose_category,  categoryList)
+                    val adapter = ChooseCategoryAdapter(ctx, R.layout.choose_category, categoryList)
                     listView.adapter = adapter
                 }
             }

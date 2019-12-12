@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 
-class GameAdapter (val mCtx: Context, val layoutResId: Int, val questionList: List<Questions>)
-    : ArrayAdapter<Questions>(mCtx, layoutResId, questionList) {
+class GameAdapter(val mCtx: Context, val layoutResId: Int, val questionList: List<Questions>) :
+    ArrayAdapter<Questions>(mCtx, layoutResId, questionList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)

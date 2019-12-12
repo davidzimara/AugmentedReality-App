@@ -6,7 +6,9 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 
 class LoadingScreen: AppCompatActivity() {
-    private val SPLASH_TIME_OUT: Long = 2000 // 2 seconds timeout
+
+    // 2 seconds timeout
+    private val SPLASH_TIME_OUT: Long = 2000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

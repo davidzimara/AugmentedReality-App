@@ -1,7 +1,7 @@
 package com.example.lernapp
 
-data class Categories (val id: String, val name: String) {
-    constructor(): this("","") {
+data class Categories(val id: String, val name: String) {
+    constructor() : this("", "") {
 
     }
 

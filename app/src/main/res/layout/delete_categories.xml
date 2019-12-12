@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".CreateCategory"
-    >
+    android:orientation="vertical"
+    tools:context=".CreateCategory">
 
 
     <ImageView
         android:id="@+id/backgroundBar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:background="@drawable/gradient_layout"
-        />
+        android:background="@drawable/gradient_layout" />
 
     <!--<ImageView
         android:id="@+id/iv_back_to_subject"
@@ -28,18 +25,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kategorie löschen"
-        android:padding="12dp"
         android:gravity="center_horizontal"
-        android:textSize="16dp"
+        android:padding="12dp"
+        android:text="Kategorie löschen"
         android:textColor="@color/colorWhite"
-        />
+        android:textSize="16dp" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@drawable/gradient_stroke"
-        android:layout_below="@+id/backgroundBar"/>
+        android:layout_below="@+id/backgroundBar"
+        android:background="@drawable/gradient_stroke" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,9 +52,9 @@
             android:id="@+id/deleteCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Möchten Sie die Kategorie wirklich löschen?"
             android:paddingBottom="10dp"
-            android:textSize="16sp"/>
+            android:text="Möchten Sie die Kategorie wirklich löschen?"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.google.firebase.database.FirebaseDatabase
-import kotlin.collections.HashMap
 
-class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)
-    : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList){
+class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>) :
+    ArrayAdapter<Categories>(mCtx, layoutResId, categoryList) {
 
     lateinit var ctx: Context
 
@@ -61,12 +60,12 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
         builder.setView(view)
 
-        builder.setPositiveButton("Ändern") {p0, p1 ->
+        builder.setPositiveButton("Ändern") { p0, p1 ->
             val dbCategories = FirebaseDatabase.getInstance().getReference("Categorys")
 
             val kategorieName = editText.text.toString().trim()
 
-            if(kategorieName.isEmpty()) {
+            if (kategorieName.isEmpty()) {
                 editText.error = "Bitte gebe einen Namen an."
                 editText.requestFocus()
                 return@setPositiveButton
@@ -84,7 +83,8 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
             dbCategories.updateChildren(childUpdates)
 
-            Toast.makeText(mCtx, "Wurde zu " + kategorieName + " geändert.", Toast.LENGTH_LONG).show()
+            Toast.makeText(mCtx, "Wurde zu " + kategorieName + " geändert.", Toast.LENGTH_LONG)
+                .show()
 
         }
 
@@ -114,16 +114,17 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
         deleteText.text = "Möchten Sie die Kategorie " + kategorieName + " wirklick Löschen?"
 
-        builder.setPositiveButton("Löschen"){p0, p1 ->
+        builder.setPositiveButton("Löschen") { p0, p1 ->
 
-            val dbCategories = FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
+            val dbCategories =
+                FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
 
             dbCategories.removeValue()
 
             Toast.makeText(mCtx, kategorieName + " wurde gelöscht.", Toast.LENGTH_LONG).show()
         }
 
-        builder.setNegativeButton("Zurück"){p0 , p1->
+        builder.setNegativeButton("Zurück") { p0, p1 ->
 
             Toast.makeText(mCtx, "Löschen wurde abgebrochen", Toast.LENGTH_LONG).show()
         }
@@ -145,9 +146,10 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
         // startActivity(Intent(, CreateQuestion::class.java))
 
-        builder.setPositiveButton("Speichern") {p0, p1 ->
+        builder.setPositiveButton("Speichern") { p0, p1 ->
 
-            val dbCategories = FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
+            val dbCategories =
+                FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
 
             val editTextQuestion = view.findViewById<EditText>(R.id.nameQuestion)
             val editTextAnswer1 = view.findViewById<EditText>(R.id.answer1)
@@ -165,8 +167,9 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
             val question = Questions(id, ques, answ1, answ2, answ3, answ4, categoryId)
 
-            if (ques == "" || answ1 == "" || answ2 =="" || answ3 == "" || answ4 == "") {
-                Toast.makeText(this.context, "Bitte füllen Sie alle Felder aus.", Toast.LENGTH_LONG).show()
+            if (ques == "" || answ1 == "" || answ2 == "" || answ3 == "" || answ4 == "") {
+                Toast.makeText(this.context, "Bitte füllen Sie alle Felder aus.", Toast.LENGTH_LONG)
+                    .show()
                 return@setPositiveButton
             } else {
 
@@ -197,14 +200,12 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         alert.show()
     }
 
-    private fun showQuestions (category: Categories) {
+    private fun showQuestions(category: Categories) {
 
         val intent = Intent(context, QuestionOverview::class.java)
 
         val kategorieId = category.id
         val kategorieName = category.name
-
-        //Toast.makeText(mCtx, kategorie, Toast.LENGTH_LONG).show()
 
         //To pass any data to the activity Question Overview.kt
         intent.putExtra("extra_category_id", kategorieId)

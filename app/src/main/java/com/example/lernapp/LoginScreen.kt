@@ -54,7 +54,6 @@ class LoginScreen : AppCompatActivity() {
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-                    // If sign in fails, display a message to the user.
                     Toast.makeText(baseContext, "Anmeldung fehlgeschlagen.",
                         Toast.LENGTH_SHORT).show()
                     updateUI(null)
@@ -65,7 +64,6 @@ class LoginScreen : AppCompatActivity() {
     //Single SIGN-ON
     public override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }

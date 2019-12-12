@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="8dp"
     android:background="@drawable/gradient_dialog_layout"
-    android:id="@+id/bottom_sheet">
+    android:orientation="vertical"
+    android:paddingBottom="8dp">
 
 
     <RelativeLayout
@@ -14,22 +13,21 @@
         android:layout_height="wrap_content">
 
 
-    <ImageView
-        android:id="@+id/iv_close"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_margin="10dp"
-        android:layout_alignParentEnd="true"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
-        android:onClick="close_dialog"
-        />
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:onClick="close_dialog"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Erstellen sie eine Karteikarte"
+            android:layout_centerInParent="true"
             android:layout_centerVertical="true"
-            android:layout_centerInParent="true"/>
+            android:text="Erstellen sie eine Karteikarte" />
 
     </RelativeLayout>
 
@@ -37,32 +35,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:textSize="21sp"
         android:text="Für welche Kategorie?"
         android:textAlignment="center"
-        />
+        android:textSize="21sp" />
 
     <Button
         android:id="@+id/newCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Neue Kategorie"
-        android:textColor="@color/colorWhite"
-        android:background="@drawable/gradient_button"
-        android:textAlignment="center"
-        android:paddingHorizontal="15dp"
         android:layout_gravity="center"
-        android:drawableTint="@color/colorWhite"
+        android:background="@drawable/gradient_button"
         android:drawableLeft="@drawable/ic_add_circle_black_24dp"
-        android:onClick="show_create_category"/>
+        android:drawableTint="@color/colorWhite"
+        android:onClick="show_create_category"
+        android:paddingHorizontal="15dp"
+        android:text=" Neue Kategorie"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite" />
 
 
     <TextView
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Ihre Kategorien:"/>
+        android:padding="16dp"
+        android:text="Ihre Kategorien:"
+        android:textAlignment="center" />
 
     <ListView
         android:id="@+id/listViewDialog"

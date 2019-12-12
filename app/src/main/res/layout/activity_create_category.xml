@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".CreateCategory"
-    >
-
+    android:orientation="vertical"
+    tools:context=".CreateCategory">
 
     <ImageView
         android:id="@+id/backgroundBar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:background="@drawable/gradient_layout"
-        />
+        android:background="@drawable/gradient_layout" />
 
     <ImageView
         android:id="@+id/iv_back_to_subject"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_margin="10dp"
+        android:onClick="back_to_home"
         android:tint="@color/colorWhite"
-        app:srcCompat="@drawable/ic_arrow_back_black_24dp"
-        android:onClick="back_to_home"/>
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Neue Kategorie"
-        android:padding="12dp"
         android:gravity="center_horizontal"
-        android:textSize="16dp"
+        android:padding="12dp"
+        android:text="Neue Kategorie"
         android:textColor="@color/colorWhite"
-        />
+        android:textSize="16dp" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@drawable/gradient_stroke"
-        android:layout_below="@+id/backgroundBar"/>
+        android:layout_below="@+id/backgroundBar"
+        android:background="@drawable/gradient_stroke" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,27 +51,26 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Gebe deiner Kategorie einen Namen"
             android:paddingBottom="10dp"
-            android:textSize="16sp"/>
+            android:text="Gebe deiner Kategorie einen Namen"
+            android:textSize="16sp" />
 
 
         <com.google.android.material.textfield.TextInputLayout
 
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name der Kategorie"
-            app:boxStrokeColor="@color/colorRot"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:outlineSpotShadowColor="@color/colorRot"
             android:outlineAmbientShadowColor="@color/colorRot"
-            tools:ignore="MissingConstraints"
-            >
+            android:outlineSpotShadowColor="@color/colorRot"
+            app:boxStrokeColor="@color/colorRot"
+            tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameCategory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/nameCategory"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,25 +78,24 @@
             android:id="@+id/saveCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Erstelle Kategorie"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/gradient_button"
-            android:textAlignment="center"
-            android:paddingHorizontal="15dp"
             android:layout_marginTop="10dp"
-            />
+            android:background="@drawable/gradient_button"
+            android:paddingHorizontal="15dp"
+            android:text="Erstelle Kategorie"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kategorie bereits vorhanden?"
             android:layout_marginTop="10dp"
-            android:textSize="16sp"/>
+            android:text="Kategorie bereits vorhanden?"
+            android:textSize="16sp" />
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>

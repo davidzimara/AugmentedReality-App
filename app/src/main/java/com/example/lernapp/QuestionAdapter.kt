@@ -21,6 +21,8 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
         val textViewAnswer2 = view.findViewById<TextView>(R.id.textViewName2)
         val textViewAnswer3 = view.findViewById<TextView>(R.id.textViewName3)
         val textViewAnswer4 = view.findViewById<TextView>(R.id.textViewName4)
+        val imageViewDelete = view.findViewById<ImageView>(R.id.imageViewDelete)
+        val imageViewUpdate = view.findViewById<ImageView>(R.id.imageViewUpdate)
 
         val question = questionList[position]
 
@@ -29,12 +31,6 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
         textViewAnswer2.text = question.answer2
         textViewAnswer3.text = question.answer3
         textViewAnswer4.text = question.answer4
-
-        //for Delete and Edit Questions/Answers
-
-        val imageViewDelete = view.findViewById<ImageView>(R.id.imageViewDelete)
-        val imageViewUpdate = view.findViewById<ImageView>(R.id.imageViewUpdate)
-
 
         imageViewDelete.setOnClickListener {
             deleteQuestion(question)
@@ -96,7 +92,6 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
         val answer2 = view.findViewById<EditText>(R.id.answer2)
         val answer3 = view.findViewById<EditText>(R.id.answer3)
         val answer4 = view.findViewById<EditText>(R.id.answer4)
-
 
         editText.setText(question.question)
         answer1.setText(question.answer1)

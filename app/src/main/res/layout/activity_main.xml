@@ -35,7 +35,7 @@
         app:itemTextColor="@color/nav_items_color"
         app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:menu="@menu/nav_items" >
+        app:menu="@menu/nav_items">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/nav_create_action"
@@ -43,13 +43,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="6dp"
-            android:tint="@color/colorRot"
+            android:backgroundTint="@color/colorWhite"
             android:clickable="true"
             android:focusable="true"
             android:onClick="show_dialog"
-            android:backgroundTint="@color/colorWhite"
-            app:fabSize="mini"
-            android:src="@drawable/baseline_add_circle_black_18dp"/>
+            android:src="@drawable/baseline_add_circle_black_18dp"
+            android:tint="@color/colorRot"
+            app:fabSize="mini" />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

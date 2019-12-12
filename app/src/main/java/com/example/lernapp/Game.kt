@@ -4,10 +4,12 @@ package com.example.lernapp
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -45,14 +47,14 @@ class Game : AppCompatActivity() {
         val answer4text = findViewById<TextView>(R.id.answer4)
         val yourAnswer = findViewById<TextView>(R.id.yourAnswer)
 
-        back_to_main.setOnClickListener(){
+        back_to_main.setOnClickListener() {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
         answer1text.setOnClickListener() {
             val answer: String = answer1text.text.toString()
 
-            if (answer == questionList[index].answer1){
+            if (answer == questionList[index].answer1) {
                 correctAnswer += 1
             }
 
@@ -64,7 +66,7 @@ class Game : AppCompatActivity() {
             setAnswerColor()
             val answer: String = answer2text.text.toString()
 
-            if (answer == questionList[index].answer1){
+            if (answer == questionList[index].answer1) {
                 correctAnswer += 1
             }
 
@@ -74,7 +76,7 @@ class Game : AppCompatActivity() {
         answer3text.setOnClickListener() {
             val answer: String = answer3text.text.toString()
 
-            if (answer == questionList[index].answer1){
+            if (answer == questionList[index].answer1) {
                 correctAnswer += 1
             }
 
@@ -86,7 +88,7 @@ class Game : AppCompatActivity() {
         answer4text.setOnClickListener() {
             val answer: String = answer4text.text.toString()
 
-            if (answer == questionList[index].answer1){
+            if (answer == questionList[index].answer1) {
                 correctAnswer += 1
             }
 
@@ -95,7 +97,7 @@ class Game : AppCompatActivity() {
             showAnswer(answer)
         }
 
-        buttonNext.setOnClickListener(){
+        buttonNext.setOnClickListener() {
             index += 1
             addQuestion()
             showQuestionIndex()
@@ -104,7 +106,7 @@ class Game : AppCompatActivity() {
             yourAnswer.visibility = View.INVISIBLE
         }
 
-        buttonBack.setOnClickListener(){
+        buttonBack.setOnClickListener() {
             index -= 1
             addQuestion()
             showQuestionIndex()
@@ -112,7 +114,7 @@ class Game : AppCompatActivity() {
             yourAnswer.visibility = View.INVISIBLE
         }
 
-        buttonEnd.setOnClickListener(){
+        buttonEnd.setOnClickListener() {
 
             val intent = Intent(this, MainActivity::class.java)
 
@@ -203,7 +205,7 @@ class Game : AppCompatActivity() {
         var listSize = questionList.size
         var listSizeMax = listSize - 1
 
-        if(listSizeMax == index) {
+        if (listSizeMax == index) {
             buttonNext.visibility = View.INVISIBLE
         } else {
             buttonNext.visibility = View.VISIBLE
@@ -228,14 +230,15 @@ class Game : AppCompatActivity() {
         val answer3text = findViewById<TextView>(R.id.answer3)
         val answer4text = findViewById<TextView>(R.id.answer4)
 
-        database.addValueEventListener(object: ValueEventListener {
+        database.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
+
             override fun onDataChange(p0: DataSnapshot) {
 
                 questionList.clear()
-                for(h in p0.children){
+                for (h in p0.children) {
                     val question = h.getValue(Questions::class.java)
                     questionList.add(question!!)
                 }
@@ -278,8 +281,7 @@ class Game : AppCompatActivity() {
                         buttonNext.visibility = View.INVISIBLE
                         buttonEnd.visibility = View.VISIBLE
                     }
-                }
-                else {
+                } else {
                     buttonNext.visibility = View.INVISIBLE
                     buttonEnd.visibility = View.VISIBLE
                 }
@@ -315,5 +317,5 @@ class Game : AppCompatActivity() {
         answer2text.isClickable = true
         answer3text.isClickable = true
         answer4text.isClickable = true
-        }
     }
+}

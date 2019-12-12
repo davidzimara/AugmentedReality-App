@@ -1,13 +1,13 @@
 package com.example.lernapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 
 class CreateCategory : AppCompatActivity() {
@@ -35,7 +35,7 @@ class CreateCategory : AppCompatActivity() {
         categoryList = mutableListOf()
         listView = findViewById(R.id.listView)
 
-        database.addValueEventListener(object: ValueEventListener {
+        database.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
@@ -48,7 +48,8 @@ class CreateCategory : AppCompatActivity() {
                         categoryList.add(category!!)
                     }
                 }
-                val adapter = CategoryAdapter(this@CreateCategory, R.layout.categories,  categoryList)
+                val adapter =
+                    CategoryAdapter(this@CreateCategory, R.layout.categories, categoryList)
                 listView.adapter = adapter
             }
         })
@@ -58,7 +59,7 @@ class CreateCategory : AppCompatActivity() {
 
         val kategorie = nameCategory.text.toString().trim()
 
-        if(kategorie.isEmpty()) {
+        if (kategorie.isEmpty()) {
             nameCategory.error = "Geben Sie einen Name an."
             return
         }
@@ -68,15 +69,17 @@ class CreateCategory : AppCompatActivity() {
 
         database.child(id).setValue(kat)
             .addOnCompleteListener {
-                Toast.makeText(baseContext, kategorie + " wurde gespeichert.", Toast.LENGTH_LONG).show()
+                Toast.makeText(baseContext, kategorie + " wurde gespeichert.", Toast.LENGTH_LONG)
+                    .show()
                 nameCategory.text.clear()
             }
             .addOnCanceledListener {
-                Toast.makeText(baseContext, kategorie + " wurde nicht gespeichert.", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    baseContext,
+                    kategorie + " wurde nicht gespeichert.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-
-        //startActivity(Intent(this, MainActivity::class.java))
-        //finish()
     }
 
 

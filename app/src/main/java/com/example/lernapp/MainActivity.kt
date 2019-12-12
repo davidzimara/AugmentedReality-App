@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_create -> {
-                    //Floating Action Button replaces nav_create item but have to there otherwise it would occur a bug that no item could be selected
+                    //Floating Action Button replaces nav_create item but have to be there otherwise it would occur a bug that no item could be selected
                 }
             }
             true
@@ -90,12 +90,10 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(this, CreateCategory::class.java)
             startActivity(intent)
-            //close the bottom sheet (dialog) per click on "Neue Kategorie" Button
             dialog.dismiss()
         }
 
         view.iv_close.setOnClickListener {
-            //close the bottom sheet (dialog) per click on "iv_close" Button
             dialog.dismiss()
         }
 
