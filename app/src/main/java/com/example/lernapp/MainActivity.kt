@@ -3,7 +3,6 @@ package com.example.lernapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.FragmentTransaction
@@ -12,7 +11,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.dialog_layout.view.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var categoryList: MutableList<Categories>
     lateinit var listView: ListView
     lateinit var dialog: BottomSheetDialog
-    lateinit var statistics: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.main_nav)
 
-        //to show always the home screen
-
+        //to display always the home screen at start and return to Main
         homeFragment = HomeFragment()
         supportFragmentManager
             .beginTransaction()
@@ -46,11 +42,8 @@ class MainActivity : AppCompatActivity() {
             .commit()
 
         //Navigation between Fragments
-
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                //now create fragments
-
                 R.id.nav_home -> {
 
                     homeFragment = HomeFragment()
@@ -72,40 +65,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_create -> {
-
-                    // val dialog = BottomSheetDialog(this)
-                    // val view = layoutInflater.inflate(R.layout.dialog_layout, null)
-                    // dialog.setContentView(view)
-                    // dialog.show()
-
-                    //createFragment = CreateFragment()
-                    //supportFragmentManager
-                    //.beginTransaction()
-                    //.replace(R.id.main_frame, createFragment)
-                    //.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    //.commit()
+                    //Floating Action Button replaces nav_create item but have to there otherwise it would occur a bug that no item could be selected
                 }
-
-                /** R.id.nav_statistics -> {
-
-                    statisticFragment = ChooseCategory()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.main_frame, statisticFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-
-                R.id.nav_settings -> {
-
-
-                    settingsFragment = SettingsFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.main_frame, settingsFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                } */
             }
             true
         }
@@ -128,7 +89,6 @@ class MainActivity : AppCompatActivity() {
         view.newCategory.setOnClickListener {
 
             val intent = Intent(this, CreateCategory::class.java)
-            intent.putExtra("keyIdentifier", 2)
             startActivity(intent)
             //close the bottom sheet (dialog) per click on "Neue Kategorie" Button
             dialog.dismiss()

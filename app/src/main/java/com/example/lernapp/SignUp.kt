@@ -3,9 +3,7 @@ package com.example.lernapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
-import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -58,10 +56,9 @@ class SignUp : AppCompatActivity() {
                     startActivity(Intent(this, LoginScreen::class.java))
                     finish()
                 } else {
-                    Toast.makeText(baseContext, "Registrierung fehlgeschlagen. Versuche es später nochmal.",
+                    Toast.makeText(baseContext, "Registrierung fehlgeschlagen. Verwenden Sie mindestens 6 Zeichen als Passwort.",
                         Toast.LENGTH_SHORT).show()
                 }
-                // ...
             }
 
     }

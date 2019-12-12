@@ -1,7 +1,5 @@
 package com.example.lernapp
 
-
-import android.content.Context
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -11,14 +9,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
-import kotlinx.android.synthetic.main.activity_login_screen.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 
-/**
- * A simple [Fragment] subclass.
- */
-@Suppress("UNREACHABLE_CODE")
 class SettingsFragment : Fragment() {
 
     lateinit var editText: EditText
@@ -38,18 +30,10 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val ud = 12030440
-        val farbe = "rot"
-
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
-            // Name, email address, and profile photo Url
-
             val email = user.email
 
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getToken() instead.
             val uid = user.uid
 
             user_name.setText(email)

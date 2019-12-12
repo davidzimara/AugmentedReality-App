@@ -23,9 +23,6 @@ class Game : AppCompatActivity() {
     var correctAnswer: Int = 0
     var answer1: String = ""
 
-
-    //TODO: https://www.youtube.com/watch?v=KRDJXKt4bTk
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)

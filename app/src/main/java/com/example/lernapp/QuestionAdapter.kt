@@ -2,12 +2,10 @@ package com.example.lernapp
 
 import android.app.AlertDialog
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.FirebaseDatabase
 
 class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList: List<Questions>)

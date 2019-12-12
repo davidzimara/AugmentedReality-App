@@ -11,7 +11,6 @@ import android.widget.ListView
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_subject.*
 
-
 class SubjectFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
@@ -46,7 +45,7 @@ class SubjectFragment : Fragment() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                categoryList.clear() // have to be, otherwise it will duplicate the list item and attach them below
+                categoryList.clear() // have to be, otherwise it will duplicate the list items and attach them below
                 if (p0!!.exists()) {
                     for (h in p0.children) {
                         val category = h.getValue(Categories::class.java)
