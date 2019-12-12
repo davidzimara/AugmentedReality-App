@@ -2,12 +2,12 @@ package com.example.lernapp
 
 import android.os.Bundle
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_settings.*
 
@@ -36,7 +36,7 @@ class SettingsFragment : Fragment() {
 
             val uid = user.uid
 
-            user_name.setText(email)
+            user_name.text = email
         }
 
         updateEmailButton.setOnClickListener {
@@ -48,7 +48,7 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    fun updateEmail (){
+    fun updateEmail() {
 
         val user = FirebaseAuth.getInstance().currentUser
 
@@ -57,27 +57,27 @@ class SettingsFragment : Fragment() {
         val email = editText.text.toString().trim()
 
         if (email.isEmpty()) {
-            editText.error ="Bitte geben sie eine E-Mail-Adresse an."
+            editText.error = "Bitte geben sie eine E-Mail-Adresse an."
             return
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(nameEmail.text.toString()).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(nameEmail.text.toString()).matches()) {
             editText.error = "Bitte geben Sie eine gültige Email Adresse an."
             editText.requestFocus()
             return
         }
 
         user?.updateEmail(email)
-                ?.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this.context, "E-Mail wurde geändert.", Toast.LENGTH_LONG).show()
-                        //to refresh the email on the fragment screen, otherwise it`ll be the old email
-                        user_name.setText(email)
-                        editText.text.clear()
-                    } else {
-                        editText.error="Änderung der Email fehlgeschlagen."
-                    }
-        }
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this.context, "E-Mail wurde geändert.", Toast.LENGTH_LONG).show()
+                    //to refresh the email on the fragment screen, otherwise it`ll be the old email
+                    user_name.text = email
+                    editText.text.clear()
+                } else {
+                    editText.error = "Änderung der Email fehlgeschlagen."
+                }
+            }
     }
 
     fun updatePassword() {
@@ -89,17 +89,18 @@ class SettingsFragment : Fragment() {
         val user = FirebaseAuth.getInstance().currentUser
 
         if (password.isEmpty()) {
-            editText.error ="Bitte geben Sie ein Passwort an."
+            editText.error = "Bitte geben Sie ein Passwort an."
             return
         }
 
         user?.updatePassword(password)
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this.context, "Passowrt wurde geändert.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this.context, "Passowrt wurde geändert.", Toast.LENGTH_LONG)
+                        .show()
                     editText.text.clear()
                 } else {
-                    editText.error="Verwenden Sie bitte mehr als 6 Zeichen."
+                    editText.error = "Verwenden Sie bitte mehr als 6 Zeichen."
                 }
             }
     }

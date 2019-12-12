@@ -17,8 +17,6 @@ class QuestionOverview : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_overview)
 
-        //TODO: EDIT BUTTON
-        //TODO: Delete Button
 
         val category = intent.getStringExtra("extra_category_id")
         val categoryName = intent.getStringExtra("extra_category_name")
