@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.lernapp.UI
 
 import android.os.Bundle
 import android.util.Patterns
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.lernapp.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_settings.*
 

@@ -10,15 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Game"
+            android:name=".UI.Game"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".QuestionOverview"
+            android:name=".UI.QuestionOverview"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateQuestion" />
-        <activity
-            android:name=".LoadingScreen"
+            android:name=".UI.LoadingScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,17 +24,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginScreen"
+            android:name=".UI.LoginScreen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".UI.MainActivity"
             android:label="LernApp"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateCategory"
+            android:name=".UI.CreateCategory"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SignUp"
+            android:name=".UI.SignUp"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

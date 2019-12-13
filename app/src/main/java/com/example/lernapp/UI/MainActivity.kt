@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.lernapp.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.FragmentTransaction
+import com.example.lernapp.Adapter.CategoryAdapter
+import com.example.lernapp.DataClasses.Categories
+import com.example.lernapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.dialog_layout.view.*
@@ -116,7 +119,11 @@ class MainActivity : AppCompatActivity() {
                         val category = h.getValue(Categories::class.java)
                         categoryList.add(category!!)
                     }
-                    val adapter = CategoryAdapter(this@MainActivity, R.layout.categories,  categoryList)
+                    val adapter = CategoryAdapter(
+                        this@MainActivity,
+                        R.layout.categories,
+                        categoryList
+                    )
                     listView.adapter = adapter
                 }
             }

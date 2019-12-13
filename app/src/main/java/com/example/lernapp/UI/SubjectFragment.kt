@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.lernapp.UI
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import com.example.lernapp.Adapter.CategoryAdapter
+import com.example.lernapp.DataClasses.Categories
+import com.example.lernapp.R
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_subject.*
 
@@ -52,7 +55,11 @@ class SubjectFragment : Fragment() {
                         categoryList.add(category!!)
                     }
                 }
-                val adapter = CategoryAdapter(ctx, R.layout.categories,  categoryList)
+                val adapter = CategoryAdapter(
+                    ctx,
+                    R.layout.categories,
+                    categoryList
+                )
                 listView.adapter = adapter
             }
         })

@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.lernapp.Adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.example.lernapp.DataClasses.Questions
+import com.example.lernapp.R
 import com.google.firebase.database.FirebaseDatabase
 
 class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList: List<Questions>)
@@ -119,8 +121,7 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
 
                 dbQuestions.child(question.id).setValue(question)
 
-                Toast.makeText(mCtx, "Wurde zu " + questionName + " geändert.", Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(mCtx, "Wurde zu " + questionName + " geändert.", Toast.LENGTH_LONG).show()
             }
         }
 

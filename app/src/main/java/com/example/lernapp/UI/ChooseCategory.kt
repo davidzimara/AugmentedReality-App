@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.lernapp.UI
 
 
 import android.content.Context
@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import com.example.lernapp.Adapter.ChooseCategoryAdapter
+import com.example.lernapp.DataClasses.Categories
+import com.example.lernapp.R
 import com.google.firebase.database.*
 
 class ChooseCategory : Fragment() {
@@ -46,7 +49,11 @@ class ChooseCategory : Fragment() {
                         val category = h.getValue(Categories::class.java)
                         categoryList.add(category!!)
                     }
-                    val adapter = ChooseCategoryAdapter(ctx, R.layout.choose_category, categoryList)
+                    val adapter = ChooseCategoryAdapter(
+                        ctx,
+                        R.layout.choose_category,
+                        categoryList
+                    )
                     listView.adapter = adapter
                 }
             }

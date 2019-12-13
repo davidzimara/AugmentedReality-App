@@ -1,10 +1,13 @@
-package com.example.lernapp
+package com.example.lernapp.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import com.example.lernapp.Adapter.QuestionAdapter
+import com.example.lernapp.DataClasses.Questions
+import com.example.lernapp.R
 import com.google.firebase.database.*
 
 class QuestionOverview : AppCompatActivity() {
@@ -43,7 +46,11 @@ class QuestionOverview : AppCompatActivity() {
                         questionList.add(question!!)
                     }
                 }
-                val adapter = QuestionAdapter(this@QuestionOverview, R.layout.questions, questionList)
+                val adapter = QuestionAdapter(
+                    this@QuestionOverview,
+                    R.layout.questions,
+                    questionList
+                )
                 listView.adapter = adapter
             }
         })
@@ -53,5 +60,4 @@ class QuestionOverview : AppCompatActivity() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
-
 }

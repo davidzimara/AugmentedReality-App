@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.lernapp.Adapter
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import com.example.lernapp.DataClasses.Categories
+import com.example.lernapp.UI.Game
+import com.example.lernapp.R
 
 class ChooseCategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)
     : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList) {
@@ -29,7 +32,7 @@ class ChooseCategoryAdapter(val mCtx: Context, val layoutResId: Int, val categor
 
             val intent = Intent(context, Game::class.java)
 
-            //To pass the name and if of the chosen category to activity Game.kt
+            //To pass the name and id of the chosen category to activity Game.kt
             intent.putExtra("extra_category_id", kategorieId)
             intent.putExtra("extra_category_name", kategorieName)
 

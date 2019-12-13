@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.lernapp.UI
 
 
 import android.annotation.SuppressLint
@@ -10,6 +10,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lernapp.DataClasses.Answers
+import com.example.lernapp.DataClasses.Questions
+import com.example.lernapp.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -52,13 +55,14 @@ class Game : AppCompatActivity() {
         }
 
         answer1text.setOnClickListener() {
+            setAnswerColor()
+
             val answer: String = answer1text.text.toString()
 
             if (answer == questionList[index].answer1) {
                 correctAnswer += 1
             }
 
-            setAnswerColor()
             showAnswer(answer)
         }
 
@@ -74,25 +78,25 @@ class Game : AppCompatActivity() {
         }
 
         answer3text.setOnClickListener() {
+            setAnswerColor()
+
             val answer: String = answer3text.text.toString()
 
             if (answer == questionList[index].answer1) {
                 correctAnswer += 1
             }
 
-            setAnswerColor()
-
             showAnswer(answer)
         }
 
         answer4text.setOnClickListener() {
+            setAnswerColor()
+
             val answer: String = answer4text.text.toString()
 
             if (answer == questionList[index].answer1) {
                 correctAnswer += 1
             }
-
-            setAnswerColor()
 
             showAnswer(answer)
         }
@@ -100,7 +104,6 @@ class Game : AppCompatActivity() {
         buttonNext.setOnClickListener() {
             index += 1
             addQuestion()
-            showQuestionIndex()
 
             buttonNext.visibility = View.INVISIBLE
             yourAnswer.visibility = View.INVISIBLE
@@ -109,7 +112,6 @@ class Game : AppCompatActivity() {
         buttonBack.setOnClickListener() {
             index -= 1
             addQuestion()
-            showQuestionIndex()
 
             yourAnswer.visibility = View.INVISIBLE
         }
@@ -224,7 +226,7 @@ class Game : AppCompatActivity() {
         val buttonNext = findViewById<Button>(R.id.nextQuestion)
         val buttonEnd = findViewById<Button>(R.id.endGame)
         val buttonBack = findViewById<Button>(R.id.lastQuestion)
-        val questiontext = findViewById<TextView>(R.id.question)
+        val questionText = findViewById<TextView>(R.id.question)
         val answer1text = findViewById<TextView>(R.id.answer1)
         val answer2text = findViewById<TextView>(R.id.answer2)
         val answer3text = findViewById<TextView>(R.id.answer3)
@@ -254,16 +256,16 @@ class Game : AppCompatActivity() {
 
                     val question = questionList[index]
 
-                    val answer1 = Answers(question.answer1, true)
-                    val answer2 = Answers(question.answer2, false)
-                    val answer3 = Answers(question.answer3, false)
-                    val answer4 = Answers(question.answer4, false)
+                    val answer1 = Answers(question.answer1)
+                    val answer2 = Answers(question.answer2)
+                    val answer3 = Answers(question.answer3)
+                    val answer4 = Answers(question.answer4)
 
                     answerList = arrayListOf(answer1, answer2, answer3, answer4)
 
                     answerList.shuffle()
 
-                    questiontext.setText(questionList[index].question)
+                    questionText.setText(questionList[index].question)
                     answer1text.setText(answerList[0].answer)
                     answer2text.setText(answerList[1].answer)
                     answer3text.setText(answerList[2].answer)
@@ -298,7 +300,7 @@ class Game : AppCompatActivity() {
         val answer3text = findViewById<TextView>(R.id.answer3)
         val answer4text = findViewById<TextView>(R.id.answer4)
 
-        //to hide the answer textviews when inside the questionList are no elements otherwise it`ll crash
+        //to hide the answer textViews when inside the questionList are no elements otherwise it`ll crash by click
         if (questionList.size != 0) {
             answer1text.visibility = View.VISIBLE
             answer2text.visibility = View.VISIBLE

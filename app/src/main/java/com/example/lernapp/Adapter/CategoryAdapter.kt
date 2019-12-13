@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.lernapp.Adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -7,6 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.example.lernapp.DataClasses.Categories
+import com.example.lernapp.DataClasses.Questions
+import com.example.lernapp.UI.QuestionOverview
+import com.example.lernapp.R
 import com.google.firebase.database.FirebaseDatabase
 
 class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>) :
@@ -79,12 +83,9 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
             childUpdates["/${category.id}"] = categoryValues
 
-            //dbCategories.updateChildren(childUpdates)
-
             dbCategories.updateChildren(childUpdates)
 
-            Toast.makeText(mCtx, "Wurde zu " + kategorieName + " geändert.", Toast.LENGTH_LONG)
-                .show()
+            Toast.makeText(mCtx, "Wurde zu " + kategorieName + " geändert.", Toast.LENGTH_LONG).show()
 
         }
 
@@ -143,8 +144,6 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         val view = inflater.inflate(R.layout.activity_create_question, null)
 
         builder.setView(view)
-
-        // startActivity(Intent(, CreateQuestion::class.java))
 
         builder.setPositiveButton("Speichern") { p0, p1 ->
 
@@ -207,7 +206,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         val kategorieId = category.id
         val kategorieName = category.name
 
-        //To pass any data to the activity Question Overview.kt
+        //To pass the name and id to the activity Question Overview.kt
         intent.putExtra("extra_category_id", kategorieId)
         intent.putExtra("extra_category_name", kategorieName)
 

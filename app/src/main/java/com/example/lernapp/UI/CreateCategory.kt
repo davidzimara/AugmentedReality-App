@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.lernapp.UI
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,9 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lernapp.Adapter.CategoryAdapter
+import com.example.lernapp.DataClasses.Categories
+import com.example.lernapp.R
 import com.google.firebase.database.*
 
 class CreateCategory : AppCompatActivity() {
@@ -49,7 +52,11 @@ class CreateCategory : AppCompatActivity() {
                     }
                 }
                 val adapter =
-                    CategoryAdapter(this@CreateCategory, R.layout.categories, categoryList)
+                    CategoryAdapter(
+                        this@CreateCategory,
+                        R.layout.categories,
+                        categoryList
+                    )
                 listView.adapter = adapter
             }
         })
