@@ -105,13 +105,16 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
         val inflater = LayoutInflater.from(mCtx)
 
-        val view = inflater.inflate(R.layout.delete_categories, null)
+        val view = inflater.inflate(R.layout.delete_layout, null)
 
         val kategorieName = category.name.toString().trim()
 
         builder.setView(view)
 
         val deleteText = view.findViewById<TextView>(R.id.deleteCategory)
+        val title = view.findViewById<TextView>(R.id.title)
+
+        title.text = "Frage löschen"
 
         deleteText.text = "Möchten Sie die Kategorie " + kategorieName + " wirklick Löschen?"
 
@@ -141,7 +144,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
         val inflater = LayoutInflater.from(mCtx)
 
-        val view = inflater.inflate(R.layout.activity_create_question, null)
+        val view = inflater.inflate(R.layout.update_question_layout, null)
 
         builder.setView(view)
 

@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var subjectFragment: SubjectFragment
     lateinit var chooseCategory: ChooseCategory
     lateinit var settingsFragment: SettingsFragment
-    lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     lateinit var categoryList: MutableList<Categories>
     lateinit var listView: ListView
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        auth = FirebaseAuth.getInstance()
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.main_nav)
 
@@ -119,18 +117,12 @@ class MainActivity : AppCompatActivity() {
                         val category = h.getValue(Categories::class.java)
                         categoryList.add(category!!)
                     }
-                    val adapter = CategoryAdapter(
-                        this@MainActivity,
-                        R.layout.categories,
-                        categoryList
-                    )
+                    val adapter = CategoryAdapter(this@MainActivity, R.layout.categories, categoryList)
                     listView.adapter = adapter
                 }
             }
         })
     }
-
-
 
     fun show_settings(view: View) {
         settingsFragment = SettingsFragment()
@@ -149,22 +141,4 @@ class MainActivity : AppCompatActivity() {
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
     }
-
-    //Logout User Method is called by onClick Button in SettingsFragment
-    fun doLogout(view: View) {
-        Toast.makeText(baseContext,"Sie wurden abgemeldet.",Toast.LENGTH_LONG).show()
-        logout()
-
-        auth.addAuthStateListener {
-            if(auth.currentUser==null) {
-                startActivity(Intent(this, LoginScreen::class.java))
-                finish()
-            }
-        }
-    }
-
-    fun logout() {
-        auth.signOut()
-    }
-
 }

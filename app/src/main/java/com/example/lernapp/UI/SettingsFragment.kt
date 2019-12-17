@@ -1,5 +1,6 @@
 package com.example.lernapp.UI
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -15,6 +16,8 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 class SettingsFragment : Fragment() {
 
     lateinit var editText: EditText
+    lateinit var auth: FirebaseAuth
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +33,7 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth = FirebaseAuth.getInstance()
 
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
@@ -46,6 +50,10 @@ class SettingsFragment : Fragment() {
 
         updatePasswordButton.setOnClickListener {
             updatePassword()
+        }
+
+        logout.setOnClickListener{
+            doLogout()
         }
     }
 
@@ -104,5 +112,22 @@ class SettingsFragment : Fragment() {
                     editText.error = "Verwenden Sie bitte mehr als 6 Zeichen."
                 }
             }
+    }
+
+    fun doLogout() {
+
+        Toast.makeText(this.context,"Sie wurden abgemeldet.",Toast.LENGTH_LONG).show()
+        logout()
+
+        auth.addAuthStateListener {
+            if(auth.currentUser==null) {
+                startActivity(Intent(this.context, LoginScreen::class.java))
+                activity!!.finish()
+            }
+        }
+    }
+
+    fun logout() {
+        auth.signOut()
     }
 }

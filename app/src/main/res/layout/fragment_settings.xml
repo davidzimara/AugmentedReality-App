@@ -58,11 +58,11 @@
             android:text="textView" />
 
         <Button
+            android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/gradient_button"
-            android:onClick="doLogout"
             android:paddingHorizontal="15dp"
             android:text="Abmelden"
             android:textAlignment="center"

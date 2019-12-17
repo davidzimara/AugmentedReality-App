@@ -53,13 +53,16 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
 
         val inflater = LayoutInflater.from(mCtx)
 
-        val view = inflater.inflate(R.layout.delete_categories, null)
+        val view = inflater.inflate(R.layout.delete_layout, null)
 
         val questionName = question.question.toString().trim()
 
         builder.setView(view)
 
         val deleteText = view.findViewById<TextView>(R.id.deleteCategory)
+        val title = view.findViewById<TextView>(R.id.title)
+
+        title.text = "Frage löschen"
 
         deleteText.text = "Möchten Sie die Frage: " + questionName + " wirklick Löschen?"
 
@@ -87,19 +90,21 @@ class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList
 
         val inflater = LayoutInflater.from(mCtx)
 
-        val view = inflater.inflate(R.layout.update_questions, null)
+        val view = inflater.inflate(R.layout.update_question_layout, null)
 
-        val editText = view.findViewById<EditText>(R.id.nameUpdateQuestion)
+        val editText = view.findViewById<EditText>(R.id.nameQuestion)
         val answer1 = view.findViewById<EditText>(R.id.answer1)
         val answer2 = view.findViewById<EditText>(R.id.answer2)
         val answer3 = view.findViewById<EditText>(R.id.answer3)
         val answer4 = view.findViewById<EditText>(R.id.answer4)
+        val title = view.findViewById<TextView>(R.id.title)
 
         editText.setText(question.question)
         answer1.setText(question.answer1)
         answer2.setText(question.answer2)
         answer3.setText(question.answer3)
         answer4.setText(question.answer4)
+        title.text = "Ändere deine Karteikarte"
 
         builder.setView(view)
 
