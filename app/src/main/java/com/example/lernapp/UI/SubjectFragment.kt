@@ -48,7 +48,7 @@ class SubjectFragment : Fragment() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                categoryList.clear() // have to be, otherwise it will duplicate the list items and attach them below
+                categoryList.clear()
                 if (p0!!.exists()) {
                     for (h in p0.children) {
                         val category = h.getValue(Categories::class.java)

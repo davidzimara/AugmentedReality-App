@@ -169,6 +169,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
 
             val question = Questions(id, ques, answ1, answ2, answ3, answ4, categoryId)
 
+            //To avoid that there is a question that doesn`t contain four different Answers
             if (ques == "" || answ1 == "" || answ2 == "" || answ3 == "" || answ4 == "") {
                 Toast.makeText(this.context, "Bitte füllen Sie alle Felder aus.", Toast.LENGTH_LONG)
                     .show()

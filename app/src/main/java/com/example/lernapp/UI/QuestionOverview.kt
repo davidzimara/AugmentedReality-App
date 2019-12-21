@@ -20,7 +20,7 @@ class QuestionOverview : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_overview)
 
-
+        //Handed over from CategoryAdapter
         val category = intent.getStringExtra("extra_category_id")
         val categoryName = intent.getStringExtra("extra_category_name")
 
@@ -39,18 +39,14 @@ class QuestionOverview : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                questionList.clear() // have to be, otherwise it will duplicate the list item and attach them below
+                questionList.clear()
                 if (p0!!.exists()) {
                     for(h in p0.children) {
                         val question = h.getValue(Questions::class.java)
                         questionList.add(question!!)
                     }
                 }
-                val adapter = QuestionAdapter(
-                    this@QuestionOverview,
-                    R.layout.questions,
-                    questionList
-                )
+                val adapter = QuestionAdapter(this@QuestionOverview, R.layout.questions, questionList)
                 listView.adapter = adapter
             }
         })

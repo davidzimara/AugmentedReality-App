@@ -25,18 +25,15 @@ class Game : AppCompatActivity() {
     lateinit var questionList: MutableList<Questions>
     lateinit var answerList: ArrayList<Answers>
     var index: Int = 0
+    //Var Correct Answer is used to display the result in the Home Fragment "Last Run Statistic"
     var correctAnswer: Int = 0
-    var answer1: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        //handed over from ChooseCategoryAdapter
+        //Handed over from ChooseCategoryAdapter
         val categoryNameFromAdapter = intent.getStringExtra("extra_category_name")
-        val amountFromAdapter = intent.getStringExtra("extra_list_size")
-
-        //Toast.makeText(applicationContext, amountFromAdapter, Toast.LENGTH_LONG).show()
         val kategorieName = findViewById<TextView>(R.id.categoryName)
 
         kategorieName.setText(categoryNameFromAdapter)
@@ -168,11 +165,13 @@ class Game : AppCompatActivity() {
         val answer3text = findViewById<TextView>(R.id.answer3)
         val answer4text = findViewById<TextView>(R.id.answer4)
 
-        answer1 = answer1text.text.toString()
+        val answer1 = answer1text.text.toString()
         val answer2 = answer2text.text.toString()
         val answer3 = answer3text.text.toString()
         val answer4 = answer4text.text.toString()
 
+        //This four if/else if statements check if the chosen answer matches with the correct Answer (Correct Answer: it will always be answer1 in the questionList)
+        //Then it will change the color of the textViews
         if (answer1 == questionList[index].answer1) {
             answer1text.setBackgroundColor(Color.parseColor("#4caf50"))
             answer2text.setBackgroundColor(Color.parseColor("#cb2426"))
@@ -202,11 +201,14 @@ class Game : AppCompatActivity() {
         answer3text.isClickable = false
         answer4text.isClickable = false
 
+
         val buttonNext = findViewById<Button>(R.id.nextQuestion)
 
         var listSize = questionList.size
         var listSizeMax = listSize - 1
 
+        //If: the ListSize of the Questions is 0 OR the same as var listSizeMax (The end of the List) it will "hide" the Next Button
+        //Else: it will display the Next-Button after this function is called by TextView.OnClickListener
         if (listSizeMax == index) {
             buttonNext.visibility = View.INVISIBLE
         } else {
@@ -217,7 +219,7 @@ class Game : AppCompatActivity() {
     private fun addQuestion() {
 
 
-        //handed over from the ChooseCategoryAdapter
+        //Handed over from the ChooseCategoryAdapter
         val category = intent.getStringExtra("extra_category_id")
 
         val database = FirebaseDatabase.getInstance().getReference("Categorys").child(category)
@@ -251,6 +253,7 @@ class Game : AppCompatActivity() {
                 var listSize = questionList.size
                 var listSizeMax = listSize - 1
 
+                //1. If: questions existing (listSizeMax >= 0) within a category the answers are displayed and shuffled
                 if (listSizeMax >= index) {
                     setBackgroundColor()
 
@@ -275,14 +278,19 @@ class Game : AppCompatActivity() {
 
                     buttonBack.visibility = View.INVISIBLE
 
+
+                    //2. If: the current question ISN`T the FIRST question of the List the "Back Button" will displayed
                     if (index > 0) {
                         buttonBack.visibility = View.VISIBLE
                     }
 
+                    //3. If: the current question is the LAST question within a category the "End Button" will displayed
                     if (index == listSizeMax) {
                         buttonNext.visibility = View.INVISIBLE
                         buttonEnd.visibility = View.VISIBLE
                     }
+
+                    //4. Else: If there is NO question within the list it will show only the "End Button"
                 } else {
                     buttonNext.visibility = View.INVISIBLE
                     buttonEnd.visibility = View.VISIBLE
@@ -308,13 +316,14 @@ class Game : AppCompatActivity() {
             answer4text.visibility = View.VISIBLE
         }
 
+        //Reset the colors of TextViews in Orange
         answer1text.setBackgroundColor(Color.parseColor("#ff8a50"))
         answer2text.setBackgroundColor(Color.parseColor("#ff8a50"))
         answer3text.setBackgroundColor(Color.parseColor("#ff8a50"))
         answer4text.setBackgroundColor(Color.parseColor("#ff8a50"))
 
         //for the statistic in the home fragment that you can`t click multiple times on a TextView to increment var correctAnswer
-        //the selected Answer from showAnswer() can`t be changed
+        //the selected Answer from showAnswer() can`t be changed by clicking again
         answer1text.isClickable = true
         answer2text.isClickable = true
         answer3text.isClickable = true

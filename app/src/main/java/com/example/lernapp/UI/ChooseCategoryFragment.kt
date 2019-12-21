@@ -13,7 +13,7 @@ import com.example.lernapp.DataClasses.Categories
 import com.example.lernapp.R
 import com.google.firebase.database.*
 
-class ChooseCategory : Fragment() {
+class ChooseCategoryFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
     lateinit var categoryList: MutableList<Categories>
@@ -44,16 +44,12 @@ class ChooseCategory : Fragment() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0!!.exists()) {
-                    categoryList.clear() // have to be, otherwise it will duplicate the list item and attach them below
+                    categoryList.clear()
                     for (h in p0.children) {
                         val category = h.getValue(Categories::class.java)
                         categoryList.add(category!!)
                     }
-                    val adapter = ChooseCategoryAdapter(
-                        ctx,
-                        R.layout.choose_category,
-                        categoryList
-                    )
+                    val adapter = ChooseCategoryAdapter(ctx, R.layout.choose_category, categoryList)
                     listView.adapter = adapter
                 }
             }

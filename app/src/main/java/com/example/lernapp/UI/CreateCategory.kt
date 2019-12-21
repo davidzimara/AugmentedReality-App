@@ -44,7 +44,7 @@ class CreateCategory : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                categoryList.clear() // have to be, otherwise it will duplicate the list item and attach them below
+                categoryList.clear()
                 if (p0!!.exists()) {
                     for (h in p0.children) {
                         val category = h.getValue(Categories::class.java)
@@ -53,10 +53,7 @@ class CreateCategory : AppCompatActivity() {
                 }
                 val adapter =
                     CategoryAdapter(
-                        this@CreateCategory,
-                        R.layout.categories,
-                        categoryList
-                    )
+                        this@CreateCategory, R.layout.categories, categoryList)
                 listView.adapter = adapter
             }
         })

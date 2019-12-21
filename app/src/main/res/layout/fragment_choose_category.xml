@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.ChooseCategory">
+    tools:context=".UI.ChooseCategoryFragment">
 
 
     <ImageView
@@ -32,14 +32,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/bottomstroke"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Wähle eine Kategorie aus und lege los:"
-            android:textColor="@color/colorOrange" />
+            android:textColor="@color/colorOrange"/>
 
         <ListView
             android:id="@+id/listViewCategory"

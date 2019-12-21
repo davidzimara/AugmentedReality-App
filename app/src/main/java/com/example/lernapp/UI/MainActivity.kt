@@ -12,7 +12,6 @@ import com.example.lernapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.dialog_layout.view.*
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var homeFragment: HomeFragment
     lateinit var subjectFragment: SubjectFragment
-    lateinit var chooseCategory: ChooseCategory
+    lateinit var chooseCategory: ChooseCategoryFragment
     lateinit var settingsFragment: SettingsFragment
     private lateinit var database: DatabaseReference
     lateinit var categoryList: MutableList<Categories>
@@ -78,7 +77,6 @@ class MainActivity : AppCompatActivity() {
         getSupportActionBar()?.setTitle(title)
     }
 
-    //show bottom sheet (layout) "dialog_layout"
     fun show_dialog(view: View) {
 
         dialog = BottomSheetDialog(this)
@@ -112,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0!!.exists()) {
-                    categoryList.clear() // have to be, otherwise it will duplicate the list item and attach them below
+                    categoryList.clear()
                     for (h in p0.children) {
                         val category = h.getValue(Categories::class.java)
                         categoryList.add(category!!)
@@ -134,7 +132,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showChooseCategory(view: View) {
-        chooseCategory = ChooseCategory()
+        chooseCategory = ChooseCategoryFragment()
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.main_frame, chooseCategory)
