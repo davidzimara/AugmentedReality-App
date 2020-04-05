@@ -1,5 +1,5 @@
 package com.example.lernapp.Adapter
-
+//Delete me
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
