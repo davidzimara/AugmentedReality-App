@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.AugmentedRealityApp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.example.lernapp.UI
+package com.example.AugmentedRealityApp.UI
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,9 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lernapp.Adapter.CategoryAdapter
-import com.example.lernapp.DataClasses.Categories
-import com.example.lernapp.R
+import com.example.AugmentedRealityApp.Adapter.CategoryAdapter
+import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.*
 
 class CreateCategory : AppCompatActivity() {

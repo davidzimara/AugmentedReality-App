@@ -6,17 +6,17 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.lernapp.UI.HomeFragment"
+        android:name="com.example.AugmentedRealityApp.UI.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/subjectFragment"
-        android:name="com.example.lernapp.UI.SubjectFragment"
+        android:name="com.example.AugmentedRealityApp.UI.SubjectFragment"
         android:label="fragment_subject"
         tools:layout="@layout/fragment_subject" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.lernapp.UI.SettingsFragment"
+        android:name="com.example.AugmentedRealityApp.UI.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.lernapp.UI
+package com.example.AugmentedRealityApp.UI
 
 
 import android.annotation.SuppressLint
@@ -10,9 +10,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lernapp.DataClasses.Answers
-import com.example.lernapp.DataClasses.Questions
-import com.example.lernapp.R
+import com.example.AugmentedRealityApp.DataClasses.Answers
+import com.example.AugmentedRealityApp.DataClasses.Questions
+import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

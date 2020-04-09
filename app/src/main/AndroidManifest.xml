@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lernapp">
+    package="com.example.AugmentedRealityApp">
 
     <application
         android:allowBackup="true"
@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".UI.Game"
+            android:name="com.example.AugmentedRealityApp.UI.Game"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".UI.QuestionOverview"
+            android:name="com.example.AugmentedRealityApp.UI.QuestionOverview"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UI.LoadingScreen"
+            android:name="com.example.AugmentedRealityApp.UI.LoadingScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,17 +24,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UI.LoginScreen"
+            android:name="com.example.AugmentedRealityApp.UI.LoginScreen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UI.MainActivity"
+            android:name="com.example.AugmentedRealityApp.UI.MainActivity"
             android:label="LernApp"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UI.CreateCategory"
+            android:name="com.example.AugmentedRealityApp.UI.CreateCategory"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UI.SignUp"
+            android:name="com.example.AugmentedRealityApp.UI.SignUp"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

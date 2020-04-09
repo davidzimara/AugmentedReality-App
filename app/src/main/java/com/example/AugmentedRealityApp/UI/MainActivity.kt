@@ -1,4 +1,4 @@
-package com.example.lernapp.UI
+package com.example.AugmentedRealityApp.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.FragmentTransaction
-import com.example.lernapp.Adapter.CategoryAdapter
-import com.example.lernapp.DataClasses.Categories
-import com.example.lernapp.R
+import com.example.AugmentedRealityApp.Adapter.CategoryAdapter
+import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.example.AugmentedRealityApp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.dialog_layout.view.*

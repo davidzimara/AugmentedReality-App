@@ -1,4 +1,4 @@
-package com.example.lernapp.Adapter
+package com.example.AugmentedRealityApp.Adapter
 
 import android.content.Context
 import android.content.Intent
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.example.lernapp.DataClasses.Categories
-import com.example.lernapp.UI.Game
-import com.example.lernapp.R
+import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.example.AugmentedRealityApp.UI.Game
+import com.example.AugmentedRealityApp.R
 
 class ChooseCategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)
     : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList) {

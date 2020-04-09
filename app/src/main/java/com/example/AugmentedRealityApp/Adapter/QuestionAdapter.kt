@@ -1,4 +1,4 @@
-package com.example.lernapp.Adapter
+package com.example.AugmentedRealityApp.Adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.example.lernapp.DataClasses.Questions
-import com.example.lernapp.R
+import com.example.AugmentedRealityApp.DataClasses.Questions
+import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.FirebaseDatabase
 
 class QuestionAdapter (val mCtx: Context, val layoutResId: Int, val questionList: List<Questions>)

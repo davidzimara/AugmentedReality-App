@@ -1,4 +1,4 @@
-package com.example.lernapp
+package com.example.AugmentedRealityApp
 
 import org.junit.Test
 

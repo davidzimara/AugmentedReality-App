@@ -1,13 +1,13 @@
-package com.example.lernapp.UI
+package com.example.AugmentedRealityApp.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import com.example.lernapp.Adapter.QuestionAdapter
-import com.example.lernapp.DataClasses.Questions
-import com.example.lernapp.R
+import com.example.AugmentedRealityApp.Adapter.QuestionAdapter
+import com.example.AugmentedRealityApp.DataClasses.Questions
+import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.*
 
 class QuestionOverview : AppCompatActivity() {

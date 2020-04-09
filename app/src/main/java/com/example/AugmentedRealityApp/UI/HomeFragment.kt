@@ -1,4 +1,4 @@
-package com.example.lernapp.UI
+package com.example.AugmentedRealityApp.UI
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.lernapp.R
+import com.example.AugmentedRealityApp.R
 
 class HomeFragment : Fragment() {
 

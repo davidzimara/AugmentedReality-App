@@ -1,4 +1,4 @@
-package com.example.lernapp.UI
+package com.example.AugmentedRealityApp.UI
 
 
 import android.content.Context
@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
-import com.example.lernapp.Adapter.ChooseCategoryAdapter
-import com.example.lernapp.DataClasses.Categories
-import com.example.lernapp.R
+import com.example.AugmentedRealityApp.Adapter.ChooseCategoryAdapter
+import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.*
 
 class ChooseCategoryFragment : Fragment() {

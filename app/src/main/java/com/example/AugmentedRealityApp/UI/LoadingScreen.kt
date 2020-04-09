@@ -1,10 +1,10 @@
-package com.example.lernapp.UI
+package com.example.AugmentedRealityApp.UI
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lernapp.R
+import com.example.AugmentedRealityApp.R
 
 class LoadingScreen: AppCompatActivity() {
 

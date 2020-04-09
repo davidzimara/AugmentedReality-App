@@ -1,4 +1,4 @@
-package com.example.lernapp.DataClasses
+package com.example.AugmentedRealityApp.DataClasses
 
 data class Categories(val id: String, val name: String) {
     constructor() : this("", "") {

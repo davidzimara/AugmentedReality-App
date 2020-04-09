@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:400295031332:android:7da0bbd1a2fe1da5ffdeb1",
         "android_client_info": {
-          "package_name": "com.example.lernapp"
+          "package_name": "com.example.AugmentedRealityApp"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "400295031332-9aqkp2iu6i2bp2aq1e91f327pg7lmllm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.lernapp",
+            "package_name": "com.example.AugmentedRealityApp",
             "certificate_hash": "fe880c062c724ed3a8baaa8f819e4c544d4a6b7b"
           }
         },
