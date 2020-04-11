@@ -16,6 +16,6 @@
     <item
         android:id="@+id/nav_subjects"
         android:icon="@drawable/ic_subject_black_24dp"
-        android:title="@string/nav_subjects" />
+        android:title="@string/nav_locations" />
 
 </menu>

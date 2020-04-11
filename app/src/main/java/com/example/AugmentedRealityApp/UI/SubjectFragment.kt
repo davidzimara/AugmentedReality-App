@@ -36,7 +36,7 @@ class SubjectFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        database = FirebaseDatabase.getInstance().getReference("Categorys")
+        database = FirebaseDatabase.getInstance().getReference("location")
 
         categoryList = mutableListOf()
         listView = view.findViewById(R.id.listViewSubject)

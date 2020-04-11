@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "400295031332",
-    "firebase_url": "https://lernapp-f8273.firebaseio.com",
-    "project_id": "lernapp-f8273",
-    "storage_bucket": "lernapp-f8273.appspot.com"
+    "project_number": "921076756449",
+    "firebase_url": "https://augmentedreality-ff7df.firebaseio.com",
+    "project_id": "augmentedreality-ff7df",
+    "storage_bucket": "augmentedreality-ff7df.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:400295031332:android:7da0bbd1a2fe1da5ffdeb1",
+        "mobilesdk_app_id": "1:921076756449:android:6efeeeea4d0ac075356ca0",
         "android_client_info": {
           "package_name": "com.example.AugmentedRealityApp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "400295031332-9aqkp2iu6i2bp2aq1e91f327pg7lmllm.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.AugmentedRealityApp",
-            "certificate_hash": "fe880c062c724ed3a8baaa8f819e4c544d4a6b7b"
-          }
-        },
-        {
-          "client_id": "400295031332-uaikn3ora39lre97o47ns9a8rh5vsphn.apps.googleusercontent.com",
+          "client_id": "921076756449-aldkl5hf6bpvdddm25kkaj79ismk9s14.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCXYLg-v9YbsqOPgC1bGvWSKbEPPOtrgB0"
+          "current_key": "AIzaSyAddF1ssVEqleSWNfX7RIr_Dydw6-lTttQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "400295031332-uaikn3ora39lre97o47ns9a8rh5vsphn.apps.googleusercontent.com",
+              "client_id": "921076756449-aldkl5hf6bpvdddm25kkaj79ismk9s14.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
