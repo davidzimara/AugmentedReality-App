@@ -7,15 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
 import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.DataClasses.Questions
 import com.example.AugmentedRealityApp.R
 import com.example.AugmentedRealityApp.UI.MapOverview
+import com.example.AugmentedRealityApp.UI.Video
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
 
 
@@ -162,7 +162,8 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         val textViewName2 = view.findViewById<TextView>(R.id.textViewYear)
         val textViewName3 = view.findViewById<TextView>(R.id.textViewInfo)
         val textViewName4 = view.findViewById<TextView>(R.id.textViewComment)
-
+        val imageView = view.findViewById<ImageView>(R.id.img_location)
+        val CardView = view.findViewById<CardView>(R.id.CardView)
 
         textViewName1.setText(locations.name)
         textViewName2.setText(locations.year.toString())
@@ -172,8 +173,6 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
         val url = locations.image
 
-        // ImageView in your Activity
-        val imageView = view.findViewById<ImageView>(R.id.img_location)
 
         // Download directly from StorageReference using Glide
         // (See MyAppGlideModule for Loader registration)
@@ -182,6 +181,25 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
             .centerCrop()
             .placeholder(R.drawable.burg_rotteln)
             .into(imageView)
+
+        //TODO: 1. Video Start Button Find view by ID
+        //TODO: 2. Click listener to intend new Activity Video.kt
+        //TODO: 3. Hand over Extra String with the current ID
+        //TODO: 4. In Video.kt make if statements where you request the ID
+        //TODO: 5. Start Video Player: https://www.youtube.com/watch?v=IEXSGmX8YJo
+
+        view.CardView.setOnClickListener(){
+            val locationId = locations.id
+            val locationName = locations.name
+
+            val intent = Intent(context, Video::class.java)
+
+            //To pass the name and id of the chosen category to activity Game.kt
+            intent.putExtra("extra_location_id", locationId)
+            intent.putExtra("extra_location_name", locationName)
+
+            context.startActivity(intent)
+        }
 
         view.changeComment.setOnClickListener(){
             val builder = AlertDialog.Builder(mCtx)

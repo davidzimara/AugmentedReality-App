@@ -32,19 +32,6 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textViewName1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="Name"
-        android:textAlignment="center"
-        android:textSize="21sp" />
-    
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200px"
-        android:id="@+id/img_location"/>
 
     <TextView
         android:id="@+id/textViewYear"
@@ -53,6 +40,20 @@
         android:padding="16dp"
         android:text="year"
         android:textAlignment="center" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200px"
+        android:id="@+id/img_location"/>
+
+    <TextView
+        android:id="@+id/textViewName1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textSize="21sp" />
 
     <TextView
         android:id="@+id/textViewInfo"
@@ -63,6 +64,7 @@
         android:textAlignment="center" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/CardView"
         android:layout_gravity="center"
         android:layout_width="86dp"
         android:layout_height="wrap_content"
@@ -75,12 +77,11 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/playButton"
+                android:id="@+id/startVideo"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_gravity="center"
                 android:background="@drawable/oval_icons"
-                android:onClick="showChooseCategory"
                 android:tint="@color/colorWhite"
                 app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
 
@@ -89,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="Start Video"
+                android:text="Starte Video"
                 android:textAlignment="center"
                 android:textColor="@color/colorDarkGrey" />
 
