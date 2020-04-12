@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.UI.Game
 import com.example.AugmentedRealityApp.R
 
-class ChooseCategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>)
-    : ArrayAdapter<Categories>(mCtx, layoutResId, categoryList) {
+class ChooseCategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Locations>)
+    : ArrayAdapter<Locations>(mCtx, layoutResId, categoryList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 

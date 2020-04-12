@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_dialog_layout"
+    android:orientation="vertical"
+    android:paddingBottom="8dp">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:onClick="close_dialog"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="Sie sehen einen Überblick des Raumes" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textViewName1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textSize="21sp" />
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200px"
+        android:id="@+id/img_location"/>
+
+    <TextView
+        android:id="@+id/textViewYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="year"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="info"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Kommentar"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/changeComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/gradient_button"
+        android:drawableLeft="@drawable/ic_edit_black_24dp"
+        android:drawableTint="@color/colorWhite"
+        android:paddingHorizontal="15dp"
+        android:text=" Kommentar ändern"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite" />
+
+
+
+</LinearLayout>

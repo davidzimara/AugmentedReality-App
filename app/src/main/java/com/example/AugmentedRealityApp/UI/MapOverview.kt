@@ -10,7 +10,7 @@ import com.example.AugmentedRealityApp.DataClasses.Questions
 import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.*
 
-class QuestionOverview : AppCompatActivity() {
+class MapOverview : AppCompatActivity() {
 
     lateinit var kategorieName: TextView
     lateinit var questionList: MutableList<Questions>
@@ -46,7 +46,7 @@ class QuestionOverview : AppCompatActivity() {
                         questionList.add(question!!)
                     }
                 }
-                val adapter = QuestionAdapter(this@QuestionOverview, R.layout.questions, questionList)
+                val adapter = QuestionAdapter(this@MapOverview, R.layout.questions, questionList)
                 listView.adapter = adapter
             }
         })

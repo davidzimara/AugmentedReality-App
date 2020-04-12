@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "921076756449-g4j3r9li82bsh16tiavfjh2t1h3vu966.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.AugmentedRealityApp",
+            "certificate_hash": "fe880c062c724ed3a8baaa8f819e4c544d4a6b7b"
+          }
+        },
+        {
           "client_id": "921076756449-aldkl5hf6bpvdddm25kkaj79ismk9s14.apps.googleusercontent.com",
           "client_type": 3
         }

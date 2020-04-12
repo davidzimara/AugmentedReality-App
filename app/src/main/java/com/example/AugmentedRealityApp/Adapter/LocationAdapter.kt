@@ -1,5 +1,5 @@
 package com.example.AugmentedRealityApp.Adapter
-//Delete me
+
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -7,51 +7,59 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.bumptech.glide.Glide
+import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.DataClasses.Questions
-import com.example.AugmentedRealityApp.UI.QuestionOverview
 import com.example.AugmentedRealityApp.R
+import com.example.AugmentedRealityApp.UI.MapOverview
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.StorageReference
+import kotlinx.android.synthetic.main.dialog_layout_info.view.*
 
-class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList: List<Categories>) :
-    ArrayAdapter<Categories>(mCtx, layoutResId, categoryList) {
+
+class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList: List<Locations>) :
+    ArrayAdapter<Locations>(mCtx, layoutResId, locationList) {
 
     lateinit var ctx: Context
+    lateinit var dialog: BottomSheetDialog
+    lateinit var mStorageRef: StorageReference
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
         val view: View = layoutInflater.inflate(layoutResId, null)
 
-        val textViewName = view.findViewById<TextView>(R.id.textViewName)
-        val imageViewUpdate = view.findViewById<ImageView>(R.id.textViewUpdate)
-        val imageViewDelete = view.findViewById<ImageView>(R.id.textViewDelete)
+        val textViewName = view.findViewById<TextView>(R.id.textViewName_name)
+        /*val imageViewUpdate = view.findViewById<ImageView>(R.id.textViewUpdate)
+        val imageViewDelete = view.findViewById<ImageView>(R.id.textViewDelete)*/
         val textViewQuestions = view.findViewById<ImageView>(R.id.textViewQuestion)
 
-        val category = categoryList[position]
+        val locations = locationList[position]
 
-        textViewName.text = category.name
+        textViewName.text = locations.name
         ctx = this.context!!
 
-        imageViewUpdate.setOnClickListener {
+        /*imageViewUpdate.setOnClickListener {
             showUpdateDialog(category)
         }
 
         imageViewDelete.setOnClickListener {
             deleteCategory(category)
-        }
+        }*/
 
         textViewName.setOnClickListener {
-            createQuestions(category)
+            //createQuestions(category)
+            show_dialog(view, locations)
         }
 
         textViewQuestions.setOnClickListener {
-            showQuestions(category)
+            showQuestions(locations)
         }
 
         return view
     }
-
-    private fun showUpdateDialog(category: Categories) {
+    /*
+    private fun showUpdateDialog(category: Locations) {
         val builder = AlertDialog.Builder(mCtx)
 
         val inflater = LayoutInflater.from(mCtx)
@@ -75,7 +83,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
                 return@setPositiveButton
             }
 
-            val category = Categories(category.id, kategorieName)
+            val category = Locations(category.id, kategorieName)
 
             val categoryValues = category.toMap()
 
@@ -99,7 +107,7 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
     }
 
 
-    private fun deleteCategory(category: Categories) {
+    private fun deleteCategory(category: Locations) {
 
         val builder = AlertDialog.Builder(mCtx)
 
@@ -137,8 +145,86 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         alert.show()
 
     }
+    */
 
-    private fun createQuestions(category: Categories) {
+    fun show_dialog(view: View, locations: Locations) {
+
+        dialog = BottomSheetDialog(mCtx)
+
+        val inflater = LayoutInflater.from(mCtx)
+
+        val view = inflater.inflate(R.layout.dialog_layout_info, null)
+
+        dialog.setContentView(view)
+        dialog.show()
+
+        val textViewName1 = view.findViewById<TextView>(R.id.textViewName1)
+        val textViewName2 = view.findViewById<TextView>(R.id.textViewYear)
+        val textViewName3 = view.findViewById<TextView>(R.id.textViewInfo)
+        val textViewName4 = view.findViewById<TextView>(R.id.textViewComment)
+
+        val url = "https://firebasestorage.googleapis.com/v0/b/augmentedreality-ff7df.appspot.com/o/burg_rotteln.jpg?alt=media&token=42297e4c-ecdc-4d06-b908-317d1bc8892e"
+        // Reference to an image file in Cloud Storage
+
+        // ImageView in your Activity
+        val imageView = view.findViewById<ImageView>(R.id.img_location)
+
+         // Download directly from StorageReference using Glide
+        // (See MyAppGlideModule for Loader registration)
+        Glide.with(this.context)
+            .load(url)
+            .centerCrop()
+            .into(imageView)
+
+        textViewName1.setText(locations.name)
+        textViewName2.setText(locations.year.toString())
+        textViewName3.setText(locations.info)
+        textViewName4.setText(locations.comment)
+        //TODO: ADD Image view for Preview of location
+
+        view.changeComment.setOnClickListener(){
+            val builder = AlertDialog.Builder(mCtx)
+
+            val inflater = LayoutInflater.from(mCtx)
+
+            val view = inflater.inflate(R.layout.update_comment, null)
+
+            val EditText = view.findViewById<EditText>(R.id.contentComment)
+
+            EditText.setText(locations.comment)
+
+            builder.setView(view)
+
+            builder.setPositiveButton("Ändern") {p0, p1 ->
+                val dbLocations = FirebaseDatabase.getInstance().getReference("location").child(locations.id)
+
+                val comment = EditText.text.toString().trim()
+
+                if (comment == "") {
+                    Toast.makeText(this.context, "Bitte geben Sie einen Kommentar ein.", Toast.LENGTH_LONG).show()
+                    return@setPositiveButton
+                } else {
+                    dbLocations.child("comment").setValue(comment)
+
+                    Toast.makeText(mCtx, "Wurde zu " + comment + " geändert.", Toast.LENGTH_LONG).show()
+
+                    //To Update the comment within the bottom sheet
+                    textViewName4.setText(comment)
+                }
+            }
+
+            builder.setNegativeButton("Zurück") { p0, p1 ->
+
+            }
+
+            val alert = builder.create()
+            alert.show()
+
+        }
+    }
+
+
+    private fun createQuestions(category: Locations) {
 
         val builder = AlertDialog.Builder(mCtx)
 
@@ -203,9 +289,9 @@ class CategoryAdapter(val mCtx: Context, val layoutResId: Int, val categoryList:
         alert.show()
     }
 
-    private fun showQuestions(category: Categories) {
+    private fun showQuestions(category: Locations) {
 
-        val intent = Intent(context, QuestionOverview::class.java)
+        val intent = Intent(context, MapOverview::class.java)
 
         val kategorieId = category.id
         val kategorieName = category.name

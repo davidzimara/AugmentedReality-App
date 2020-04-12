@@ -8,17 +8,18 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.AugmentedRealityApp.Adapter.CategoryAdapter
-import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.example.AugmentedRealityApp.Adapter.LocationAdapter
+import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.*
+
 
 class CreateCategory : AppCompatActivity() {
 
     lateinit var nameCategory: EditText
     lateinit var saveCategory: Button
     private lateinit var database: DatabaseReference
-    lateinit var categoryList: MutableList<Categories>
+    lateinit var categoryList: MutableList<Locations>
     lateinit var listView: ListView
 
 
@@ -32,7 +33,7 @@ class CreateCategory : AppCompatActivity() {
         nameCategory = findViewById(R.id.nameCategory)
 
         saveCategory.setOnClickListener {
-            savesCategory()
+            //savesCategory()
         }
 
         categoryList = mutableListOf()
@@ -47,18 +48,18 @@ class CreateCategory : AppCompatActivity() {
                 categoryList.clear()
                 if (p0!!.exists()) {
                     for (h in p0.children) {
-                        val category = h.getValue(Categories::class.java)
+                        val category = h.getValue(Locations::class.java)
                         categoryList.add(category!!)
                     }
                 }
                 val adapter =
-                    CategoryAdapter(
+                    LocationAdapter(
                         this@CreateCategory, R.layout.categories, categoryList)
                 listView.adapter = adapter
             }
         })
     }
-
+    /*
     fun savesCategory() {
 
         val kategorie = nameCategory.text.toString().trim()
@@ -69,7 +70,7 @@ class CreateCategory : AppCompatActivity() {
         }
 
         val id = database.push().key.toString()
-        val kat = Categories(id, kategorie)
+        val kat = Locations(id, kategorie)
 
         database.child(id).setValue(kat)
             .addOnCompleteListener {
@@ -85,7 +86,7 @@ class CreateCategory : AppCompatActivity() {
                 ).show()
             }
     }
-
+*/
 
     fun back_to_home(view: View) {
         val intent = Intent(this, MainActivity::class.java)

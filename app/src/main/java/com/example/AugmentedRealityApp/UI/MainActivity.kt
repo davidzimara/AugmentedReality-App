@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.FragmentTransaction
-import com.example.AugmentedRealityApp.Adapter.CategoryAdapter
-import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.example.AugmentedRealityApp.Adapter.LocationAdapter
+import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -18,11 +18,11 @@ import com.google.firebase.database.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var homeFragment: HomeFragment
-    lateinit var subjectFragment: SubjectFragment
+    lateinit var locationFragment: LocationFragment
     lateinit var chooseCategory: ChooseCategoryFragment
     lateinit var settingsFragment: SettingsFragment
     private lateinit var database: DatabaseReference
-    lateinit var categoryList: MutableList<Categories>
+    lateinit var categoryList: MutableList<Locations>
     lateinit var listView: ListView
     lateinit var dialog: BottomSheetDialog
 
@@ -56,10 +56,10 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_subjects -> {
 
-                    subjectFragment = SubjectFragment()
+                    locationFragment = LocationFragment()
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.main_frame, subjectFragment)
+                        .replace(R.id.main_frame, locationFragment)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
                 }
@@ -112,10 +112,10 @@ class MainActivity : AppCompatActivity() {
                 if (p0!!.exists()) {
                     categoryList.clear()
                     for (h in p0.children) {
-                        val category = h.getValue(Categories::class.java)
+                        val category = h.getValue(Locations::class.java)
                         categoryList.add(category!!)
                     }
-                    val adapter = CategoryAdapter(this@MainActivity, R.layout.categories, categoryList)
+                    val adapter = LocationAdapter(this@MainActivity, R.layout.categories, categoryList)
                     listView.adapter = adapter
                 }
             }

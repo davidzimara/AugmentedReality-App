@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/textViewName_name"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -14,7 +14,7 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorDarkGrey" />
-
+    <!--DeadCode
     <ImageView
         android:id="@+id/textViewUpdate"
         android:layout_width="wrap_content"
@@ -32,13 +32,13 @@
         android:layout_marginRight="20dp"
         android:tint="@color/colorLightRot"
         app:srcCompat="@drawable/ic_delete_black_24dp" />
-
+    -->
     <ImageView
         android:id="@+id/textViewQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:tint="@color/colorOrange"
-        app:srcCompat="@drawable/ic_question_answer_black_24dp" />
+        app:srcCompat="@drawable/ic_location_on_black_24dp" />
 
 </LinearLayout>

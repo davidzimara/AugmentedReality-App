@@ -9,14 +9,14 @@ import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.example.AugmentedRealityApp.Adapter.ChooseCategoryAdapter
-import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.*
 
 class ChooseCategoryFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
-    lateinit var categoryList: MutableList<Categories>
+    lateinit var categoryList: MutableList<Locations>
     lateinit var listView: ListView
     lateinit var ctx: Context
 
@@ -46,7 +46,7 @@ class ChooseCategoryFragment : Fragment() {
                 if (p0!!.exists()) {
                     categoryList.clear()
                     for (h in p0.children) {
-                        val category = h.getValue(Categories::class.java)
+                        val category = h.getValue(Locations::class.java)
                         categoryList.add(category!!)
                     }
                     val adapter = ChooseCategoryAdapter(ctx, R.layout.choose_category, categoryList)

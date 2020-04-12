@@ -8,16 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
-import com.example.AugmentedRealityApp.Adapter.CategoryAdapter
-import com.example.AugmentedRealityApp.DataClasses.Categories
+import com.example.AugmentedRealityApp.Adapter.LocationAdapter
+import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_subject.*
 
-class SubjectFragment : Fragment() {
+class LocationFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
-    lateinit var categoryList: MutableList<Categories>
+    lateinit var locationList: MutableList<Locations>
     lateinit var listView: ListView
     lateinit var ctx: Context
 
@@ -38,7 +38,7 @@ class SubjectFragment : Fragment() {
 
         database = FirebaseDatabase.getInstance().getReference("location")
 
-        categoryList = mutableListOf()
+        locationList = mutableListOf()
         listView = view.findViewById(R.id.listViewSubject)
         ctx = this.context!!
 
@@ -48,17 +48,17 @@ class SubjectFragment : Fragment() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                categoryList.clear()
+                locationList.clear()
                 if (p0!!.exists()) {
                     for (h in p0.children) {
-                        val category = h.getValue(Categories::class.java)
-                        categoryList.add(category!!)
+                        val category = h.getValue(Locations::class.java)
+                        locationList.add(category!!)
                     }
                 }
-                val adapter = CategoryAdapter(
+                val adapter = LocationAdapter(
                     ctx,
                     R.layout.categories,
-                    categoryList
+                    locationList
                 )
                 listView.adapter = adapter
             }
