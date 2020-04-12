@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -60,6 +61,41 @@
         android:padding="16dp"
         android:text="info"
         android:textAlignment="center" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="center"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/playButton"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:background="@drawable/oval_icons"
+                android:onClick="showChooseCategory"
+                android:tint="@color/colorWhite"
+                app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="Start Video"
+                android:textAlignment="center"
+                android:textColor="@color/colorDarkGrey" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
         android:id="@+id/textViewComment"

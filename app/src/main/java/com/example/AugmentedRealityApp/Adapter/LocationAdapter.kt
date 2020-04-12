@@ -14,6 +14,7 @@ import com.example.AugmentedRealityApp.R
 import com.example.AugmentedRealityApp.UI.MapOverview
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
 
@@ -23,7 +24,6 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
     lateinit var ctx: Context
     lateinit var dialog: BottomSheetDialog
-    lateinit var mStorageRef: StorageReference
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
@@ -163,24 +163,25 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         val textViewName3 = view.findViewById<TextView>(R.id.textViewInfo)
         val textViewName4 = view.findViewById<TextView>(R.id.textViewComment)
 
-        val url = "https://firebasestorage.googleapis.com/v0/b/augmentedreality-ff7df.appspot.com/o/burg_rotteln.jpg?alt=media&token=42297e4c-ecdc-4d06-b908-317d1bc8892e"
-        // Reference to an image file in Cloud Storage
-
-        // ImageView in your Activity
-        val imageView = view.findViewById<ImageView>(R.id.img_location)
-
-         // Download directly from StorageReference using Glide
-        // (See MyAppGlideModule for Loader registration)
-        Glide.with(this.context)
-            .load(url)
-            .centerCrop()
-            .into(imageView)
 
         textViewName1.setText(locations.name)
         textViewName2.setText(locations.year.toString())
         textViewName3.setText(locations.info)
         textViewName4.setText(locations.comment)
         //TODO: ADD Image view for Preview of location
+
+        val url = locations.image
+
+        // ImageView in your Activity
+        val imageView = view.findViewById<ImageView>(R.id.img_location)
+
+        // Download directly from StorageReference using Glide
+        // (See MyAppGlideModule for Loader registration)
+        Glide.with(this.context)
+            .load(url)
+            .centerCrop()
+            .placeholder(R.drawable.burg_rotteln)
+            .into(imageView)
 
         view.changeComment.setOnClickListener(){
             val builder = AlertDialog.Builder(mCtx)

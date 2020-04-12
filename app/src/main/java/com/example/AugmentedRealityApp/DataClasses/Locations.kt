@@ -1,7 +1,10 @@
 package com.example.AugmentedRealityApp.DataClasses
 
-data class Locations(val id: String, val name: String, val info: String, val year: Long, val comment: String) {
-    constructor() : this("", "","",0, "Fügen sie einen Kommentar hinzu") {
+import android.widget.ImageView
+import com.example.AugmentedRealityApp.R
+
+data class Locations(val id: String, val name: String, val info: String, val year: Long, val comment: String, val image: String) {
+    constructor() : this("", "","",0, "Fügen sie einen Kommentar hinzu", "Logo") {
 
     }
     //for the childUpdate function within the CategoryAdapter
