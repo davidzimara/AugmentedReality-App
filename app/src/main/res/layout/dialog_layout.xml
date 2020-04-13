@@ -27,43 +27,47 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
-            android:text="Erstellen sie eine Karteikarte" />
+            android:text="Scannen Sie einen Barcode ein" />
 
     </RelativeLayout>
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="Für welche Kategorie?"
-        android:textAlignment="center"
-        android:textSize="21sp" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:alpha="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/burg_rotteln"/>
+
+        <TextView
+            android:textColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            android:layout_centerVertical="true"
+            android:text="Burg Rötteln"
+            android:textAlignment="center"
+            android:textSize="21sp" />
+
+    </RelativeLayout>
+
 
     <Button
-        android:id="@+id/newCategory"
+        android:layout_marginTop="10dp"
+        android:id="@+id/openScanner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/gradient_button"
-        android:drawableLeft="@drawable/ic_add_circle_black_24dp"
+        android:drawableLeft="@drawable/ic_crop_free_black_24dp"
         android:drawableTint="@color/colorWhite"
         android:onClick="show_create_category"
         android:paddingHorizontal="15dp"
-        android:text=" Neue Kategorie"
+        android:text=" QR-Code SCANNER "
         android:textAlignment="center"
         android:textColor="@color/colorWhite" />
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Ihre Kategorien:"
-        android:textAlignment="center" />
-
-    <ListView
-        android:id="@+id/listViewDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
 
 </LinearLayout>

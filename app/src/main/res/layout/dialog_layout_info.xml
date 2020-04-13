@@ -41,10 +41,27 @@
         android:text="year"
         android:textAlignment="center" />
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200px"
-        android:id="@+id/img_location"/>
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400px"
+            android:id="@+id/img_location"/>
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/startVideo"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/oval_icons"
+            android:tint="@color/colorWhite"
+            app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textViewName1"
@@ -65,8 +82,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardView"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_width="86dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
 
@@ -77,47 +95,30 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/startVideo"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/changeComment"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:padding="6dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_gravity="center"
-                android:background="@drawable/oval_icons"
                 android:tint="@color/colorWhite"
-                app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
+                android:background="@drawable/gradient_button"
+                app:srcCompat="@drawable/ic_edit_black_24dp" />
 
             <TextView
+                android:id="@+id/textViewComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="Starte Video"
+                android:text="Kommentar"
                 android:textAlignment="center"
                 android:textColor="@color/colorDarkGrey" />
-
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
-
-
-    <TextView
-        android:id="@+id/textViewComment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Kommentar"
-        android:textAlignment="center" />
-
-    <Button
-        android:id="@+id/changeComment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/gradient_button"
-        android:drawableLeft="@drawable/ic_edit_black_24dp"
-        android:drawableTint="@color/colorWhite"
-        android:paddingHorizontal="15dp"
-        android:text=" Kommentar ändern"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhite" />
 
 
 

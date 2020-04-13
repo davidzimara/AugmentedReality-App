@@ -1,18 +1,19 @@
 package com.example.AugmentedRealityApp.UI
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.ImageView
+import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.example.AugmentedRealityApp.Adapter.LocationAdapter
 import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.android.synthetic.main.dialog_layout.view.*
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.dialog_layout.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -84,8 +85,7 @@ class MainActivity : AppCompatActivity() {
         dialog.setContentView(view)
         dialog.show()
 
-
-        view.newCategory.setOnClickListener {
+        view.openScanner.setOnClickListener {
 
             val intent = Intent(this, CreateCategory::class.java)
             startActivity(intent)
@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
         categoryList = mutableListOf()
         database = FirebaseDatabase.getInstance().getReference("Categorys")
-        listView = view.findViewById(R.id.listViewDialog)
+        //listView = view.findViewById(R.id.listViewDialog)
 
 
         database.addValueEventListener(object: ValueEventListener {

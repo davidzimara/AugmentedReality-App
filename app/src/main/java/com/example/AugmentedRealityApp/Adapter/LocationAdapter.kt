@@ -3,6 +3,7 @@ package com.example.AugmentedRealityApp.Adapter
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +12,15 @@ import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
 import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.DataClasses.Questions
+import com.example.AugmentedRealityApp.DataClasses.Users
 import com.example.AugmentedRealityApp.R
 import com.example.AugmentedRealityApp.UI.MapOverview
 import com.example.AugmentedRealityApp.UI.Video
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
 class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList: List<Locations>) :
@@ -24,6 +28,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
     lateinit var ctx: Context
     lateinit var dialog: BottomSheetDialog
+    private lateinit var database: DatabaseReference
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
@@ -149,6 +154,8 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
     fun show_dialog(view: View, locations: Locations) {
 
+        database = FirebaseDatabase.getInstance().getReference("location")
+
         dialog = BottomSheetDialog(mCtx)
 
         val inflater = LayoutInflater.from(mCtx)
@@ -163,7 +170,8 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         val textViewName3 = view.findViewById<TextView>(R.id.textViewInfo)
         val textViewName4 = view.findViewById<TextView>(R.id.textViewComment)
         val imageView = view.findViewById<ImageView>(R.id.img_location)
-        val CardView = view.findViewById<CardView>(R.id.CardView)
+        //val CardView = view.findViewById<CardView>(R.id.CardView)
+        val startVideo = view.findViewById<ImageView>(R.id.playButton)
 
         textViewName1.setText(locations.name)
         textViewName2.setText(locations.year.toString())
@@ -173,22 +181,19 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
         val url = locations.image
 
-
         // Download directly from StorageReference using Glide
-        // (See MyAppGlideModule for Loader registration)
         Glide.with(this.context)
             .load(url)
             .centerCrop()
             .placeholder(R.drawable.burg_rotteln)
             .into(imageView)
 
-        //TODO: 1. Video Start Button Find view by ID
-        //TODO: 2. Click listener to intend new Activity Video.kt
-        //TODO: 3. Hand over Extra String with the current ID
-        //TODO: 4. In Video.kt make if statements where you request the ID
-        //TODO: 5. Start Video Player: https://www.youtube.com/watch?v=IEXSGmX8YJo
+        //TODO: 6. User ihre eigene Kommentare
+        //TODO: 7. Kommentar nur für eigenen User ersichtlich extra Tabelle in FB (id abfragen und einspeichern)
+        //TODO: 9. dafür muss einmalig der user bei der Registrierung angelegt werden
+        //TODO: 8. Neue DataClass "User" in Kotlin
 
-        view.CardView.setOnClickListener(){
+        view.startVideo.setOnClickListener(){
             val locationId = locations.id
             val locationName = locations.name
 
@@ -243,7 +248,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
     }
 
 
-    private fun createQuestions(category: Locations) {
+   /* private fun createQuestions(category: Locations) {
 
         val builder = AlertDialog.Builder(mCtx)
 
@@ -306,7 +311,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
         val alert = builder.create()
         alert.show()
-    }
+    }*/
 
     private fun showQuestions(category: Locations) {
 

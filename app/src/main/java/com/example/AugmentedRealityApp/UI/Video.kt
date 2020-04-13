@@ -32,6 +32,8 @@ class Video : AppCompatActivity() {
             videoView.setVideoURI(uri)
         }
 
+        //TODO: Liste vervollständigen
+
 
         val mediaController = MediaController(this)
         videoView.setMediaController(mediaController)
