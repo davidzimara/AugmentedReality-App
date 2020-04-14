@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import com.example.AugmentedRealityApp.Adapter.LocationAdapter
+import com.example.AugmentedRealityApp.DataClasses.Comments
 import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.DataClasses.Users
 import com.example.AugmentedRealityApp.R
@@ -19,7 +20,6 @@ class LocationFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
     lateinit var locationList: MutableList<Locations>
-    lateinit var userList: MutableList<Users>
     lateinit var listView: ListView
     lateinit var ctx: Context
 

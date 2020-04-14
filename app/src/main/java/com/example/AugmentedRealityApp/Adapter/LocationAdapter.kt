@@ -10,14 +10,12 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
-import com.example.AugmentedRealityApp.DataClasses.Answers
-import com.example.AugmentedRealityApp.DataClasses.Locations
-import com.example.AugmentedRealityApp.DataClasses.Questions
-import com.example.AugmentedRealityApp.DataClasses.Users
+import com.example.AugmentedRealityApp.DataClasses.*
 import com.example.AugmentedRealityApp.R
 import com.example.AugmentedRealityApp.UI.MapOverview
 import com.example.AugmentedRealityApp.UI.Video
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -28,7 +26,8 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
     lateinit var ctx: Context
     lateinit var dialog: BottomSheetDialog
-    lateinit var userList: MutableList<Users>
+    lateinit var commentList: MutableList<Comments>
+
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
@@ -38,6 +37,9 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         val textViewQuestions = view.findViewById<ImageView>(R.id.textViewQuestion)
 
         val locations = locationList[position]
+
+
+        commentList = mutableListOf()
 
         textViewName.text = locations.name
         ctx = this.context!!
@@ -49,6 +51,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         textViewQuestions.setOnClickListener {
             //showQuestions(locations)
         }
+
 
         return view
     }
@@ -76,7 +79,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         textViewName1.setText(locations.name)
         textViewName2.setText(locations.year.toString())
         textViewName3.setText(locations.info)
-        textViewName4.setText(locations.comment)
+        //textViewName4.setText(locations.comment)
         //TODO: ADD Image view for Preview of location
 
         val url = locations.image
@@ -88,12 +91,30 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
             .placeholder(R.drawable.burg_rotteln)
             .into(imageView)
 
-        //TODO: 6. User ihre eigene Kommentare
-        //TODO: 7. Kommentar nur für eigenen User ersichtlich extra Tabelle in FB (id abfragen und einspeichern)
-        //TODO: 9. dafür muss einmalig der user bei der Registrierung angelegt werden
-        //TODO: 8. Neue DataClass "User" in Kotlin
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
 
+            val userId = user.uid
+        }
 
+        val databaseComment = FirebaseDatabase.getInstance().getReference().child("user").child(user!!.uid).child(locations.id)
+
+        databaseComment.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+
+                commentList.clear()
+                for (h in p0.children) {
+                    val comment = h.getValue(Comments::class.java)
+                    commentList.add(comment!!)
+                }
+
+                textViewName4.setText(commentList[0].comment)
+            }
+        })
 
             view.startVideo.setOnClickListener() {
                     val locationId = locations.id
@@ -117,15 +138,16 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
                     val EditText = view.findViewById<EditText>(R.id.contentComment)
 
-                    EditText.setText(locations.comment)
+                    EditText.setText(textViewName4.text.toString())
 
                     builder.setView(view)
 
                     builder.setPositiveButton("Ändern") { p0, p1 ->
-                        val dbLocations = FirebaseDatabase.getInstance().getReference("location")
-                            .child(locations.id)
+                        val databaseComment = FirebaseDatabase.getInstance().getReference().child("user").child(user!!.uid).child(locations.id)
 
                         val comment = EditText.text.toString().trim()
+
+                        val comObj = Comments(locations.id, comment)
 
                         if (comment == "") {
                             Toast.makeText(
@@ -135,7 +157,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
                             ).show()
                             return@setPositiveButton
                         } else {
-                            dbLocations.child("comment").setValue(comment)
+                            databaseComment.child("comments").setValue(comObj)
 
                             Toast.makeText(
                                 mCtx,
