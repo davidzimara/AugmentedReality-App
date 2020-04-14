@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.example.AugmentedRealityApp.DataClasses.Users
 import com.example.AugmentedRealityApp.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SignUp : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,12 +60,27 @@ class SignUp : AppCompatActivity() {
                 if (task.isSuccessful) {
                     startActivity(Intent(this, LoginScreen::class.java))
                     finish()
+
+                    val email = tv_username.text.toString()
+                    val user = FirebaseAuth.getInstance().currentUser
+                    user?.let {
+
+                        val userId = user.uid
+                        writeNewUser(userId, email)
+                    }
                 } else {
                     Toast.makeText(baseContext, "Registrierung fehlgeschlagen. Verwenden Sie mindestens 6 Zeichen als Passwort.",
                         Toast.LENGTH_SHORT).show()
                 }
             }
+    }
 
+    private fun writeNewUser(userId: String, email: String) {
+
+        val user= Users(userId, email)
+        val database = FirebaseDatabase.getInstance().getReference("user").child(userId)
+
+        database.setValue(user)
     }
 
 }
