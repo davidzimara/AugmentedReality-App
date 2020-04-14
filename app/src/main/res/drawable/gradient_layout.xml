@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <gradient
         android:startColor="@color/colorLightRot"
-        android:endColor="#ff6f00"
+        android:endColor="@color/OrangeLight"
         android:angle="0"
         android:type="linear"/>
 </shape>
