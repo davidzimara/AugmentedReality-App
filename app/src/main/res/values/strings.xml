@@ -7,4 +7,6 @@
     <string name="nav_create">Erstellen</string>
     <string name="nav_statistics">Statistiken</string>
     <string name="nav_settings">Einstellungen</string>
+    <string name="mehr_anzeigen">mehr anzeigen</string>
+    <string name="weniger_anezigen">weniger anzeigen</string>
 </resources>

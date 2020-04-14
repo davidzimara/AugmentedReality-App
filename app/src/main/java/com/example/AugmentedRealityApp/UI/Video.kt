@@ -18,6 +18,8 @@ class Video : AppCompatActivity() {
         val locationNameFromAdapter = intent.getStringExtra("extra_location_name")
         val locationIdFromAdapter = intent.getStringExtra("extra_location_id")
 
+        locationName.text = locationNameFromAdapter
+
         val videoView = findViewById<VideoView>(R.id.videoView)
 
         if (locationIdFromAdapter == "l1") {
@@ -34,9 +36,11 @@ class Video : AppCompatActivity() {
 
         //TODO: Liste vervollständigen
 
-
         val mediaController = MediaController(this)
         videoView.setMediaController(mediaController)
         mediaController.setAnchorView(videoView)
+
+        //autostart
+        videoView.start()
     }
 }

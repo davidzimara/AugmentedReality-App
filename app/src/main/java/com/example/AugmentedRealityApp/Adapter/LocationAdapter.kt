@@ -159,11 +159,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
                         } else {
                             databaseComment.child("comments").setValue(comObj)
 
-                            Toast.makeText(
-                                mCtx,
-                                "Wurde zu " + comment + " geändert.",
-                                Toast.LENGTH_LONG
-                            ).show()
+                            //Toast.makeText( mCtx, "Wurde zu " + comment + " geändert.", Toast.LENGTH_LONG).show()
 
                             //To Update the comment within the bottom sheet
                             textViewName4.setText(comment)

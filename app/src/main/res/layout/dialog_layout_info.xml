@@ -72,13 +72,18 @@
         android:textAlignment="center"
         android:textSize="21sp" />
 
-    <TextView
+    <com.borjabravo.readmoretextview.ReadMoreTextView
         android:id="@+id/textViewInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
         android:text="info"
-        android:textAlignment="center" />
+        android:padding="4dp"
+        android:textAlignment="center"
+        app:trimExpandedText="@string/weniger_anezigen"
+        app:trimCollapsedText="@string/mehr_anzeigen"
+        app:trimMode="trimModeLength"
+        app:trimLength="200"
+        app:colorClickableText="@color/colorLightRot"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardView"
@@ -95,7 +100,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:id="@+id/changeComment"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
@@ -107,15 +112,22 @@
                 android:background="@drawable/gradient_button"
                 app:srcCompat="@drawable/ic_edit_black_24dp" />
 
-            <TextView
-                android:id="@+id/textViewComment"
-                android:layout_width="wrap_content"
+            <ScrollView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:text="Kommentar"
-                android:textAlignment="center"
-                android:textColor="@color/colorDarkGrey" />
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/textViewComment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Kommentar"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorDarkGrey" />
+            </ScrollView>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
