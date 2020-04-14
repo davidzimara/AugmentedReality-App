@@ -3,7 +3,6 @@ package com.example.AugmentedRealityApp.UI
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
@@ -87,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
         view.openScanner.setOnClickListener {
 
-            val intent = Intent(this, CreateCategory::class.java)
+            val intent = Intent(this, QrCodeScanner::class.java)
             startActivity(intent)
             dialog.dismiss()
         }

@@ -72,6 +72,6 @@ class LocationFragment : Fragment() {
     }
 
     private fun openCreateCategory() {
-        startActivity(Intent(this.context, CreateCategory::class.java))
+        startActivity(Intent(this.context, QrCodeScanner::class.java))
     }
 }
