@@ -22,7 +22,7 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         //Handed over from the Game.kt activity (last run)
@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
 
         }
 
-    }
+    }*/
 }
 
 
