@@ -35,7 +35,6 @@ class QrCodeScanner : AppCompatActivity() {
             } else {
                 super.onActivityResult(requestCode, resultCode, data);
             }
-
         }
     }
 
