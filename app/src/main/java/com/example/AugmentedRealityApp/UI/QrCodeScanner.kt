@@ -9,7 +9,7 @@ import com.example.AugmentedRealityApp.R
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_scan_qr_code.*
 
-class QrCodeScanner : AppCompatActivity() {
+class  QrCodeScanner : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

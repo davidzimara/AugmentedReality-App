@@ -6,7 +6,7 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorWhiteTransparent">#80ffffff</color>
     <!--FromColorPickerMaterial.io-->
-    <color name="colorLightRot">#f44336</color>
+    <!--<color name="colorLightRot">#f44336</color>OLD-->
     <color name="colorOrange">#ff8a50</color>
     <color name="colorGreen">#4caf50</color>
     <color name="colorLigtGreen">#80e27e</color>
@@ -14,12 +14,21 @@
     <color name="colorLightBlue">#67daff</color>
     <color name="colorDarkBlue">#007ac1</color>
 
-    <!--DHBW Colors-->
+    <!--DHBW Colors (OLD)
     <color name="colorRot">#cb2426</color>
     <color name="colorRot2">#d65a5c</color>
     <color name="colorLightGrey">#e1e0e2</color>
     <color name="colorDarkGrey">#78727b</color>
     <color name="colorMiddleGrey">#7e8790</color>
+    -->
+
+    <!--DHBW Colors-->
+    <color name="colorRot">#57C9F6</color>
+    <color name="colorRot2">#03DAC6</color>
+    <color name="colorLightGrey">#e1e0e2</color>
+    <color name="colorDarkGrey">#78727b</color>
+    <color name="colorMiddleGrey">#7e8790</color>
+    <color name="colorLightRot">#8FD8F8</color>
 
     <!--BurgRoetteln Color-->
     <color name="mainBlue">#57C9F6</color>
