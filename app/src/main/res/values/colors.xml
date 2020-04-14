@@ -21,6 +21,11 @@
     <color name="colorDarkGrey">#78727b</color>
     <color name="colorMiddleGrey">#7e8790</color>
 
+    <!--BurgRoetteln Color-->
+    <color name="mainBlue">#57C9F6</color>
+    <color name="mainLightBlue">#8FD8F8</color>
+    <color name="darkPurple">#515B6C</color>
+
     <array name="demo_colors">
         <item>@color/colorLightGrey</item>
         <item>@color/colorOrange</item>
