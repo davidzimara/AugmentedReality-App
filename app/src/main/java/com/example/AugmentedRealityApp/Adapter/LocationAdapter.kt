@@ -15,6 +15,7 @@ import com.example.AugmentedRealityApp.R
 import com.example.AugmentedRealityApp.UI.MapOverview
 import com.example.AugmentedRealityApp.UI.Video
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -90,14 +91,13 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
             .placeholder(R.drawable.burg_rotteln)
             .into(imageView)
 
-        //TODO: 6. User ihre eigene Kommentare
-        //TODO: 7. Kommentar nur für eigenen User ersichtlich extra Tabelle in FB (id abfragen und einspeichern)
-        //TODO: 9. dafür muss einmalig der user bei der Registrierung angelegt werden
-        //TODO: 8. Neue DataClass "User" in Kotlin
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
 
+            val userId = user.uid
+        }
 
-
-        val databaseComment = FirebaseDatabase.getInstance().getReference().child("user").child("TdmvrqVkTCSL1CveVadOc7pgwq43").child(locations.id)
+        val databaseComment = FirebaseDatabase.getInstance().getReference().child("user").child(user!!.uid).child(locations.id)
 
         databaseComment.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -138,15 +138,16 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
                     val EditText = view.findViewById<EditText>(R.id.contentComment)
 
-                    EditText.setText(locations.comment)
+                    EditText.setText(textViewName4.text.toString())
 
                     builder.setView(view)
 
                     builder.setPositiveButton("Ändern") { p0, p1 ->
-                        val dbLocations = FirebaseDatabase.getInstance().getReference("location")
-                            .child(locations.id)
+                        val databaseComment = FirebaseDatabase.getInstance().getReference().child("user").child(user!!.uid).child(locations.id)
 
                         val comment = EditText.text.toString().trim()
+
+                        val comObj = Comments(locations.id, comment)
 
                         if (comment == "") {
                             Toast.makeText(
@@ -156,7 +157,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
                             ).show()
                             return@setPositiveButton
                         } else {
-                            dbLocations.child("comment").setValue(comment)
+                            databaseComment.child("comments").setValue(comObj)
 
                             Toast.makeText(
                                 mCtx,
