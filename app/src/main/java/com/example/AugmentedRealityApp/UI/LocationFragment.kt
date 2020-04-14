@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ListView
 import com.example.AugmentedRealityApp.Adapter.LocationAdapter
 import com.example.AugmentedRealityApp.DataClasses.Locations
+import com.example.AugmentedRealityApp.DataClasses.Users
 import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_subject.*
@@ -18,6 +19,7 @@ class LocationFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
     lateinit var locationList: MutableList<Locations>
+    lateinit var userList: MutableList<Users>
     lateinit var listView: ListView
     lateinit var ctx: Context
 

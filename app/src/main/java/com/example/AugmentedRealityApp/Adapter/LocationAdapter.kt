@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
+import com.example.AugmentedRealityApp.DataClasses.Answers
 import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.DataClasses.Questions
 import com.example.AugmentedRealityApp.DataClasses.Users
@@ -17,8 +18,7 @@ import com.example.AugmentedRealityApp.R
 import com.example.AugmentedRealityApp.UI.MapOverview
 import com.example.AugmentedRealityApp.UI.Video
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
@@ -28,15 +28,13 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
     lateinit var ctx: Context
     lateinit var dialog: BottomSheetDialog
-    private lateinit var database: DatabaseReference
+    lateinit var userList: MutableList<Users>
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
         val view: View = layoutInflater.inflate(layoutResId, null)
 
         val textViewName = view.findViewById<TextView>(R.id.textViewName_name)
-        /*val imageViewUpdate = view.findViewById<ImageView>(R.id.textViewUpdate)
-        val imageViewDelete = view.findViewById<ImageView>(R.id.textViewDelete)*/
         val textViewQuestions = view.findViewById<ImageView>(R.id.textViewQuestion)
 
         val locations = locationList[position]
@@ -44,117 +42,18 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         textViewName.text = locations.name
         ctx = this.context!!
 
-        /*imageViewUpdate.setOnClickListener {
-            showUpdateDialog(category)
-        }
-
-        imageViewDelete.setOnClickListener {
-            deleteCategory(category)
-        }*/
-
         textViewName.setOnClickListener {
-            //createQuestions(category)
             show_dialog(view, locations)
         }
 
         textViewQuestions.setOnClickListener {
-            showQuestions(locations)
+            //showQuestions(locations)
         }
 
         return view
     }
-    /*
-    private fun showUpdateDialog(category: Locations) {
-        val builder = AlertDialog.Builder(mCtx)
-
-        val inflater = LayoutInflater.from(mCtx)
-
-        val view = inflater.inflate(R.layout.update_categories, null)
-
-        val editText = view.findViewById<EditText>(R.id.nameCategory)
-
-        editText.setText(category.name)
-
-        builder.setView(view)
-
-        builder.setPositiveButton("Ändern") { p0, p1 ->
-            val dbCategories = FirebaseDatabase.getInstance().getReference("Categorys")
-
-            val kategorieName = editText.text.toString().trim()
-
-            if (kategorieName.isEmpty()) {
-                editText.error = "Bitte gebe einen Namen an."
-                editText.requestFocus()
-                return@setPositiveButton
-            }
-
-            val category = Locations(category.id, kategorieName)
-
-            val categoryValues = category.toMap()
-
-            val childUpdates = HashMap<String, Any>()
-
-            childUpdates["/${category.id}"] = categoryValues
-
-            dbCategories.updateChildren(childUpdates)
-
-            Toast.makeText(mCtx, "Wurde zu " + kategorieName + " geändert.", Toast.LENGTH_LONG).show()
-
-        }
-
-        builder.setNegativeButton("Zurück") { p0, p1 ->
-
-        }
-
-        val alert = builder.create()
-        alert.show()
-
-    }
-
-
-    private fun deleteCategory(category: Locations) {
-
-        val builder = AlertDialog.Builder(mCtx)
-
-        val inflater = LayoutInflater.from(mCtx)
-
-        val view = inflater.inflate(R.layout.delete_layout, null)
-
-        val kategorieName = category.name.toString().trim()
-
-        builder.setView(view)
-
-        val deleteText = view.findViewById<TextView>(R.id.deleteCategory)
-        val title = view.findViewById<TextView>(R.id.title)
-
-        title.text = "Frage löschen"
-
-        deleteText.text = "Möchten Sie die Kategorie " + kategorieName + " wirklick Löschen?"
-
-        builder.setPositiveButton("Löschen") { p0, p1 ->
-
-            val dbCategories =
-                FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
-
-            dbCategories.removeValue()
-
-            Toast.makeText(mCtx, kategorieName + " wurde gelöscht.", Toast.LENGTH_LONG).show()
-        }
-
-        builder.setNegativeButton("Zurück") { p0, p1 ->
-
-            Toast.makeText(mCtx, "Löschen wurde abgebrochen", Toast.LENGTH_LONG).show()
-        }
-
-        val alert = builder.create()
-        alert.show()
-
-    }
-    */
 
     fun show_dialog(view: View, locations: Locations) {
-
-        database = FirebaseDatabase.getInstance().getReference("location")
 
         dialog = BottomSheetDialog(mCtx)
 
@@ -172,6 +71,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         val imageView = view.findViewById<ImageView>(R.id.img_location)
         //val CardView = view.findViewById<CardView>(R.id.CardView)
         val startVideo = view.findViewById<ImageView>(R.id.playButton)
+
 
         textViewName1.setText(locations.name)
         textViewName2.setText(locations.year.toString())
@@ -193,62 +93,73 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         //TODO: 9. dafür muss einmalig der user bei der Registrierung angelegt werden
         //TODO: 8. Neue DataClass "User" in Kotlin
 
-        view.startVideo.setOnClickListener(){
-            val locationId = locations.id
-            val locationName = locations.name
 
-            val intent = Intent(context, Video::class.java)
 
-            //To pass the name and id of the chosen category to activity Game.kt
-            intent.putExtra("extra_location_id", locationId)
-            intent.putExtra("extra_location_name", locationName)
+            view.startVideo.setOnClickListener() {
+                    val locationId = locations.id
+                    val locationName = locations.name
 
-            context.startActivity(intent)
-        }
+                    val intent = Intent(context, Video::class.java)
 
-        view.changeComment.setOnClickListener(){
-            val builder = AlertDialog.Builder(mCtx)
+                    //To pass the name and id of the chosen category to activity Game.kt
+                    intent.putExtra("extra_location_id", locationId)
+                    intent.putExtra("extra_location_name", locationName)
 
-            val inflater = LayoutInflater.from(mCtx)
+                    context.startActivity(intent)
+                }
 
-            val view = inflater.inflate(R.layout.update_comment, null)
+                view.changeComment.setOnClickListener() {
+                    val builder = AlertDialog.Builder(mCtx)
 
-            val EditText = view.findViewById<EditText>(R.id.contentComment)
+                    val inflater = LayoutInflater.from(mCtx)
 
-            EditText.setText(locations.comment)
+                    val view = inflater.inflate(R.layout.update_comment, null)
 
-            builder.setView(view)
+                    val EditText = view.findViewById<EditText>(R.id.contentComment)
 
-            builder.setPositiveButton("Ändern") {p0, p1 ->
-                val dbLocations = FirebaseDatabase.getInstance().getReference("location").child(locations.id)
+                    EditText.setText(locations.comment)
 
-                val comment = EditText.text.toString().trim()
+                    builder.setView(view)
 
-                if (comment == "") {
-                    Toast.makeText(this.context, "Bitte geben Sie einen Kommentar ein.", Toast.LENGTH_LONG).show()
-                    return@setPositiveButton
-                } else {
-                    dbLocations.child("comment").setValue(comment)
+                    builder.setPositiveButton("Ändern") { p0, p1 ->
+                        val dbLocations = FirebaseDatabase.getInstance().getReference("location")
+                            .child(locations.id)
 
-                    Toast.makeText(mCtx, "Wurde zu " + comment + " geändert.", Toast.LENGTH_LONG).show()
+                        val comment = EditText.text.toString().trim()
 
-                    //To Update the comment within the bottom sheet
-                    textViewName4.setText(comment)
+                        if (comment == "") {
+                            Toast.makeText(
+                                this.context,
+                                "Bitte geben Sie einen Kommentar ein.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            return@setPositiveButton
+                        } else {
+                            dbLocations.child("comment").setValue(comment)
+
+                            Toast.makeText(
+                                mCtx,
+                                "Wurde zu " + comment + " geändert.",
+                                Toast.LENGTH_LONG
+                            ).show()
+
+                            //To Update the comment within the bottom sheet
+                            textViewName4.setText(comment)
+                        }
+                    }
+
+                    builder.setNegativeButton("Zurück") { p0, p1 ->
+
+                    }
+
+                    val alert = builder.create()
+                    alert.show()
+
                 }
             }
 
-            builder.setNegativeButton("Zurück") { p0, p1 ->
 
-            }
-
-            val alert = builder.create()
-            alert.show()
-
-        }
-    }
-
-
-   /* private fun createQuestions(category: Locations) {
+            /* private fun createQuestions(category: Locations) {
 
         val builder = AlertDialog.Builder(mCtx)
 
@@ -313,17 +224,17 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         alert.show()
     }*/
 
-    private fun showQuestions(category: Locations) {
+            private fun showQuestions(category: Locations) {
 
-        val intent = Intent(context, MapOverview::class.java)
+                val intent = Intent(context, MapOverview::class.java)
 
-        val kategorieId = category.id
-        val kategorieName = category.name
+                val kategorieId = category.id
+                val kategorieName = category.name
 
-        //To pass the name and id to the activity Question Overview.kt
-        intent.putExtra("extra_category_id", kategorieId)
-        intent.putExtra("extra_category_name", kategorieName)
+                //To pass the name and id to the activity Question Overview.kt
+                intent.putExtra("extra_category_id", kategorieId)
+                intent.putExtra("extra_category_name", kategorieName)
 
-        context.startActivity(intent)
-    }
-}
+                context.startActivity(intent)
+            }
+        }
