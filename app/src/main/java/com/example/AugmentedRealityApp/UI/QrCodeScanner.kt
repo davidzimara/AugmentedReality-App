@@ -13,13 +13,11 @@ class  QrCodeScanner : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scan_qr_code)
-
-
         saveCategory.setOnClickListener {
             val scanner = IntentIntegrator(this)
-
             scanner.initiateScan()
+
+
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

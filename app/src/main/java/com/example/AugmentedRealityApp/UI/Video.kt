@@ -42,5 +42,9 @@ class Video : AppCompatActivity() {
 
         //autostart
         videoView.start()
+
+        back_to_main.setOnClickListener{
+            onBackPressed()
+        }
     }
 }

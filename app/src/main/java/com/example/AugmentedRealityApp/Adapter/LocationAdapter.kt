@@ -17,7 +17,9 @@ import com.example.AugmentedRealityApp.UI.Video
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.dialog_layout.view.*
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
+import kotlinx.android.synthetic.main.dialog_layout_info.view.iv_close
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
@@ -66,6 +68,10 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
         dialog.setContentView(view)
         dialog.show()
+
+        view.iv_close.setOnClickListener {
+            dialog.dismiss()
+        }
 
         val textViewName1 = view.findViewById<TextView>(R.id.textViewName1)
         val textViewName2 = view.findViewById<TextView>(R.id.textViewYear)
