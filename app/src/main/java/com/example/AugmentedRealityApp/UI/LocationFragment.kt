@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridView
 import android.widget.ListView
 import com.example.AugmentedRealityApp.Adapter.LocationAdapter
 import com.example.AugmentedRealityApp.DataClasses.Comments
@@ -20,7 +21,7 @@ class LocationFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
     lateinit var locationList: MutableList<Locations>
-    lateinit var listView: ListView
+    lateinit var listView: GridView
     lateinit var ctx: Context
 
     override fun onCreateView(
@@ -41,7 +42,7 @@ class LocationFragment : Fragment() {
         database = FirebaseDatabase.getInstance().getReference("location")
 
         locationList = mutableListOf()
-        listView = view.findViewById(R.id.listViewSubject)
+        listView = view.findViewById(R.id.gridViewLocations)
         ctx = this.context!!
 
         database.addValueEventListener(object: ValueEventListener {

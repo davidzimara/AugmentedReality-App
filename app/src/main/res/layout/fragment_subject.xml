@@ -47,10 +47,16 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <ListView
+        <GridView
+            android:id="@+id/gridViewLocations"
+            android:numColumns="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--<ListView
             android:id="@+id/listViewSubject"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />-->
 
     </LinearLayout>
 

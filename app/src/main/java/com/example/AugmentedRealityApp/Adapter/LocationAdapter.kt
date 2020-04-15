@@ -51,7 +51,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         }
 
         imageViewLocation.setOnClickListener {
-            //showMap(locations)
+            showMap(locations)
         }
 
 
@@ -78,14 +78,10 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         val textViewName3 = view.findViewById<TextView>(R.id.textViewInfo)
         val textViewName4 = view.findViewById<TextView>(R.id.textViewComment)
         val imageView = view.findViewById<ImageView>(R.id.img_location)
-        //val CardView = view.findViewById<CardView>(R.id.CardView)
-        val startVideo = view.findViewById<ImageView>(R.id.playButton)
-
 
         textViewName1.setText(locations.name)
         textViewName2.setText(locations.year.toString())
         textViewName3.setText(locations.info)
-        //textViewName4.setText(locations.comment)
         //TODO: ADD Image view for Preview of location
 
         val url = locations.image

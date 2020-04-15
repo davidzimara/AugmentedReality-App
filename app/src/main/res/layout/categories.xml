@@ -5,15 +5,59 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textViewName_name"
-        android:layout_width="200dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:paddingLeft="10dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/colorDarkGrey" />
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewName_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:text="Location"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/colorDarkGrey"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/gradient_stroke" />
+
+            <TextView
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Auf Karte anzeigen"
+                android:textAlignment="center"
+                android:textColor="@color/colorMiddleGrey" />
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:id="@+id/showLocationIcon"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:background="@drawable/oval_icons"
+                android:tint="@color/colorWhite"
+                app:srcCompat="@drawable/ic_location_on_black_24dp"
+                android:layout_marginBottom="10dp"/>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
     <!--DeadCode
     <ImageView
         android:id="@+id/textViewUpdate"
@@ -33,12 +77,12 @@
         android:tint="@color/colorLightRot"
         app:srcCompat="@drawable/ic_delete_black_24dp" />
     -->
-    <ImageView
+    <!--<ImageView
         android:id="@+id/showLocationIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:tint="@color/colorOrange"
-        app:srcCompat="@drawable/ic_location_on_black_24dp" />
+        app:srcCompat="@drawable/ic_location_on_black_24dp" />-->
 
 </LinearLayout>
