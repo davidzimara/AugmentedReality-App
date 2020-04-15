@@ -1,9 +1,11 @@
 package com.example.AugmentedRealityApp.UI
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.example.AugmentedRealityApp.Adapter.LocationAdapter
@@ -12,6 +14,7 @@ import com.example.AugmentedRealityApp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.*
+import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.dialog_layout.view.*
 
 
@@ -77,6 +80,15 @@ class MainActivity : AppCompatActivity() {
         getSupportActionBar()?.setTitle(title)
     }
 
+    fun close_dialog(view: View) {
+        dialog = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.dialog_layout_info, null)
+
+        view.iv_close.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+
     fun show_dialog(view: View) {
 
         dialog = BottomSheetDialog(this)
@@ -85,10 +97,8 @@ class MainActivity : AppCompatActivity() {
         dialog.show()
 
         view.openScanner.setOnClickListener {
-
-            val intent = Intent(this, QrCodeScanner::class.java)
-            startActivity(intent)
-            dialog.dismiss()
+            val scanner = IntentIntegrator(this)
+            scanner.initiateScan()
         }
 
         view.iv_close.setOnClickListener {
@@ -96,7 +106,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         database = FirebaseDatabase.getInstance().getReference("Categorys")
-
         categoryList = mutableListOf()
         database = FirebaseDatabase.getInstance().getReference("Categorys")
         //listView = view.findViewById(R.id.listViewDialog)
@@ -137,5 +146,21 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.main_frame, chooseCategory)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+            if (result != null) {
+
+                if (result.contents == null) {
+                    Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show();
+                }
+            } else {
+                super.onActivityResult(requestCode, resultCode, data);
+            }
+        }
     }
 }

@@ -41,7 +41,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/studylogo" />
+            android:src="@drawable/burg_icon_wobackg" />
 
         <TextView
             android:layout_width="wrap_content"

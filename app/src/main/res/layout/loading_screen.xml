@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite"
-        android:src="@drawable/studylogo" />
+        android:background="@color/colorBurgBlue"
+        android:src="@drawable/burg_icon_app" />
 
 </LinearLayout>

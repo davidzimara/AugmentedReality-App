@@ -47,7 +47,7 @@
             android:clickable="true"
             android:focusable="true"
             android:onClick="show_dialog"
-            android:src="@drawable/baseline_add_circle_black_18dp"
+            android:src="@drawable/qr_scan_icon"
             android:tint="@color/colorRot"
             app:fabSize="mini" />
 
