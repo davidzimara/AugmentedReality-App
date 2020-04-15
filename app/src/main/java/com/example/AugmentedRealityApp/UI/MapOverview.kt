@@ -21,19 +21,19 @@ class MapOverview : AppCompatActivity() {
         setContentView(R.layout.activity_question_overview)
 
         //Handed over from CategoryAdapter
-        val category = intent.getStringExtra("extra_category_id")
-        val categoryName = intent.getStringExtra("extra_category_name")
+        val locationId = intent.getStringExtra("extra_location_id")
+        val locationName = intent.getStringExtra("extra_location_name")
 
         kategorieName = findViewById<TextView>(R.id.categoryName)
 
-        kategorieName.setText(categoryName)
+        kategorieName.setText(locationName)
 
-        val database = FirebaseDatabase.getInstance().getReference("Categorys").child(category).child("questions")
+        //val database = FirebaseDatabase.getInstance().getReference("Categorys").child(category).child("questions")
 
         questionList = mutableListOf()
         listView = findViewById(R.id.listViewQuestion)
 
-        database.addValueEventListener(object: ValueEventListener {
+        /*database.addValueEventListener(object: ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
@@ -49,7 +49,7 @@ class MapOverview : AppCompatActivity() {
                 val adapter = QuestionAdapter(this@MapOverview, R.layout.questions, questionList)
                 listView.adapter = adapter
             }
-        })
+        })*/
     }
 
     fun back_to_home(view: View) {

@@ -36,7 +36,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         val view: View = layoutInflater.inflate(layoutResId, null)
 
         val textViewName = view.findViewById<TextView>(R.id.textViewName_name)
-        val textViewQuestions = view.findViewById<ImageView>(R.id.textViewQuestion)
+        val imageViewLocation = view.findViewById<ImageView>(R.id.showLocationIcon)
 
         val locations = locationList[position]
 
@@ -50,8 +50,8 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
             show_dialog(view, locations)
         }
 
-        textViewQuestions.setOnClickListener {
-            //showQuestions(locations)
+        imageViewLocation.setOnClickListener {
+            //showMap(locations)
         }
 
 
@@ -248,16 +248,16 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         alert.show()
     }*/
 
-            private fun showQuestions(category: Locations) {
+            private fun showMap(locations: Locations) {
 
                 val intent = Intent(context, MapOverview::class.java)
 
-                val kategorieId = category.id
-                val kategorieName = category.name
+                val locationId = locations.id
+                val locationName = locations.name
 
                 //To pass the name and id to the activity Question Overview.kt
-                intent.putExtra("extra_category_id", kategorieId)
-                intent.putExtra("extra_category_name", kategorieName)
+                intent.putExtra("extra_location_id", locationId)
+                intent.putExtra("extra_location_name", locationName)
 
                 context.startActivity(intent)
             }
