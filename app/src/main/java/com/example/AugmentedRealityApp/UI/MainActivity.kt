@@ -199,7 +199,7 @@ class MainActivity : AppCompatActivity() {
                     textViewName3.setText(locationList[0].info)
                     //TODO: ADD Image view for Preview of location
 
-                    val url = locationList[0].image
+                    val url = locationList[0].imageThumbnail
 
                     // Download directly from StorageReference using Glide
                     Glide.with(ctx)

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.MapOverview">
+
+    <!--<com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/photo_view"
+        android:layout_below="@id/backgroundBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>-->
+
+
+    <ImageView
+        android:id="@+id/backgroundBar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/gradient_layout" />
+
+    <ImageView
+        android:id="@+id/back_to_location"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="10dp"
+        android:tint="@color/colorWhite"
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+    <TextView
+        android:id="@+id/locationName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="12dp"
+        android:text="Kartenübersicht"
+        android:textColor="@color/colorWhite"
+        android:textSize="16dp" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView2"
+        android:layout_below="@+id/backgroundBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/gradient_stroke" />
+
+            <TextView
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Zeigt ihr Standort an"
+                android:textAlignment="center"
+                android:textColor="@color/colorMiddleGrey" />
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:id="@+id/showLocationIcon"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:background="@drawable/oval_icons"
+                android:tint="@color/colorWhite"
+                app:srcCompat="@drawable/ic_location_on_black_24dp"
+                android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <ImageView
+        android:layout_below="@id/backgroundBar"
+        android:id="@+id/photo_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</RelativeLayout>
