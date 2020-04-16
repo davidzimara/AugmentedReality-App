@@ -144,8 +144,12 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
                 } else {
                     val locationId = result.contents.toString()
-
-                    showLocationDialog(locationId)
+                    //If to avoid that the Database reference in the function showLocationDialog gets an unknow value passed
+                    if(locationId == "l1" || locationId == "l2" ){
+                        showLocationDialog(locationId)
+                    } else {
+                        Toast.makeText(this, "Der QR-Code " + locationId + " ist nicht bekannt.", Toast.LENGTH_LONG).show()
+                    }
                 }
             } else {
                 super.onActivityResult(requestCode, resultCode, data);
