@@ -85,12 +85,12 @@ class SignUp : AppCompatActivity() {
         database.setValue(user)
 
         //Initialize Database Preferences for Comments
-        val commentInitl1 = Comments("l1","Fügen sie einen Kommentar hinzu")
+        val commentInitl1 = Comments("l1","Fügen Sie einen Kommentar hinzu")
 
         val databaseCommentsl1 = FirebaseDatabase.getInstance().getReference("user").child(userId).child("l1").child("comments")
         databaseCommentsl1.setValue(commentInitl1)
 
-        val commentInitl2 = Comments("l2","Fügen sie einen Kommentar hinzu")
+        val commentInitl2 = Comments("l2","Fügen Sie einen Kommentar hinzu")
 
         val databaseCommentsl2 = FirebaseDatabase.getInstance().getReference("user").child(userId).child("l2").child("comments")
         databaseCommentsl2.setValue(commentInitl1)
