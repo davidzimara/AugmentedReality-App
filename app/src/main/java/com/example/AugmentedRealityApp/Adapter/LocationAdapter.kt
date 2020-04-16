@@ -119,16 +119,9 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         })
 
             view.startVideo.setOnClickListener() {
-                    val locationId = locations.id
-                    val locationName = locations.name
-
-                    val intent = Intent(context, Video::class.java)
-
-                    //To pass the name and id of the chosen category to activity Game.kt
-                    intent.putExtra("extra_location_id", locationId)
-                    intent.putExtra("extra_location_name", locationName)
-
-                    context.startActivity(intent)
+                val locationId = locations.id
+                val locationName = locations.name
+                startVideo(locationId, locationName)
                 }
 
                 view.changeComment.setOnClickListener() {
@@ -178,71 +171,82 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
                 }
             }
 
+    private fun startVideo(locationId: String, locationName: String) {
 
-            /* private fun createQuestions(category: Locations) {
+        val intent = Intent(context, Video::class.java)
 
-        val builder = AlertDialog.Builder(mCtx)
+        //To pass the name and id of the chosen category to activity Game.kt
+        intent.putExtra("extra_location_id", locationId)
+        intent.putExtra("extra_location_name", locationName)
 
-        val inflater = LayoutInflater.from(mCtx)
+        context.startActivity(intent)
+    }
 
-        val view = inflater.inflate(R.layout.update_question_layout, null)
 
-        builder.setView(view)
+    /* private fun createQuestions(category: Locations) {
 
-        builder.setPositiveButton("Speichern") { p0, p1 ->
+val builder = AlertDialog.Builder(mCtx)
 
-            val dbCategories =
-                FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
+val inflater = LayoutInflater.from(mCtx)
 
-            val editTextQuestion = view.findViewById<EditText>(R.id.nameQuestion)
-            val editTextAnswer1 = view.findViewById<EditText>(R.id.answer1)
-            val editTextAnswer2 = view.findViewById<EditText>(R.id.answer2)
-            val editTextAnswer3 = view.findViewById<EditText>(R.id.answer3)
-            val editTextAnswer4 = view.findViewById<EditText>(R.id.answer4)
+val view = inflater.inflate(R.layout.update_question_layout, null)
 
-            val id = dbCategories.push().key.toString()
-            val ques = editTextQuestion.text.toString().trim()
-            val answ1 = editTextAnswer1.text.toString().trim()
-            val answ2 = editTextAnswer2.text.toString().trim()
-            val answ3 = editTextAnswer3.text.toString().trim()
-            val answ4 = editTextAnswer4.text.toString().trim()
-            val categoryId = category.id
+builder.setView(view)
 
-            val question = Questions(id, ques, answ1, answ2, answ3, answ4, categoryId)
+builder.setPositiveButton("Speichern") { p0, p1 ->
 
-            //To avoid that there is a question that doesn`t contain four different Answers
-            if (ques == "" || answ1 == "" || answ2 == "" || answ3 == "" || answ4 == "") {
-                Toast.makeText(this.context, "Bitte füllen Sie alle Felder aus.", Toast.LENGTH_LONG)
-                    .show()
-                return@setPositiveButton
-            } else {
+    val dbCategories =
+        FirebaseDatabase.getInstance().getReference("Categorys").child(category.id)
 
-                dbCategories.child("questions").child(id).setValue(question)
-                    .addOnCompleteListener {
-                        Toast.makeText(
-                            mCtx,
-                            " Ihre Frage wurde in der Kategorie " + category.name + " abgelegt.",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                    .addOnCanceledListener {
-                        Toast.makeText(
-                            mCtx,
-                            "Ihre Frage konnte nicht in die Datenbank abgelegt werden.",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
+    val editTextQuestion = view.findViewById<EditText>(R.id.nameQuestion)
+    val editTextAnswer1 = view.findViewById<EditText>(R.id.answer1)
+    val editTextAnswer2 = view.findViewById<EditText>(R.id.answer2)
+    val editTextAnswer3 = view.findViewById<EditText>(R.id.answer3)
+    val editTextAnswer4 = view.findViewById<EditText>(R.id.answer4)
+
+    val id = dbCategories.push().key.toString()
+    val ques = editTextQuestion.text.toString().trim()
+    val answ1 = editTextAnswer1.text.toString().trim()
+    val answ2 = editTextAnswer2.text.toString().trim()
+    val answ3 = editTextAnswer3.text.toString().trim()
+    val answ4 = editTextAnswer4.text.toString().trim()
+    val categoryId = category.id
+
+    val question = Questions(id, ques, answ1, answ2, answ3, answ4, categoryId)
+
+    //To avoid that there is a question that doesn`t contain four different Answers
+    if (ques == "" || answ1 == "" || answ2 == "" || answ3 == "" || answ4 == "") {
+        Toast.makeText(this.context, "Bitte füllen Sie alle Felder aus.", Toast.LENGTH_LONG)
+            .show()
+        return@setPositiveButton
+    } else {
+
+        dbCategories.child("questions").child(id).setValue(question)
+            .addOnCompleteListener {
+                Toast.makeText(
+                    mCtx,
+                    " Ihre Frage wurde in der Kategorie " + category.name + " abgelegt.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-        }
+            .addOnCanceledListener {
+                Toast.makeText(
+                    mCtx,
+                    "Ihre Frage konnte nicht in die Datenbank abgelegt werden.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+    }
+}
 
-        builder.setNegativeButton("Abbrechen") { p0, p1 ->
-            Toast.makeText(mCtx, "Ihre Frage wurde verworfen.", Toast.LENGTH_LONG).show()
+builder.setNegativeButton("Abbrechen") { p0, p1 ->
+    Toast.makeText(mCtx, "Ihre Frage wurde verworfen.", Toast.LENGTH_LONG).show()
 
-        }
+}
 
-        val alert = builder.create()
-        alert.show()
-    }*/
+val alert = builder.create()
+alert.show()
+}*/
 
             private fun showMap(locations: Locations) {
 

@@ -11,10 +11,9 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
-import com.example.AugmentedRealityApp.Adapter.LocationAdapter
-import com.example.AugmentedRealityApp.DataClasses.Comments
 import com.example.AugmentedRealityApp.DataClasses.Locations
 import com.example.AugmentedRealityApp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -144,7 +143,6 @@ class MainActivity : AppCompatActivity() {
                 if (result.contents == null) {
                     Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show();
                     val locationId = result.contents.toString()
 
                     showLocationDialog(locationId)
@@ -166,15 +164,7 @@ class MainActivity : AppCompatActivity() {
         dialog.setContentView(view)
         dialog.show()
 
-        val textViewName1 = view.findViewById<TextView>(R.id.textViewName1)
-        val textViewName2 = view.findViewById<TextView>(R.id.textViewYear)
-        val textViewName3 = view.findViewById<TextView>(R.id.textViewInfo)
-        val imageView = view.findViewById<ImageView>(R.id.img_location)
-        val startVideo = view.findViewById<ImageView>(R.id.playButton)
-
-        textViewName1.text = locationId
-
-        val database = FirebaseDatabase.getInstance().getReference("location")
+        val database = FirebaseDatabase.getInstance().getReference("location").child(locationId).child("QR")
 //.child(locationId)
         database.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -189,24 +179,50 @@ class MainActivity : AppCompatActivity() {
                     locationList.add(location!!)
                 }
 
-                textViewName1.setText(locationList[0].name)
-                textViewName2.setText(locationList[0].year.toString())
-                textViewName3.setText(locationList[0].info)
-                //TODO: ADD Image view for Preview of location
+                val textViewName1 = view.findViewById<TextView>(R.id.textViewName1)
+                val textViewName2 = view.findViewById<TextView>(R.id.textViewYear)
+                val textViewName3 = view.findViewById<TextView>(R.id.textViewInfo)
+                val imageView = view.findViewById<ImageView>(R.id.img_location)
+                val cardView = view.findViewById<CardView>(R.id.CardView)
 
-                val url = locationList[0].image
+                //Hide comment section
+                cardView.visibility = View.GONE
 
-                // Download directly from StorageReference using Glide
-                Glide.with(ctx)
-                    .load(url)
-                    .centerCrop()
-                    .placeholder(R.drawable.burg_rotteln)
-                    .into(imageView)
+                    textViewName1.setText(locationList[0].name)
+                    textViewName2.setText(locationList[0].year.toString())
+                    textViewName3.setText(locationList[0].info)
+                    //TODO: ADD Image view for Preview of location
+
+                    val url = locationList[0].image
+
+                    // Download directly from StorageReference using Glide
+                    Glide.with(ctx)
+                        .load(url)
+                        .centerCrop()
+                        .placeholder(R.drawable.burg_rotteln)
+                        .into(imageView)
             }
         })
 
         view.iv_close.setOnClickListener {
             dialog.dismiss()
         }
+
+        view.startVideo.setOnClickListener(){
+            val locationId = locationList[0].id
+            val locationName = locationList[0].name
+            startVideo(locationId, locationName)
+        }
+    }
+
+    private fun startVideo(locationId: String, locationName: String) {
+
+        val intent = Intent(ctx, Video::class.java)
+
+        //To pass the name and id of the chosen category to activity Game.kt
+        intent.putExtra("extra_location_id", locationId)
+        intent.putExtra("extra_location_name", locationName)
+
+        ctx.startActivity(intent)
     }
 }
