@@ -51,7 +51,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         }
 
         imageViewLocation.setOnClickListener {
-            //showMap(locations)
+            showMap(locations)
         }
 
 

@@ -1,37 +1,55 @@
 package com.example.AugmentedRealityApp.UI
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.*
-import com.example.AugmentedRealityApp.Adapter.QuestionAdapter
-import com.example.AugmentedRealityApp.DataClasses.Questions
+import android.widget.ImageView
+import android.widget.RelativeLayout
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.AugmentedRealityApp.R
-import com.google.firebase.database.*
+import com.github.chrisbanes.photoview.PhotoView
+import kotlinx.android.synthetic.main.activity_question_overview.*
+
 
 class MapOverview : AppCompatActivity() {
 
-    lateinit var kategorieName: TextView
-    lateinit var questionList: MutableList<Questions>
-    lateinit var listView: ListView
+    lateinit var locName: TextView
+    lateinit var locPosition: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_overview)
 
-        //Handed over from CategoryAdapter
+        //Handed over from LocationAdapter
         val locationId = intent.getStringExtra("extra_location_id")
         val locationName = intent.getStringExtra("extra_location_name")
 
-        kategorieName = findViewById<TextView>(R.id.categoryName)
+        locName = findViewById<TextView>(R.id.locationName)
 
-        kategorieName.setText(locationName)
+        locName.setText("Kartenübersicht - " + locationName)
+
+       /* locPosition = findViewById<ImageView>(R.id.icon_location)
+        val lp: RelativeLayout.LayoutParams = RelativeLayout.LayoutParams(locPosition.getLayoutParams())
+        if (locationId == "l1") {
+            locPosition.getResources().getDisplayMetrics().density
+            lp.setMargins(400, 600, 0, 0)
+            locPosition.setLayoutParams(lp)
+        } else {
+            locPosition.getResources().getDisplayMetrics().density
+            lp.setMargins(480, 470,0,0)
+            locPosition.setLayoutParams(lp) }*/
+
+
+            val photoView = findViewById(R.id.photo_view) as PhotoView
+            photoView.setImageResource(R.drawable.karte_burg_rotteln_lorrach)
+
+        back_to_location.setOnClickListener {
+            onBackPressed()
+        }
+    }
+}
 
         //val database = FirebaseDatabase.getInstance().getReference("Categorys").child(category).child("questions")
 
-        questionList = mutableListOf()
-        listView = findViewById(R.id.listViewQuestion)
 
         /*database.addValueEventListener(object: ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -50,10 +68,5 @@ class MapOverview : AppCompatActivity() {
                 listView.adapter = adapter
             }
         })*/
-    }
 
-    fun back_to_home(view: View) {
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
-}
+
