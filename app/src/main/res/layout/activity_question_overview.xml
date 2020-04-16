@@ -2,8 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/karte_burg_rotteln_lorrach"
+
     tools:context=".UI.MapOverview">
 
     <ImageView
@@ -11,6 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:background="@drawable/gradient_layout" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="397dp"
+        android:layout_marginEnd="20dp"
+        app:srcCompat="@drawable/ic_location_on_black_24dp" />
 
     <ImageView
         android:layout_width="24dp"
@@ -25,49 +39,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:padding="12dp"
-        android:text="Fragenkatalog"
+        android:text="Kartenübersicht"
         android:textColor="@color/colorWhite"
         android:textSize="16dp" />
-
-    <ImageView
-        android:id="@+id/bottomstroke"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@+id/backgroundBar"
-        android:background="@drawable/gradient_stroke" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/bottomstroke"
-        android:layout_marginStart="0dp"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
-
-        <TextView
-            android:id="@+id/categoryName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:text="Name der Kategorie"
-            android:textSize="21sp" />
-
-        <ImageView
-            android:id="@+id/bottomstrokeU"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/categoryName"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/gradient_stroke" />
-
-        <ListView
-            android:id="@+id/listViewQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
 
 </RelativeLayout>
