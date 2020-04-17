@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".UI.MapOverview">
 
-    <!--<com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/photo_view"
-        android:layout_below="@id/backgroundBar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>-->
-
-
     <ImageView
         android:id="@+id/backgroundBar"
         android:layout_width="match_parent"
@@ -39,9 +32,10 @@
 
 
     <androidx.cardview.widget.CardView
+        android:layout_centerHorizontal="true"
         android:id="@+id/CardView2"
         android:layout_below="@+id/backgroundBar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
 
@@ -81,11 +75,16 @@
     </androidx.cardview.widget.CardView>
 
 
-    <ImageView
+    <!--<ImageView
         android:layout_below="@id/backgroundBar"
         android:id="@+id/photo_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"/>-->
 
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/photo_view"
+        android:layout_below="@id/backgroundBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

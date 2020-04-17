@@ -41,9 +41,9 @@ class MapOverview : AppCompatActivity() {
             locPosition.setLayoutParams(lp) }*/
 
 
-        val photoView  = findViewById<ImageView>(R.id.photo_view)
+        //val photoView  = findViewById<ImageView>(R.id.photo_view)
 
-        //val photoView = findViewById<PhotoView>(R.id.photo_view)
+        val photoView = findViewById<PhotoView>(R.id.photo_view)
 
         val url = locationImageMap
 
