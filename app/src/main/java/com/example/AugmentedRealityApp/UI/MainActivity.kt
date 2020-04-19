@@ -205,7 +205,7 @@ class MainActivity : AppCompatActivity() {
                     Glide.with(ctx)
                         .load(url)
                         .centerCrop()
-                        .placeholder(R.drawable.burg_rotteln)
+                        .placeholder(R.drawable.burg_rotteln_oben)
                         .into(imageView)
             }
         })
