@@ -29,20 +29,6 @@ class MapOverview : AppCompatActivity() {
 
         locName.setText("Kartenübersicht - " + locationName)
 
-       /* locPosition = findViewById<ImageView>(R.id.icon_location)
-        val lp: RelativeLayout.LayoutParams = RelativeLayout.LayoutParams(locPosition.getLayoutParams())
-        if (locationId == "l1") {
-            locPosition.getResources().getDisplayMetrics().density
-            lp.setMargins(400, 600, 0, 0)
-            locPosition.setLayoutParams(lp)
-        } else {
-            locPosition.getResources().getDisplayMetrics().density
-            lp.setMargins(480, 470,0,0)
-            locPosition.setLayoutParams(lp) }*/
-
-
-        //val photoView  = findViewById<ImageView>(R.id.photo_view)
-
         val photoView = findViewById<PhotoView>(R.id.photo_view)
 
         val url = locationImageMap
@@ -53,8 +39,6 @@ class MapOverview : AppCompatActivity() {
             .centerCrop()
             .placeholder(R.drawable.karte_burg_rotteln_lorrach)
             .into(photoView)
-
-            //photoView.setImageResource(R.drawable.karte_burg_rotteln_lorrach)
 
         back_to_location.setOnClickListener {
             onBackPressed()

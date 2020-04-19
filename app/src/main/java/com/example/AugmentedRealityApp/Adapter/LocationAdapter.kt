@@ -54,7 +54,6 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
             showMap(locations)
         }
 
-
         return view
     }
 
@@ -90,7 +89,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         Glide.with(this.context)
             .load(url)
             .centerCrop()
-            .placeholder(R.drawable.burg_rotteln)
+            .placeholder(R.drawable.burg_rotteln_wide)
             .into(imageView)
 
         val user = FirebaseAuth.getInstance().currentUser

@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     val locationId = result.contents.toString()
                     //If to avoid that the Database reference in the function showLocationDialog gets an unknow value passed
-                    if(locationId == "l1" || locationId == "l2" ){
+                    if(locationId == "l1" || locationId == "l2" || locationId == "l3" || locationId == "l4" || locationId == "l5" || locationId == "l6" || locationId == "l7" || locationId == "l8" || locationId == "l9" || locationId == "l10" || locationId == "l11" || locationId == "l12"){
                         showLocationDialog(locationId)
                     } else {
                         Toast.makeText(this, "Der QR-Code " + locationId + " ist nicht bekannt.", Toast.LENGTH_LONG).show()

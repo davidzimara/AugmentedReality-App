@@ -66,10 +66,6 @@ class LocationFragment : Fragment() {
                 listView.adapter = adapter
             }
         })
-
-        create_category.setOnClickListener {
-            openCreateCategory()
-        }
     }
 
     private fun openCreateCategory() {

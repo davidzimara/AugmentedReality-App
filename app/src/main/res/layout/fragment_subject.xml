@@ -12,15 +12,6 @@
         android:layout_height="44dp"
         android:background="@drawable/gradient_layout" />
 
-    <ImageView
-        android:id="@+id/create_category"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignEnd="@id/backgroundBar"
-        android:layout_margin="10dp"
-        android:tint="@color/colorWhite"
-        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
