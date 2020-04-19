@@ -34,6 +34,60 @@ class Video : AppCompatActivity() {
             videoView.setVideoURI(uri)
         }
 
+        if (locationIdFromAdapter == "l3") {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.torturm_final
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+        }
+
+        if (locationIdFromAdapter == "l4") {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.roetteln_1300_final
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+        }
+
+        if (locationIdFromAdapter == "l5") {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.roetteln_1500_final
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+        }
+
+        if (locationIdFromAdapter == "l6") {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.blide_final
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+        }
+
+        if (locationIdFromAdapter == "l7") {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.bombarde_final
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+        }
+
+        if (locationIdFromAdapter == "l8") {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.riesenbombarde_final
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+        }
+
+        if (locationIdFromAdapter == "l9") {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.rammbock_final
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+        }
+
+        if (locationIdFromAdapter == "l10") {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.schutzwand_final
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+        }
+
+        if (locationIdFromAdapter == "l11") {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.roetteln_heli
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+        }
+
         //TODO: Liste vervollständigen
 
         val mediaController = MediaController(this)

@@ -37,7 +37,7 @@ class MapOverview : AppCompatActivity() {
         Glide.with(this)
             .load(url)
             .centerCrop()
-            .placeholder(R.drawable.karte_burg_rotteln_lorrach)
+            .placeholder(R.drawable.burg_roetteln_map)
             .into(photoView)
 
         back_to_location.setOnClickListener {
