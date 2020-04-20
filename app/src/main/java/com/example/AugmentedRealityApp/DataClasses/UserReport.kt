@@ -1,7 +1,7 @@
 package com.example.AugmentedRealityApp.DataClasses
 
-class Comments (val id: String, val comment: String) {
-    constructor() : this("",  "Füge eine Notiz hinzu."){
+class UserReport (val id: String, val comment: String, val visited: Boolean) {
+    constructor() : this("",  "Fügen Sie eine Notiz hinzu.", false){
 
     }
 

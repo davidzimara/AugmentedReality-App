@@ -8,14 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
-import android.widget.ListView
 import com.example.AugmentedRealityApp.Adapter.LocationAdapter
-import com.example.AugmentedRealityApp.DataClasses.Comments
 import com.example.AugmentedRealityApp.DataClasses.Locations
-import com.example.AugmentedRealityApp.DataClasses.Users
 import com.example.AugmentedRealityApp.R
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_subject.*
 
 class LocationFragment : Fragment() {
 

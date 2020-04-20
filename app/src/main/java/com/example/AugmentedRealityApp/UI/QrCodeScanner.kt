@@ -16,8 +16,6 @@ class  QrCodeScanner : AppCompatActivity() {
         saveCategory.setOnClickListener {
             val scanner = IntentIntegrator(this)
             scanner.initiateScan()
-
-
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -35,6 +33,4 @@ class  QrCodeScanner : AppCompatActivity() {
             }
         }
     }
-
-    //TODO: Backbutton
 }
