@@ -49,7 +49,7 @@
     <ImageView
         android:layout_width="850dp"
         android:layout_height="800dp"
-        android:background="@drawable/burg_roetteln_home" />
+        android:background="@drawable/burg_roetteln_home2" />
 
     </LinearLayout>
 
