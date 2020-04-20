@@ -7,7 +7,6 @@
     android:background="#fcfcfc"
     tools:context=".UI.HomeFragment">
 
-
     <ImageView
         android:id="@+id/backgroundBar"
         android:layout_width="match_parent"
@@ -22,7 +21,8 @@
         android:layout_margin="10dp"
         android:onClick="show_settings"
         android:tint="@color/colorWhite"
-        app:srcCompat="@drawable/ic_settings_black_24dp" />
+        app:srcCompat="@drawable/ic_settings_black_24dp"
+        tools:ignore="OnClick" />
 
     <TextView
         android:layout_width="match_parent"
@@ -40,6 +40,19 @@
         android:layout_below="@+id/backgroundBar"
         android:background="@drawable/gradient_stroke" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bottomstroke"
+        android:gravity="center">
+
+    <ImageView
+        android:layout_width="850dp"
+        android:layout_height="800dp"
+        android:background="@drawable/burg_roetteln_home" />
+
+    </LinearLayout>
+
     <!--Content-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,14 +65,69 @@
         android:paddingRight="10dp">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="480dp"
+            android:alpha="0.8">
+
+            <LinearLayout
+                android:background="@color/colorDarkGrey"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/roetteln_schrift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/aclonica"
+                    android:includeFontPadding="false"
+                    android:padding="10dp"
+                    android:text="Willkommen auf der Röttler Burg!"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/gradient_stroke" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Wir wünschen Ihnen einen Erlebnisreichen Aufenthalt!"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bottomstroke"
+        android:layout_marginStart="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
             android:layout_height="190dp"
-            android:layout_margin="10dp">
+            android:layout_marginBottom="130dp"
+            android:alpha="0.8">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:background="@color/colorDarkGrey"
                 android:orientation="vertical">
 
                 <ImageView
@@ -76,9 +144,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="10dp"
-                    android:text="Meine Orte"
+                    android:text="Deine besuchten Orte"
                     android:textAlignment="center"
-                    android:textColor="@color/colorDarkGrey" />
+                    android:textColor="@color/colorWhite" />
 
                 <View
                     android:layout_width="match_parent"
@@ -90,14 +158,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Hier sehen Sie ihre bereits besuchten Orte."
+                    android:text="Du hast Bereits 0/10 Orte der Röttler Burg besucht."
                     android:textAlignment="center"
-                    android:textColor="@color/colorMiddleGrey" />
+                    android:textColor="@color/colorWhite" />
 
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
 
     </LinearLayout>
 

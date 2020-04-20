@@ -85,6 +85,7 @@
         android:id="@+id/photo_view"
         android:layout_below="@id/backgroundBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/burg_roetteln_map"/>
 
 </RelativeLayout>
