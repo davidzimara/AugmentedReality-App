@@ -21,22 +21,6 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
-
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        //Handed over from the Game.kt activity (last run)
-        val correctAnswer = activity!!.intent.getStringExtra("extra_correct_answer")
-
-        val statistics = view.findViewById<TextView>(R.id.statistic)
-
-        if (correctAnswer!=null) {
-
-            statistics.text = "Sie haben " + correctAnswer + " Fragen richtig beantwortet."
-
-        }
-
-    }*/
 }
 
 

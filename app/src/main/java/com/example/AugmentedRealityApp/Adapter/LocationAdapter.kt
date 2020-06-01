@@ -27,7 +27,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
     lateinit var ctx: Context
     lateinit var dialog: BottomSheetDialog
     lateinit var commentList: MutableList<UserReport>
-
+    var visited: Boolean = false
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
@@ -38,31 +38,10 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
         val locations = locationList[position]
 
-
         commentList = mutableListOf()
 
         textViewName.text = locations.name
         ctx = this.context!!
-
-
-        val user = FirebaseAuth.getInstance().currentUser
-        user?.let {
-
-            val userId = user.uid
-        }
-
-        val databaseComment = FirebaseDatabase.getInstance().getReference().child("user").child(user!!.uid).child(locations.id)
-        databaseComment.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-            }
-            override fun onDataChange(p0: DataSnapshot) {
-                commentList.clear()
-                for (h in p0.children) {
-                    val comment = h.getValue(UserReport::class.java)
-                    commentList.add(comment!!)
-                }
-            }
-        })
 
         textViewName.setOnClickListener {
             show_dialog(view, locations)
@@ -71,7 +50,6 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         imageViewLocation.setOnClickListener {
             showMap(locations)
         }
-
         return view
     }
 
@@ -95,8 +73,8 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         textViewName1.setText(locations.name)
         textViewName2.setText(locations.year.toString())
         textViewName3.setText(locations.info)
-        //TODO: ADD Image view for Preview of location
 
+        //ADD ImageView for Preview of location
         val url = locations.imageThumbnail
 
         // Download directly from StorageReference using Glide
@@ -106,7 +84,28 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
             .placeholder(R.drawable.burg_rotteln_oben)
             .into(imageView)
 
-        textViewName4.setText(commentList[0].comment)
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+
+            val userId = user.uid
+        }
+
+        val databaseComment = FirebaseDatabase.getInstance().getReference().child("user").child(user!!.uid).child(locations.id)
+        databaseComment.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+            override fun onDataChange(p0: DataSnapshot) {
+                commentList.clear()
+                for (h in p0.children) {
+                    val comment = h.getValue(UserReport::class.java)
+                    commentList.add(comment!!)
+                }
+                textViewName4.setText(commentList[0].comment)
+
+                visited =  commentList[0].visited
+            }
+        })
+
 
         view.startVideo.setOnClickListener() {
             val locationId = locations.id
@@ -149,8 +148,6 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
             val comment = EditText.text.toString().trim()
 
-            val visited =  commentList[0].visited
-
             val comObj = UserReport(locations.id, comment, visited)
 
             if (comment == "") {
@@ -162,8 +159,6 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
                 return@setPositiveButton
             } else {
                 databaseComment.child("report").setValue(comObj)
-
-                //Toast.makeText( mCtx, "Wurde zu " + comment + " geändert.", Toast.LENGTH_LONG).show()
 
                 //To Update the comment within the bottom sheet
                 textViewName4.setText(comment)

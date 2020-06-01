@@ -63,7 +63,6 @@
         android:background="@drawable/gradient_button"
         android:drawableLeft="@drawable/ic_crop_free_black_24dp"
         android:drawableTint="@color/colorWhite"
-        android:onClick="show_create_category"
         android:paddingHorizontal="15dp"
         android:text=" QR-Code SCANNER "
         android:textAlignment="center"

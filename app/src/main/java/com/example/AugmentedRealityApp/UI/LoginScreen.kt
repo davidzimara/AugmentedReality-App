@@ -74,7 +74,6 @@ class LoginScreen : AppCompatActivity() {
             finish()
         } else {
         }
-
     }
 
 }

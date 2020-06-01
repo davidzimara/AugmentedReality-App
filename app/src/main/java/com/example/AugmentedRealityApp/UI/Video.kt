@@ -71,7 +71,7 @@ class Video : AppCompatActivity() {
         }
 
         if (locationIdFromAdapter == "l9") {
-            val videoPath = "android.resource://" + packageName + "/" + R.raw.rammbock_final
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.roetteln_heli
             val uri = Uri.parse(videoPath)
             videoView.setVideoURI(uri)
         }
@@ -83,12 +83,10 @@ class Video : AppCompatActivity() {
         }
 
         if (locationIdFromAdapter == "l11") {
-            val videoPath = "android.resource://" + packageName + "/" + R.raw.roetteln_heli
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.rammbock_final
             val uri = Uri.parse(videoPath)
             videoView.setVideoURI(uri)
         }
-
-        //TODO: Liste vervollständigen
 
         val mediaController = MediaController(this)
         videoView.setMediaController(mediaController)
