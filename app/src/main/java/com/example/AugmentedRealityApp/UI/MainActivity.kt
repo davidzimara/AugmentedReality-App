@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var homeFragment: HomeFragment
     lateinit var locationFragment: LocationFragment
-    lateinit var chooseCategory: ChooseCategoryFragment
     lateinit var settingsFragment: SettingsFragment
     private lateinit var database: DatabaseReference
     lateinit var listView: ListView
@@ -128,14 +127,6 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun showChooseCategory(view: View) {
-        chooseCategory = ChooseCategoryFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.main_frame, chooseCategory)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .commit()
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
