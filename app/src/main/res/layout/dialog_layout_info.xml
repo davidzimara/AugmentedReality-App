@@ -70,20 +70,6 @@
         android:text="year"
         android:textAlignment="center" />
 
-    <com.borjabravo.readmoretextview.ReadMoreTextView
-        android:id="@+id/textViewInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="info"
-        android:padding="4dp"
-        android:textAlignment="center"
-        app:trimExpandedText="@string/weniger_anezigen"
-        app:trimCollapsedText="@string/mehr_anzeigen"
-        app:trimMode="trimModeLength"
-        app:trimLength="200"
-        app:colorClickableText="@color/colorLightRot"/>
-
-
     <RelativeLayout
         android:id="@+id/layoutVisited"
         android:layout_width="match_parent"
@@ -110,6 +96,20 @@
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
+
+
+    <com.borjabravo.readmoretextview.ReadMoreTextView
+        android:id="@+id/textViewInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="info"
+        android:padding="4dp"
+        android:textAlignment="center"
+        app:trimExpandedText="@string/weniger_anezigen"
+        app:trimCollapsedText="@string/mehr_anzeigen"
+        app:trimMode="trimModeLength"
+        app:trimLength="200"
+        app:colorClickableText="@color/colorLightRot"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardView"
