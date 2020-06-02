@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Wir wünschen Ihnen einen Erlebnisreichen Aufenthalt!"
+                    android:text="Wir wünschen Ihnen einen erlebnisreichen Aufenthalt!"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite" />
             </LinearLayout>

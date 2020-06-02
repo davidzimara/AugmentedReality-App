@@ -53,20 +53,6 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         return view
     }
 
-    private fun displayLastVisited(view: View) {
-
-        val textViewName6 = view.findViewById<TextView>(R.id.textViewVisited)
-        val imageView2 = view.findViewById<ImageView>(R.id.iconVisited)
-
-        if (visited == true) {
-            textViewName6.setText("Bereits besucht!")
-            imageView2.setImageResource(R.drawable.ic_check_black_24dp)
-        } else {
-            textViewName6.setText("Noch nicht besucht!")
-            imageView2.setImageResource(R.drawable.ic_close_black_24dp)
-        }
-    }
-
     fun show_dialog(view: View, locations: Locations) {
 
         dialog = BottomSheetDialog(mCtx)
@@ -214,5 +200,20 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
                 intent.putExtra("extra_location_ImageMap", locationImageMap)
 
                 context.startActivity(intent)
+    }
+
+    private fun displayLastVisited(view: View) {
+
+        val textViewName6 = view.findViewById<TextView>(R.id.textViewVisited)
+        val imageView2 = view.findViewById<ImageView>(R.id.iconVisited)
+
+        if (visited == true) {
+            textViewName6.setText("Bereits besucht!")
+            imageView2.setImageResource(R.drawable.ic_check_black_24dp)
+        } else {
+            textViewName6.setText("Noch nicht besucht!")
+            imageView2.setBackgroundColor(R.drawable.oval_icons)
+            imageView2.setImageResource(R.drawable.ic_close_black_24dp)
+        }
     }
 }

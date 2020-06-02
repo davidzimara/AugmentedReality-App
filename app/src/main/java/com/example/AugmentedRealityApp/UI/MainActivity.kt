@@ -1,6 +1,7 @@
 package com.example.AugmentedRealityApp.UI
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -21,7 +22,10 @@ import com.google.firebase.database.*
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.dialog_layout.view.*
 import kotlinx.android.synthetic.main.dialog_layout.view.iv_close
+import kotlinx.android.synthetic.main.dialog_layout_info.*
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
+import kotlinx.android.synthetic.main.dialog_layout_info.view.textViewComment
+import org.w3c.dom.Comment
 
 
 class MainActivity : AppCompatActivity() {
@@ -178,6 +182,11 @@ class MainActivity : AppCompatActivity() {
 
                 database.child("report").setValue(comObj)
 
+                //Have to be there otherwise it would be a null object
+                fun setComment(view: View){
+                    view.textViewComment.setText(comment)
+                }
+
             }
         })
     }
@@ -215,8 +224,9 @@ class MainActivity : AppCompatActivity() {
                 val cardView = view.findViewById<CardView>(R.id.CardView)
                 val layout = view.findViewById<RelativeLayout>(R.id.layoutVisited)
 
+                setComment(locationId, view)
+
                 //Hide comment section, Hide visited
-                cardView.visibility = View.GONE
                 layout.visibility = View.GONE
 
 
@@ -244,6 +254,83 @@ class MainActivity : AppCompatActivity() {
             val locationName = locationList[0].name
             startVideo(locationId, locationName)
         }
+    }
+
+    private fun setComment(locationId: String, view: View) {
+        //Show comment from user
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+
+            val userId = user.uid
+        }
+
+        val database = FirebaseDatabase.getInstance().getReference().child("user").child(user!!.uid).child(locationId)
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+            override fun onDataChange(p0: DataSnapshot) {
+                commentList.clear()
+                for (h in p0.children) {
+                    val comment = h.getValue(UserReport::class.java)
+                    commentList.add(comment!!)
+                }
+
+                comment  =  commentList[0].comment
+                val visited = true
+
+                //Have to be there otherwise it would be a null object
+                val textViewComment = view.findViewById<TextView>(R.id.textViewComment)
+                textViewComment.setText(comment)
+
+                view.changeComment.setOnClickListener(){
+                    changeComment(textViewComment, visited, locationId, database)
+                }
+            }
+        })
+    }
+
+    private fun changeComment(textViewComment: TextView, visited: Boolean, locationId: String, database: DatabaseReference){
+        val visited = true
+
+        val builder = AlertDialog.Builder(ctx)
+
+        val inflater = LayoutInflater.from(ctx)
+
+        val view = inflater.inflate(R.layout.update_comment, null)
+
+        val EditText = view.findViewById<EditText>(R.id.contentComment)
+
+        EditText.setText(textViewComment.text.toString())
+
+        builder.setView(view)
+
+        builder.setPositiveButton("Ändern") { p0, p1 ->
+
+            val commentNew = EditText.text.toString().trim()
+
+            val comObj = UserReport(locationId, commentNew, visited)
+
+            if (commentNew == "") {
+                Toast.makeText(
+                    ctx,
+                    "Bitte geben Sie einen Kommentar ein.",
+                    Toast.LENGTH_LONG
+                ).show()
+                return@setPositiveButton
+            } else {
+                database.child("report").setValue(comObj)
+
+                //To Update the comment within the bottom sheet
+                textViewComment.setText(commentNew)
+            }
+        }
+
+        builder.setNegativeButton("Zurück") { p0, p1 ->
+
+        }
+
+        val alert = builder.create()
+        alert.show()
     }
 
     private fun startVideo(locationId: String, locationName: String) {
