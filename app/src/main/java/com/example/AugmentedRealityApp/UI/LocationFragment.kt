@@ -1,7 +1,6 @@
 package com.example.AugmentedRealityApp.UI
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -50,8 +49,8 @@ class LocationFragment : Fragment() {
                 locationList.clear()
                 if (p0!!.exists()) {
                     for (h in p0.children) {
-                        val category = h.getValue(Locations::class.java)
-                        locationList.add(category!!)
+                        val location = h.getValue(Locations::class.java)
+                        locationList.add(location!!)
                     }
                 }
                 val adapter = LocationAdapter(

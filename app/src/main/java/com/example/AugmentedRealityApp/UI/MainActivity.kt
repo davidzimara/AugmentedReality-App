@@ -22,10 +22,8 @@ import com.google.firebase.database.*
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.dialog_layout.view.*
 import kotlinx.android.synthetic.main.dialog_layout.view.iv_close
-import kotlinx.android.synthetic.main.dialog_layout_info.*
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
 import kotlinx.android.synthetic.main.dialog_layout_info.view.textViewComment
-import org.w3c.dom.Comment
 
 
 class MainActivity : AppCompatActivity() {
@@ -182,7 +180,7 @@ class MainActivity : AppCompatActivity() {
 
                 database.child("report").setValue(comObj)
 
-                //Have to be there otherwise it would be a null object
+                //Have to be there otherwise it will be a null object
                 fun setComment(view: View){
                     view.textViewComment.setText(comment)
                 }
@@ -226,7 +224,7 @@ class MainActivity : AppCompatActivity() {
 
                 setComment(locationId, view)
 
-                //Hide comment section, Hide visited
+                //Hide visited function
                 layout.visibility = View.GONE
 
 
@@ -275,21 +273,21 @@ class MainActivity : AppCompatActivity() {
                     commentList.add(comment!!)
                 }
 
+                //Have to be there otherwise it would be a null object
                 comment  =  commentList[0].comment
                 val visited = true
 
-                //Have to be there otherwise it would be a null object
                 val textViewComment = view.findViewById<TextView>(R.id.textViewComment)
                 textViewComment.setText(comment)
 
                 view.changeComment.setOnClickListener(){
-                    changeComment(textViewComment, visited, locationId, database)
+                    changeComment(textViewComment, locationId, database)
                 }
             }
         })
     }
 
-    private fun changeComment(textViewComment: TextView, visited: Boolean, locationId: String, database: DatabaseReference){
+    private fun changeComment(textViewComment: TextView, locationId: String, database: DatabaseReference){
         val visited = true
 
         val builder = AlertDialog.Builder(ctx)
@@ -320,7 +318,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 database.child("report").setValue(comObj)
 
-                //To Update the comment within the bottom sheet
+                //To Update the notice within the bottom sheet
                 textViewComment.setText(commentNew)
             }
         }
@@ -337,7 +335,7 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(ctx, Video::class.java)
 
-        //To pass the name and id of the chosen category to activity Game.kt
+        //To pass the name and id of the location category to activity Video.kt
         intent.putExtra("extra_location_id", locationId)
         intent.putExtra("extra_location_name", locationName)
 

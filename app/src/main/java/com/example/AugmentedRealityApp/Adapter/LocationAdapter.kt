@@ -14,11 +14,9 @@ import com.example.AugmentedRealityApp.UI.MapOverview
 import com.example.AugmentedRealityApp.UI.Video
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.dialog_layout_info.view.*
 import kotlinx.android.synthetic.main.dialog_layout_info.view.iv_close
-import org.w3c.dom.Text
 
 
 class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList: List<Locations>) :
@@ -179,7 +177,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
 
                  val intent = Intent(context, Video::class.java)
 
-                //To pass the name and id of the chosen category to activity Game.kt
+                //To pass the name and id of the chosen location to activity Video.kt
                 intent.putExtra("extra_location_id", locationId)
                 intent.putExtra("extra_location_name", locationName)
 
@@ -194,7 +192,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
                 val locationName = locations.name
                 val locationImageMap = locations.imageMap
 
-                //To pass the name and id to the activity Question Overview.kt
+                //To pass the name and id to the activity MapOverview.kt
                 intent.putExtra("extra_location_id", locationId)
                 intent.putExtra("extra_location_name", locationName)
                 intent.putExtra("extra_location_ImageMap", locationImageMap)
