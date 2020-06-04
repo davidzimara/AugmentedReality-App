@@ -18,7 +18,6 @@ class SettingsFragment : Fragment() {
     lateinit var editText: EditText
     lateinit var auth: FirebaseAuth
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

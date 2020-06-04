@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 class SignUp : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var database: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +82,7 @@ class SignUp : AppCompatActivity() {
 
         database.setValue(user)
 
-        //Initialize Database Preferences for Comments
+        //Initialize Database Preferences for UserReports DataClass
         val commentInitl1 = UserReport("l1","Fügen Sie eine Notiz hinzu", false)
 
         val databaseCommentsl1 = FirebaseDatabase.getInstance().getReference("user").child(userId).child("l1").child("report")

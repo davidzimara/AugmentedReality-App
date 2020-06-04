@@ -75,7 +75,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         //ADD ImageView for Preview of location
         val url = locations.imageThumbnail
 
-        // Download directly from StorageReference using Glide
+        // Download directly from StorageReference using Glide for preview
         Glide.with(this.context)
             .load(url)
             .centerCrop()
@@ -110,7 +110,6 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         view.startVideo.setOnClickListener() {
             val locationId = locations.id
             val locationName = locations.name
-            val locationImageMap = locations.imageMap
             startVideo(locationId, locationName)
         }
 
@@ -160,7 +159,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
             } else {
                 databaseComment.child("report").setValue(comObj)
 
-                //To Update the comment within the bottom sheet
+                //To Update the comment/notice within the bottom sheet
                 textViewName4.setText(comment)
             }
         }
@@ -205,6 +204,7 @@ class LocationAdapter(val mCtx: Context, val layoutResId: Int, val locationList:
         val textViewName6 = view.findViewById<TextView>(R.id.textViewVisited)
         val imageView2 = view.findViewById<ImageView>(R.id.iconVisited)
 
+        //If the visited status in Firebase is true then change the status within the bottom sheet to true
         if (visited == true) {
             textViewName6.setText("Bereits besucht!")
             imageView2.setImageResource(R.drawable.ic_check_black_24dp)

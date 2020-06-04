@@ -180,11 +180,6 @@ class MainActivity : AppCompatActivity() {
 
                 database.child("report").setValue(comObj)
 
-                //Have to be there otherwise it will be a null object
-                fun setComment(view: View){
-                    view.textViewComment.setText(comment)
-                }
-
             }
         })
     }
@@ -219,7 +214,6 @@ class MainActivity : AppCompatActivity() {
                 val textViewName2 = view.findViewById<TextView>(R.id.textViewYear)
                 val textViewName3 = view.findViewById<TextView>(R.id.textViewInfo)
                 val imageView = view.findViewById<ImageView>(R.id.img_location)
-                val cardView = view.findViewById<CardView>(R.id.CardView)
                 val layout = view.findViewById<RelativeLayout>(R.id.layoutVisited)
 
                 setComment(locationId, view)
@@ -335,7 +329,7 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(ctx, Video::class.java)
 
-        //To pass the name and id of the location category to activity Video.kt
+        //To pass the name and id of the chosen category to activity Video.kt
         intent.putExtra("extra_location_id", locationId)
         intent.putExtra("extra_location_name", locationName)
 
